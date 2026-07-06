@@ -21,7 +21,7 @@ footer{text-align:center;padding:75px 20px;background:var(--blush)}
 .dailySlots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
 @media(max-width:520px){.dailySlots{grid-template-columns:1fr}}
 </style></head><body>
-<section id="intro"><div class="ib"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
+<section id="intro" style="background:linear-gradient(145deg,#f8f3ee,#f1e2e1)"><div class="ib"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
 <section class="section hero"><div class="nav"><span class="brand">casa nostra ♡</span><span>09 · 02 · 2026</span></div><div class="copy"><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1><p id="days" class="muted"></p><button class="pill" onclick="today.scrollIntoView()">vedi cosa c’è oggi ↓</button></div><div class="visual">foto protagonista — da scegliere alla fine</div></section>
 <section id="today" class="section"><p class="ey">amin era qui</p><h2>qualcosa lasciato solo per te</h2><div class="note"><p>ho costruito questo posto perché anche quando saremo lontani tu possa sempre trovare un pezzetto di me qui</p><span class="muted">— amin ♡</span></div></section>
@@ -110,5 +110,4 @@ if(now<calStart){
  departureBtn.onclick=()=>{renderDailyFeed();dailySection.scrollIntoView()};
  renderDailyFeed();
 }
-vp.removeAttribute('src');modal.classList.add('hidden')};
 </script></body></html>
