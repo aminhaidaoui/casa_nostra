@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#120d0e" />
+  <title>casa nostra ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="grain"></div>
+
+  <section id="intro" class="intro">
+    <div class="intro-inner">
+      <p id="introLine" class="intro-line"></p>
+      <button id="enterBtn" class="enter-btn hidden">entra a casa nostra ♡</button>
+    </div>
+  </section>
+
+  <main id="app" class="hidden">
+    <header class="hero section">
+      <div class="topbar">
+        <span class="brand">casa nostra</span>
+        <button id="musicBtn" class="icon-btn" aria-label="Musica">♪</button>
+      </div>
+      <div class="hero-copy">
+        <p id="greeting" class="eyebrow"></p>
+        <h1>un posto che esiste<br><em>solo perché esistiamo noi</em></h1>
+        <p id="daysTogether" class="days"></p>
+        <button class="soft-btn" data-scroll="#liveNote">guarda cosa c’è oggi ↓</button>
+      </div>
+      <div class="hero-photo placeholder-photo">
+        <span>la vostra foto protagonista</span>
+      </div>
+    </header>
+
+    <section id="liveNote" class="section live-note reveal">
+      <p class="eyebrow">amin era qui</p>
+      <div class="note-card">
+        <span id="noteTime">oggi</span>
+        <p id="liveMessage">ho costruito questo posto perché anche quando saremo lontani tu possa sempre trovare un pezzetto di me qui</p>
+        <span class="signature">— amin ♡</span>
+      </div>
+    </section>
+
+    <section class="section galaxy-section reveal">
+      <p class="eyebrow">la nostra galassia</p>
+      <h2>ogni luce è un momento nostro</h2>
+      <p class="muted">tocca una stella e lasciati riportare da noi</p>
+      <div id="galaxy" class="galaxy" aria-label="Galassia dei ricordi"></div>
+      <div id="memoryModal" class="modal hidden">
+        <button id="closeModal" class="modal-close">×</button>
+        <div class="memory-visual placeholder-photo"><span>foto / video del ricordo</span></div>
+        <p id="memoryDate" class="eyebrow"></p>
+        <p id="memoryText" class="memory-text"></p>
+      </div>
+    </section>
+
+    <section class="section mood-section reveal">
+      <p class="eyebrow">dimmi solo una cosa</p>
+      <h2>come ti senti oggi, patatina?</h2>
+      <div id="moods" class="mood-grid"></div>
+      <div id="moodAnswer" class="mood-answer hidden"></div>
+    </section>
+
+    <section class="section locked-section reveal">
+      <div id="door" class="door">
+        <div class="door-icon">⌁</div>
+        <p class="eyebrow">una stanza solo per te</p>
+        <h2 id="doorTitle">20 luglio 2026</h2>
+        <p id="doorText">non ancora amore</p>
+        <button id="doorBtn" class="soft-btn">prova ad aprire</button>
+      </div>
+    </section>
+
+    <section class="section timeline reveal">
+      <p class="eyebrow">5 mesi di noi</p>
+      <h2>da quel 9 febbraio</h2>
+      <div id="timeline"></div>
+    </section>
+
+    <section class="section random-memory reveal">
+      <p class="eyebrow">se il cuore decide</p>
+      <h2>portami in un nostro ricordo</h2>
+      <button id="randomBtn" class="big-heart">♡</button>
+      <p id="randomText" class="random-text">premi il cuore</p>
+    </section>
+
+    <section class="section dont-open reveal">
+      <button id="dontOpenBtn" class="dont-open-btn">non aprire adesso</button>
+      <div id="dontOpenContent" class="hidden">
+        <p>lo sapevo che non mi ascoltavi</p>
+        <p class="muted">visto che sei qui però… qui ci metteremo un video solo per lei ♡</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>fatto con troppo amore e probabilmente troppe ore</p>
+      <strong>amin ♡ camilla</strong>
+    </footer>
+  </main>
+
+  <audio id="bgMusic" loop preload="metadata">
+    <source src="assets/audio/canzone.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
