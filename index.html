@@ -14,12 +14,6 @@
 .modal{position:fixed;inset:0;z-index:60;background:rgba(59,48,45,.45);display:grid;place-items:center;padding:18px}.card{width:min(720px,100%);background:var(--paper);border-radius:28px;padding:20px;position:relative}.card video{width:100%;max-height:70vh;border-radius:18px;background:#eaded8}.close{position:absolute;right:12px;top:10px;z-index:2;border:0;background:white;width:38px;height:38px;border-radius:50%;font-size:1.5rem}.missing{padding:55px 20px;text-align:center;border:1px dashed var(--line);border-radius:18px;background:var(--bg);color:var(--muted)}
 footer{text-align:center;padding:75px 20px;background:var(--blush)}
 @media(max-width:850px){.hero{grid-template-columns:1fr}.visual{order:-1;height:52vh;border-radius:150px 150px 22px 22px}.copy{text-align:center}.calendar{grid-template-columns:repeat(3,1fr)}.moods{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.section{padding:70px 18px}.calendar{grid-template-columns:repeat(2,1fr)}}
-
-.dailyEntry{margin:0 0 18px;padding:22px;border:1px solid var(--line);border-radius:24px;background:var(--paper)}
-.dailyTop{display:flex;justify-content:space-between;gap:16px;align-items:center}
-.dailyDate{font:1.5rem Georgia,serif;color:var(--cherry)}
-.dailySlots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-@media(max-width:520px){.dailySlots{grid-template-columns:1fr}}
 </style></head><body>
 <section id="intro"><div class="ib"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
@@ -27,88 +21,21 @@ footer{text-align:center;padding:75px 20px;background:var(--blush)}
 <section id="today" class="section"><p class="ey">amin era qui</p><h2>qualcosa lasciato solo per te</h2><div class="note"><p>ho costruito questo posto perché anche quando saremo lontani tu possa sempre trovare un pezzetto di me qui</p><span class="muted">— amin ♡</span></div></section>
 <section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi,<br>patatina?</h2><div id="moods" class="moods"></div><div id="answer" class="answer hidden"></div></section>
 <section class="section"><p class="ey">la nostra storia</p><h2>non una galleria.<br>un pezzo alla volta.</h2><div class="timeline"><div class="month"><h3>febbraio</h3><p class="muted">l’inizio ufficiale di noi</p></div><div class="month"><h3>marzo</h3><p class="muted">la confidenza che cresce</p></div><div class="month"><h3>aprile</h3><p class="muted">i giorni normali che diventano ricordi</p></div><div class="month"><h3>maggio</h3><p class="muted">più noi, più storie da raccontare</p></div><div class="month"><h3>giugno</h3><p class="muted">il presente che vogliamo conservare</p></div><div class="month"><h3>luglio</h3><p class="muted">cinque mesi e una distanza da attraversare insieme</p></div></div></section>
-<section class="section">
-<div id="departureDoor" class="door">
- <div>
-  <p class="ey">la porta della partenza</p>
-  <h2>20 luglio 2026</h2>
-  <p id="departureText" class="muted">questa stanza è ancora chiusa ♡</p>
-  <button id="departureBtn" class="pill">🔒 prova ad aprire</button>
- </div>
-</div>
-</section>
-
-<section id="dailySection" class="section hidden">
- <p class="ey">un pezzetto di me, oggi</p>
- <h2 id="dailyTitle">oggi ci sono due cose per te</h2>
- <p class="muted">Qui compaiono solo i giorni già vissuti. Nessuna anticipazione, nessun calendario futuro.</p>
- <div id="dailyFeed"></div>
-</section>
-
-<section id="finalReveal" class="section hidden">
- <p class="ey">una cosa che non ti avevo detto</p>
- <h2>il calendario finisce.<br><span class="accent">io no.</span></h2>
- <p class="muted">Qui arriveranno l’ultimo video, la lettera e la conclusione speciale.</p>
-</section>
-
+<section class="section"><div class="door"><div><p class="ey">la porta della partenza</p><h2>20 luglio 2026</h2><p class="muted">da qui comincerà il mese in cui troverai un pezzetto di me ogni mattina e ogni sera</p><button class="pill" onclick="calSec.scrollIntoView()">guarda il calendario</button></div></div></section>
+<section id="calSec" class="section"><p class="ey">30 giorni con te</p><h2>ogni giorno,<br>due volte al giorno.</h2><p class="muted">☀️ Il buongiorno si apre dalle 06:00. 🌙 La buonanotte dalle 21:00. I giorni futuri restano chiusi; quelli passati restano riguardabili.</p><div id="calendar" class="calendar"></div></section>
+<section class="section"><p class="ey">dopo il trentesimo giorno</p><h2>il calendario finisce.<br><span class="accent">io no.</span></h2><p class="muted">Qui arriverà il finale lungo: ultimo video, lettera e conclusione speciale, bloccati fino alla fine.</p></section>
 <footer><p>un posto che continuerà a crescere con noi</p><strong>amin ♡ camilla</strong></footer>
 </main>
 <div id="modal" class="modal hidden"><div class="card"><button id="close" class="close">×</button><p id="ve" class="ey"></p><h3 id="vt"></h3><video id="vp" controls playsinline></video><div id="missing" class="missing hidden">Lo slot funziona già. Qui apparirà il video appena inserirai il file con il nome previsto.</div></div></div>
 <script>
 const $=s=>document.querySelector(s),sleep=m=>new Promise(r=>setTimeout(r,m));
 const intro=['ti ricordi l’ultima volta che ti ho fatto entrare in un posto così?','quella volta avevo <span class="accent">una domanda</span> da farti','questa volta no','questa volta voglio lasciarti <span class="accent">qualcosa che resti</span>'];
-(async()=>{for(const t of intro){it.classList.remove('on');await sleep(220);it.innerHTML=t;it.classList.add('on');await sleep(2100)}enter.classList.add('on')})();enter.onclick=()=>{const introScreen=document.getElementById('intro');introScreen.style.opacity='0';introScreen.style.pointerEvents='none';setTimeout(()=>introScreen.remove(),800)};
+(async()=>{for(const t of intro){it.classList.remove('on');await sleep(220);it.innerHTML=t;it.classList.add('on');await sleep(1150)}enter.classList.add('on')})();enter.onclick=()=>{const introScreen=document.getElementById('intro');introScreen.style.opacity='0';introScreen.style.pointerEvents='none';setTimeout(()=>introScreen.remove(),800)};
 const now=new Date(),start=new Date('2026-02-09T00:00:00'),calStart=new Date('2026-07-20T00:00:00');greet.textContent=now.getHours()<10?'buongiorno patatina':now.getHours()>=23||now.getHours()<5?'ancora sveglia amore?':now.getHours()<18?'ciao patatina':'buonasera amore';days.textContent=Math.floor((now-start)/86400000)+' giorni di noi — e siamo solo all’inizio';
 const moodData=[['🥺','mi manchi','resta qui un po’ con me. questo posto esiste anche per quando vorresti avermi più vicino ♡'],['😔','sono triste','non devo aggiustare tutto. puoi appoggiarti a me anche nei giorni storti'],['🥰','sono felice','allora sorridi ancora un secondo: sapere che stai bene rende felice anche me'],['😤','sono arrabbiata con te','ok, probabilmente ho fatto il coglione. ma anche quando litighiamo non smetto di scegliere noi'],['🌙','non riesco a dormire','se fossi lì ti stringerei finché la testa non smette di correre'],['🫂','ho bisogno di te','ci sono. magari non dentro questo schermo nel modo che vorrei, ma ci sono davvero'],['💗','voglio sentirmi amata','sei amata nei dettagli che forse non noti e nei pensieri improvvisi'],['😂','voglio ridere','qui arriverà ogni volta una cosa diversa: foto scema, video o momento imbarazzante']];
 moodData.forEach(([e,k,v])=>{let b=document.createElement('button');b.className='mood';b.innerHTML='<span>'+e+'</span>'+k;b.onclick=()=>{answer.textContent=v;answer.classList.remove('hidden')};moods.appendChild(b)});
-
-function ds(i){let d=new Date(calStart);d.setDate(d.getDate()+i-1);return d}
-function unlock(i,type){let d=ds(i);d.setHours(type==='morning'?6:21,0,0,0);return d}
-
-const departureBtn=document.getElementById('departureBtn');
-const departureText=document.getElementById('departureText');
-const dailySection=document.getElementById('dailySection');
-const dailyFeed=document.getElementById('dailyFeed');
-const finalReveal=document.getElementById('finalReveal');
-
-function openVideo(i,type){
- let p='assets/videos/'+(type==='morning'?'morning':'night')+'/day-'+String(i).padStart(2,'0')+'.mp4';
- ve.textContent='giorno '+i+' · '+(type==='morning'?'mattina':'sera');
- vt.textContent=type==='morning'?'Buongiorno patatina ☀️':'Buonanotte amore 🌙';
- missing.classList.add('hidden');vp.classList.remove('hidden');vp.src=p;
- vp.onerror=()=>{vp.classList.add('hidden');missing.classList.remove('hidden')};
- modal.classList.remove('hidden')
-}
+function ds(i){let d=new Date(calStart);d.setDate(d.getDate()+i-1);return d}function unlock(i,type){let d=ds(i);d.setHours(type==='morning'?6:21,0,0,0);return d}
+for(let i=1;i<=30;i++){let date=ds(i),d=document.createElement('article');d.className='day'+(now.toDateString()===date.toDateString()?' today':'')+(now<unlock(i,'morning')?' future':'');d.innerHTML='<div class="num">'+String(i).padStart(2,'0')+'</div><div class="muted">'+date.toLocaleDateString('it-IT',{day:'numeric',month:'short'})+'</div><div class="slots"></div>';[['morning','☀️ buongiorno'],['night','🌙 buonanotte']].forEach(([type,label])=>{let ok=now>=unlock(i,type),b=document.createElement('button');b.className='slot '+(ok?'available':'locked');b.textContent=label+(ok?'':' 🔒');b.onclick=()=>{if(ok)openVideo(i,type)};d.querySelector('.slots').appendChild(b)});calendar.appendChild(d)}
+function openVideo(i,type){let p='assets/videos/'+(type==='morning'?'morning':'night')+'/day-'+String(i).padStart(2,'0')+'.mp4';ve.textContent='giorno '+i+' · '+(type==='morning'?'mattina':'sera');vt.textContent=type==='morning'?'Buongiorno patatina ☀️':'Buonanotte amore 🌙';missing.classList.add('hidden');vp.classList.remove('hidden');vp.src=p;vp.onerror=()=>{vp.classList.add('hidden');missing.classList.remove('hidden')};modal.classList.remove('hidden')}
 close.onclick=()=>{vp.pause();vp.removeAttribute('src');modal.classList.add('hidden')};
-
-function renderDailyFeed(){
- dailyFeed.innerHTML='';
- const today=new Date();
- let visibleDays=0;
- for(let i=1;i<=30;i++){
-   const morningOpen=today>=unlock(i,'morning');
-   if(!morningOpen) continue;
-   visibleDays++;
-   const date=ds(i), nightOpen=today>=unlock(i,'night');
-   const card=document.createElement('article');
-   card.className='dailyEntry';
-   card.innerHTML='<div class="dailyTop"><div><div class="dailyDate">'+date.toLocaleDateString('it-IT',{day:'numeric',month:'long'})+'</div><div class="muted">giorno '+i+'</div></div></div><div class="dailySlots"></div>';
-   const slots=card.querySelector('.dailySlots');
-   const mb=document.createElement('button');mb.className='slot available';mb.textContent='☀️ buongiorno';mb.onclick=()=>openVideo(i,'morning');slots.appendChild(mb);
-   const nb=document.createElement('button');nb.className='slot '+(nightOpen?'available':'locked');nb.textContent=nightOpen?'🌙 buonanotte':'🌙 torna stasera 🔒';if(nightOpen)nb.onclick=()=>openVideo(i,'night');slots.appendChild(nb);
-   dailyFeed.appendChild(card);
- }
- dailySection.classList.toggle('hidden',visibleDays===0);
- if(today>=unlock(30,'night')) finalReveal.classList.remove('hidden');
-}
-
-if(now<calStart){
- departureBtn.onclick=()=>{departureText.textContent='non ancora amore… torna il 20 luglio ♡'};
-}else{
- departureBtn.textContent='entra ♡';
- departureText.textContent='c’è qualcosa per te';
- departureBtn.onclick=()=>{renderDailyFeed();dailySection.scrollIntoView()};
- renderDailyFeed();
-}
-vp.removeAttribute('src');modal.classList.add('hidden')};
 </script></body></html>
