@@ -1,12 +1,6 @@
-V5 30 GIORNI
-- Palette chiara
-- 8 stati d'animo
-- Calendario 30 giorni
-- 60 slot video
-- Mattina dalle 06:00, sera dalle 21:00
-- Futuro bloccato, passato riguardabile
-- Partenza provvisoria: 20/07/2026
-
-Video:
-assets/videos/morning/day-01.mp4 ... day-30.mp4
-assets/videos/night/day-01.mp4 ... day-30.mp4
+DEMO V7 VIVA
+Usa 24 foto reali prese da Febbraioo.zip.
+Le foto sono volutamente riutilizzate per mostrare la struttura completa.
+La galassia è già funzionante: stelle e pianeti aprono ricordi.
+La porta del 20 luglio resta chiusa.
+Obiettivo: capire cosa va dove prima della selezione definitiva.
