@@ -1,0 +1,1 @@
+V3 STABILE: sostituisci solo index.html nella root del repository. La Home è sempre visibile: nessuna animazione può lasciarla nera.

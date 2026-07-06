@@ -1,175 +1,84 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0809">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>casa nostra ♡</title>
 <style>
-:root{--bg:#0b0809;--cream:#f3e9df;--muted:#b9aaa4;--rose:#d6a0a8;--wine:#6e2638;--line:rgba(243,233,223,.14)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Arial,sans-serif;overflow-x:hidden}button{font:inherit}.hidden{display:none!important}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.serif{font-family:Georgia,'Times New Roman',serif}
-#intro{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 45%,#1b1114 0,#0b0809 50%,#070506 100%);display:grid;place-items:center;overflow:hidden}
-#introGlow{position:absolute;width:48vw;height:48vw;border-radius:50%;background:rgba(110,38,56,.16);filter:blur(80px);animation:drift 8s ease-in-out infinite alternate}
-@keyframes drift{to{transform:translate(8vw,-5vh) scale(1.15)}}
-.introWrap{position:relative;text-align:center;width:min(92vw,950px);padding:24px}
-#introText{font:400 clamp(2.2rem,5vw,5.3rem)/1.06 Georgia,serif;letter-spacing:-.025em;min-height:2.2em;margin:0;opacity:0;transform:translateY(16px);transition:.7s ease}
-#introText.show{opacity:1;transform:none}.accent{color:var(--rose);font-style:italic}
-#enter{margin-top:34px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--cream);border-radius:999px;padding:15px 23px;cursor:pointer;opacity:0;transform:translateY(10px);transition:.7s;box-shadow:0 0 50px rgba(214,160,168,.05)}
-#enter.show{opacity:1;transform:none}#skip{position:absolute;right:24px;bottom:24px;color:#776a68;background:none;border:0;cursor:pointer}
-main{opacity:0;transition:opacity 1s}main.ready{opacity:1}
-.section{width:min(1180px,100%);margin:auto;padding:110px 28px}.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;color:var(--rose)}
-.hero{min-height:100svh;display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;position:relative;padding-top:90px}
-.nav{position:absolute;top:24px;left:28px;right:28px;display:flex;justify-content:space-between;align-items:center}.brand{font:400 1.35rem Georgia,serif}.music{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--cream);cursor:pointer}
-h1,h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.035em}h1{font-size:clamp(3.2rem,7vw,7.2rem);line-height:.88;margin:.18em 0}h1 em{color:var(--rose);font-weight:400}
-h2{font-size:clamp(2.6rem,5vw,5rem);line-height:.96;margin:.2em 0}.sub{color:var(--muted);line-height:1.7}.days{margin:25px 0;color:var(--muted)}
-.pill{border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--cream);padding:14px 20px;border-radius:999px;cursor:pointer}
-.heroVisual{height:min(73vh,760px);border-radius:220px 220px 28px 28px;border:1px solid var(--line);background:linear-gradient(145deg,#2b1820,#130d0f);position:relative;overflow:hidden;display:grid;place-items:center;color:#8f7d7b}
-.heroVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.55))}
-.heroVisual span{z-index:1}.floatingDate{position:absolute;right:-20px;bottom:70px;z-index:2;padding:18px 22px;background:rgba(15,10,11,.78);border:1px solid var(--line);backdrop-filter:blur(14px);border-radius:18px;font:1.15rem Georgia,serif}
-.live{max-width:850px}.note{margin-top:28px;border:1px solid var(--line);border-radius:30px;padding:36px;background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015))}
-.noteText{font:400 clamp(1.8rem,4vw,3.4rem)/1.12 Georgia,serif;margin:18px 0}.signature{color:var(--muted)}
-.galaxyWrap{height:600px;border:1px solid var(--line);border-radius:32px;overflow:hidden;position:relative;background:radial-gradient(circle at 25% 35%,rgba(110,38,56,.28),transparent 25%),radial-gradient(circle at 75% 25%,rgba(70,55,95,.2),transparent 22%),#070506;margin-top:35px}
-.star{position:absolute;border:0;border-radius:50%;width:7px;height:7px;background:var(--cream);box-shadow:0 0 14px var(--cream);cursor:pointer;animation:tw 2.5s infinite alternate}.star:nth-child(3n){width:4px;height:4px}@keyframes tw{to{opacity:.28;transform:scale(.65)}}
-.orbit{position:absolute;border:1px solid rgba(255,255,255,.045);border-radius:50%;width:70%;height:70%;left:15%;top:15%;transform:rotate(-12deg)}
-.modal{position:fixed;inset:4%;z-index:80;background:#130d0f;border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:0 30px 120px #000;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.modalVisual{height:70vh;border-radius:20px;background:linear-gradient(145deg,#2b1820,#0d090a);display:grid;place-items:center;color:#8f7d7b}.close{position:absolute;right:20px;top:15px;background:none;border:0;color:white;font-size:2rem;cursor:pointer}.memoryText{font:400 clamp(1.8rem,4vw,3.5rem)/1.1 Georgia,serif}
-.moods{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0}.moods button{border:1px solid var(--line);background:transparent;color:var(--cream);padding:14px 18px;border-radius:999px;cursor:pointer;transition:.25s}.moods button:hover{background:var(--wine);transform:translateY(-2px)}
-.answer{padding:28px;border-left:2px solid var(--rose);font:400 clamp(1.5rem,3vw,2.5rem)/1.2 Georgia,serif}
-.doorSec{display:grid;place-items:center}.door{width:min(620px,100%);min-height:620px;border:1px solid var(--line);border-radius:260px 260px 28px 28px;background:linear-gradient(#28161d,#100b0d);display:grid;place-items:center;text-align:center;padding:50px 25px;position:relative;overflow:hidden}.door:before{content:"";position:absolute;inset:8%;border:1px solid rgba(255,255,255,.06);border-radius:230px 230px 18px 18px}.doorInner{z-index:1}.lock{font-size:3rem;color:var(--rose)}
-.timeline{border-left:1px solid var(--line);margin-top:40px}.month{padding:0 0 60px 30px;position:relative}.month:before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--rose)}.month h3{font:400 2rem Georgia,serif;margin:0}.month p{color:var(--muted);max-width:620px;line-height:1.6}
-.random{text-align:center}.heart{font:400 7rem Georgia,serif;color:var(--rose);background:none;border:0;cursor:pointer;transition:.3s}.heart:hover{transform:scale(1.12)}#randomOut{font:400 1.8rem Georgia,serif;min-height:2em}
-.secret{text-align:center}.secretBox{margin-top:25px;padding:35px;border:1px solid var(--line);border-radius:24px}
-footer{text-align:center;border-top:1px solid var(--line);padding:90px 20px;color:var(--muted)}footer strong{display:block;color:var(--cream);font:400 2rem Georgia,serif;margin-top:12px}
-.reveal{opacity:0;transform:translateY(35px);transition:1s ease}.reveal.visible{opacity:1;transform:none}
-@media(max-width:760px){.section{padding:82px 20px}.hero{grid-template-columns:1fr;padding-top:95px}.heroVisual{height:52vh;order:-1;border-radius:140px 140px 20px 20px}.heroCopy{text-align:center}.floatingDate{right:10px;bottom:25px}.galaxyWrap{height:500px}.modal{inset:2%;grid-template-columns:1fr;overflow:auto}.modalVisual{height:48vh}.door{min-height:540px}.nav{left:20px;right:20px}}
+:root{--bg:#0c090a;--bg2:#171013;--cream:#f4ebe3;--muted:#b7a8a4;--rose:#d8a0aa;--wine:#70293b;--line:rgba(244,235,227,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Arial,sans-serif;overflow-x:hidden}button{font:inherit}.hide{display:none!important}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#intro{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#201419,#0b0809 55%,#060405);transition:opacity .75s}
+.introbox{text-align:center;width:min(92vw,980px);padding:24px}.introtext{font:400 clamp(2.1rem,5vw,5.2rem)/1.07 Georgia,serif;min-height:2.3em;opacity:0;transform:translateY(14px);transition:.55s}.introtext.on{opacity:1;transform:none}.pink{color:var(--rose);font-style:italic}
+.enter{opacity:0;pointer-events:none;margin-top:25px;border:1px solid var(--line);border-radius:999px;padding:15px 22px;background:rgba(255,255,255,.04);color:var(--cream);cursor:pointer;transition:.5s}.enter.on{opacity:1;pointer-events:auto}
+#skip{position:absolute;right:22px;bottom:20px;background:none;border:0;color:#7d6f6c;cursor:pointer}
+main{display:block;min-height:100vh}.section{width:min(1180px,100%);margin:auto;padding:100px 28px}.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;color:var(--rose)}
+.top{min-height:100svh;position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding-top:90px}
+.nav{position:absolute;top:24px;left:28px;right:28px;display:flex;justify-content:space-between;align-items:center}.brand{font:1.4rem Georgia,serif}.round{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--cream)}
+h1,h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.035em}h1{font-size:clamp(3.1rem,7vw,7rem);line-height:.88;margin:.18em 0}h1 em{color:var(--rose);font-weight:400}h2{font-size:clamp(2.5rem,5vw,5rem);line-height:.96;margin:.2em 0}
+.muted{color:var(--muted);line-height:1.65}.days{color:var(--muted);margin:25px 0}.pill{border:1px solid var(--line);border-radius:999px;padding:14px 19px;background:rgba(255,255,255,.035);color:var(--cream);cursor:pointer}
+.visual{height:min(72vh,750px);border:1px solid var(--line);border-radius:220px 220px 28px 28px;background:linear-gradient(145deg,#311b23,#130d0f);display:grid;place-items:center;color:#907d7b;position:relative;overflow:hidden}.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.58))}
+.datebadge{position:absolute;z-index:2;right:18px;bottom:30px;padding:16px 19px;border:1px solid var(--line);border-radius:18px;background:rgba(10,7,8,.78);backdrop-filter:blur(12px);font:1.05rem Georgia,serif}
+.note{max-width:850px}.card{margin-top:28px;padding:34px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.012))}.card p{font:clamp(1.8rem,4vw,3.3rem)/1.12 Georgia,serif;margin:18px 0}
+.galaxy{height:590px;margin-top:34px;border:1px solid var(--line);border-radius:30px;position:relative;overflow:hidden;background:radial-gradient(circle at 25% 35%,rgba(112,41,59,.32),transparent 25%),radial-gradient(circle at 76% 22%,rgba(72,58,100,.2),transparent 22%),#070506}
+.galaxy:before{content:"";position:absolute;width:70%;height:70%;left:15%;top:15%;border:1px solid rgba(255,255,255,.05);border-radius:50%;transform:rotate(-13deg)}
+.star{position:absolute;width:7px;height:7px;border:0;border-radius:50%;background:var(--cream);box-shadow:0 0 15px var(--cream);cursor:pointer;animation:tw 2.6s infinite alternate}.star:nth-child(3n){width:4px;height:4px}@keyframes tw{to{opacity:.3;transform:scale(.7)}}
+.moodgrid{display:flex;flex-wrap:wrap;gap:11px;margin:30px 0}.moodgrid button{border:1px solid var(--line);border-radius:999px;padding:13px 17px;background:transparent;color:var(--cream);cursor:pointer}.moodgrid button:hover{background:var(--wine)}
+.answer{padding:28px;border-left:2px solid var(--rose);font:clamp(1.5rem,3vw,2.4rem)/1.2 Georgia,serif}
+.doorwrap{display:grid;place-items:center}.door{width:min(620px,100%);min-height:610px;border:1px solid var(--line);border-radius:260px 260px 28px 28px;background:linear-gradient(#2a171e,#100b0d);display:grid;place-items:center;text-align:center;padding:45px 25px;position:relative}.door:after{content:"";position:absolute;inset:8%;border:1px solid rgba(255,255,255,.06);border-radius:230px 230px 18px 18px}.doorin{z-index:2}.lock{font-size:3rem;color:var(--rose)}
+.timeline{border-left:1px solid var(--line);margin-top:40px}.month{padding:0 0 55px 30px;position:relative}.month:before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--rose)}.month h3{font:2rem Georgia,serif;margin:0}.month p{color:var(--muted);max-width:620px;line-height:1.6}
+.random{text-align:center}.heart{font:7rem Georgia,serif;border:0;background:none;color:var(--rose);cursor:pointer}.out{font:1.8rem Georgia,serif;min-height:2em}
+footer{text-align:center;padding:85px 20px;border-top:1px solid var(--line);color:var(--muted)}footer strong{display:block;color:var(--cream);font:2rem Georgia,serif;margin-top:10px}
+.modal{position:fixed;inset:4%;z-index:95;background:#140e10;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 30px 120px #000;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.modalpic{height:70vh;border-radius:18px;background:linear-gradient(145deg,#311b23,#100b0d);display:grid;place-items:center;color:#907d7b}.close{position:absolute;right:18px;top:12px;border:0;background:none;color:white;font-size:2rem;cursor:pointer}.memtext{font:clamp(1.8rem,4vw,3.4rem)/1.1 Georgia,serif}
+@media(max-width:760px){.section{padding:78px 20px}.top{grid-template-columns:1fr;padding-top:95px}.visual{height:51vh;order:-1;border-radius:140px 140px 20px 20px}.copy{text-align:center}.nav{left:20px;right:20px}.galaxy{height:490px}.modal{inset:2%;grid-template-columns:1fr;overflow:auto}.modalpic{height:47vh}.door{min-height:530px}}
 </style>
 </head>
 <body>
-<section id="intro">
-  <div id="introGlow"></div>
-  <div class="introWrap"><p id="introText"></p><button id="enter">entra a casa nostra ♡</button></div>
-  <button id="skip">salta intro</button>
+<section id="intro"><div class="introbox"><div id="it" class="introtext"></div><button id="enter" class="enter">entra a casa nostra ♡</button></div><button id="skip">salta intro</button></section>
+
+<main id="site">
+<section class="section top">
+ <div class="nav"><span class="brand">casa nostra ♡</span><button id="music" class="round">♪</button></div>
+ <div class="copy"><p id="greet" class="eyebrow">ciao patatina</p><h1>un posto che esiste<br><em>solo perché esistiamo noi</em></h1><p id="days" class="days"></p><button class="pill" onclick="document.getElementById('today').scrollIntoView()">scopri cosa c’è oggi ↓</button></div>
+ <div class="visual"><span>qui arriverà una vostra foto vera</span><div class="datebadge">dal 9 febbraio 2026</div></div>
 </section>
 
-<main id="main">
-<section class="section hero">
-  <div class="nav"><span class="brand">casa nostra ♡</span><button id="music" class="music">♪</button></div>
-  <div class="heroCopy">
-    <p id="greeting" class="eyebrow"></p>
-    <h1>un posto che esiste<br><em>solo perché esistiamo noi</em></h1>
-    <p id="days" class="days"></p>
-    <button class="pill" onclick="document.querySelector('#live').scrollIntoView()">scopri cosa c’è oggi ↓</button>
-  </div>
-  <div class="heroVisual"><span>qui arriverà una vostra foto vera</span><div class="floatingDate">dal 9 febbraio 2026</div></div>
-</section>
+<section id="today" class="section note"><p class="eyebrow">amin era qui</p><h2>qualcosa lasciato<br>solo per te</h2><div class="card"><span class="eyebrow">oggi</span><p>ho costruito questo posto perché anche quando saremo lontani tu possa sempre trovare un pezzetto di me qui</p><span class="muted">— amin ♡</span></div></section>
 
-<section id="live" class="section live reveal">
-  <p class="eyebrow">amin era qui</p><h2>qualcosa lasciato<br>solo per te</h2>
-  <div class="note"><span class="eyebrow">oggi</span><p class="noteText">ho costruito questo posto perché anche quando saremo lontani tu possa sempre trovare un pezzetto di me qui</p><span class="signature">— amin ♡</span></div>
-</section>
+<section class="section"><p class="eyebrow">la nostra galassia</p><h2>ogni luce è un momento nostro</h2><p class="muted">tocca una stella e lasciati riportare da noi</p><div id="galaxy" class="galaxy"></div></section>
 
-<section class="section reveal">
-  <p class="eyebrow">la nostra galassia</p><h2>ogni luce è un momento nostro</h2><p class="sub">tocca una stella e lasciati riportare da noi</p>
-  <div id="galaxy" class="galaxyWrap"><div class="orbit"></div></div>
-</section>
+<section class="section"><p class="eyebrow">dimmi solo una cosa</p><h2>come ti senti oggi,<br>patatina?</h2><div id="moods" class="moodgrid"></div><div id="answer" class="answer hide"></div></section>
 
-<section class="section reveal">
-  <p class="eyebrow">dimmi solo una cosa</p><h2>come ti senti oggi,<br>patatina?</h2>
-  <div id="moods" class="moods"></div><div id="answer" class="answer hidden"></div>
-</section>
+<section class="section doorwrap"><div class="door"><div class="doorin"><div class="lock">⌁</div><p class="eyebrow">una stanza solo per te</p><h2 id="doorTitle">20 luglio 2026</h2><p id="doorText" class="muted">non ancora amore</p><button id="doorBtn" class="pill">prova ad aprire</button></div></div></section>
 
-<section class="section doorSec reveal">
-  <div class="door"><div class="doorInner"><div class="lock">⌁</div><p class="eyebrow">una stanza solo per te</p><h2 id="doorTitle">20 luglio 2026</h2><p id="doorText" class="sub">non ancora amore</p><button id="doorBtn" class="pill">prova ad aprire</button></div></div>
-</section>
+<section class="section"><p class="eyebrow">5 mesi di noi</p><h2>da quel 9 febbraio</h2><div id="timeline" class="timeline"></div></section>
 
-<section class="section reveal">
-  <p class="eyebrow">5 mesi di noi</p><h2>da quel 9 febbraio</h2><div id="timeline" class="timeline"></div>
-</section>
-
-<section class="section random reveal">
-  <p class="eyebrow">se il cuore decide</p><h2>portami in un nostro ricordo</h2><button id="heart" class="heart">♡</button><p id="randomOut">premi il cuore</p>
-</section>
-
-<section class="section secret reveal">
-  <button id="dont" class="pill">non aprire adesso</button>
-  <div id="dontBox" class="secretBox hidden"><h2>lo sapevo che non mi ascoltavi</h2><p class="sub">visto che sei qui però… qui metteremo un video registrato solo per lei ♡</p></div>
-</section>
-
+<section class="section random"><p class="eyebrow">se il cuore decide</p><h2>portami in un nostro ricordo</h2><button id="heart" class="heart">♡</button><p id="out" class="out">premi il cuore</p></section>
 <footer><p>un posto che continuerà a crescere con noi</p><strong>amin ♡ camilla</strong></footer>
 </main>
 
-<div id="modal" class="modal hidden"><button id="close" class="close">×</button><div class="modalVisual">qui arriverà la foto o il video del ricordo</div><div><p id="memDate" class="eyebrow"></p><p id="memText" class="memoryText"></p></div></div>
-
-<audio id="audio" loop preload="metadata"><source src="assets/audio/canzone.mp3" type="audio/mpeg"></audio>
+<div id="modal" class="modal hide"><button id="close" class="close">×</button><div class="modalpic">qui arriverà la foto o il video del ricordo</div><div><p id="md" class="eyebrow"></p><p id="mt" class="memtext"></p></div></div>
+<audio id="audio" loop><source src="assets/audio/canzone.mp3" type="audio/mpeg"></audio>
 
 <script>
-const DATA={
- since:"2026-02-09T00:00:00", secret:"2026-07-20T00:00:00",
- intro:[
-  'ti ricordi l’ultima volta che ti ho fatto entrare in un posto così?',
-  'quella volta avevo <span class="accent">una domanda</span> da farti',
-  'questa volta no',
-  'questa volta voglio lasciarti <span class="accent">qualcosa che resti</span>'
- ],
- memories:[
-  ["9 febbraio 2026","il giorno in cui abbiamo smesso di essere quasi e siamo diventati noi"],
-  ["febbraio 2026","qui metteremo uno di quei momenti che capiamo solo noi due"],
-  ["marzo 2026","un ricordo piccolo per il mondo ma enorme per me"],
-  ["aprile 2026","una delle mille volte in cui mi hai fatto pensare quanto sono fortunato"],
-  ["maggio 2026","noi nella nostra versione più scema e più bella"],
-  ["giugno 2026","un momento che non voglio dimenticare mai"],
-  ["luglio 2026","cinque mesi dopo e io ti sceglierei ancora"]
- ],
- moods:{
-  "mi manchi":"allora resta qui un po’ con me. questo posto esiste anche per quei momenti in cui vorresti avermi più vicino ♡",
-  "sono triste":"non devo aggiustare tutto. voglio solo ricordarti che puoi appoggiarti a me anche nei giorni storti",
-  "sono felice":"allora sorridi ancora un secondo perché sapere che stai bene rende felice anche me",
-  "sono arrabbiata con te":"ok probabilmente ho fatto il coglione. ma anche quando litighiamo non smetto di scegliere noi",
-  "non riesco a dormire":"se fossi lì ti stringerei finché la testa non smette di correre. per ora resta qui con me",
-  "ho bisogno di te":"ci sono. magari non dentro questo schermo nel modo che vorrei ma ci sono davvero",
-  "voglio sentirmi amata":"sei amata nei dettagli che forse non noti, nei pensieri improvvisi e nelle cose che vorrei raccontare prima a te",
-  "voglio ridere":"qui finirà il contenuto più imbarazzante che abbiamo. sì, proprio quello"
- },
- timeline:[
-  ["mese uno","quando ancora stavamo imparando cosa significava essere noi"],
-  ["mese due","quando averti ha iniziato a sembrarmi la mia normalità preferita"],
-  ["mese tre","più ricordi, più confidenza, più noi"],
-  ["mese quattro","anche nei giorni storti ho capito quanto tengo a questa storia"],
-  ["mese cinque","non un traguardo. solo un altro pezzo di strada con te"]
- ]
-};
+(function(){
 const $=s=>document.querySelector(s), sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const introText=$("#introText"), enter=$("#enter");
-let introDone=false;
-async function intro(){
- for(const t of DATA.intro){
-  if(introDone)return; introText.classList.remove("show"); await sleep(260);
-  introText.innerHTML=t; introText.classList.add("show"); await sleep(1350);
- }
- enter.classList.add("show");
-}
-function enterSite(){
- introDone=true; $("#intro").style.transition="opacity .8s";$("#intro").style.opacity=0;
- const a=$("#audio");a.play().then(()=>$("#music").textContent="Ⅱ").catch(()=>{});
- setTimeout(()=>{$("#intro").remove();$("#main").classList.add("ready")},800);
-}
-enter.onclick=enterSite;$("#skip").onclick=()=>{enter.classList.add("show");introText.innerHTML='questa volta voglio lasciarti <span class="accent">qualcosa che resti</span>';introText.classList.add("show")};intro();
-
-const now=new Date(),h=now.getHours();
-$("#greeting").textContent=h<10?"buongiorno patatina":h>=23||h<5?"ancora sveglia amore?":h<18?"ciao patatina":"buonasera amore";
-$("#days").textContent=Math.floor((now-new Date(DATA.since))/86400000)+" giorni di noi — e siamo solo all’inizio";
-$("#music").onclick=()=>{const a=$("#audio");if(a.paused)a.play().then(()=>$("#music").textContent="Ⅱ");else{a.pause();$("#music").textContent="♪"}};
-
-const gal=$("#galaxy");
-DATA.memories.forEach((m,i)=>{let s=document.createElement("button");s.className="star";s.style.left=(8+(i*37)%84)+"%";s.style.top=(10+(i*53)%78)+"%";s.style.animationDelay=i*.3+"s";s.onclick=()=>{$("#memDate").textContent=m[0];$("#memText").textContent=m[1];$("#modal").classList.remove("hidden")};gal.appendChild(s)});
-$("#close").onclick=()=>$("#modal").classList.add("hidden");
-
-Object.entries(DATA.moods).forEach(([k,v])=>{let b=document.createElement("button");b.textContent=k;b.onclick=()=>{$("#answer").textContent=v;$("#answer").classList.remove("hidden")};$("#moods").appendChild(b)});
-let clicks=0;$("#doorBtn").onclick=()=>{if(new Date()>=new Date(DATA.secret)){$("#doorTitle").textContent="ora puoi entrare";$("#doorText").textContent="quindi è arrivato davvero questo giorno…";$("#doorBtn").classList.add("hidden")}else{clicks++;$("#doorText").textContent=["non ancora amore","ho detto non ancora curiosona","camilla giuro che cambio la password del sito 😭"][Math.min(clicks-1,2)]}};
-DATA.timeline.forEach(x=>{let d=document.createElement("div");d.className="month";d.innerHTML="<h3>"+x[0]+"</h3><p>"+x[1]+"</p>";$("#timeline").appendChild(d)});
-$("#heart").onclick=()=>{let m=DATA.memories[Math.floor(Math.random()*DATA.memories.length)];$("#randomOut").textContent=m[0]+" — "+m[1]};
-$("#dont").onclick=()=>{$("#dontBox").classList.remove("hidden");$("#dont").textContent="ovviamente l’hai aperto"};
-const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>obs.observe(e));
+const data={
+intro:['ti ricordi l’ultima volta che ti ho fatto entrare in un posto così?','quella volta avevo <span class="pink">una domanda</span> da farti','questa volta no','questa volta voglio lasciarti <span class="pink">qualcosa che resti</span>'],
+mem:[['9 febbraio 2026','il giorno in cui abbiamo smesso di essere quasi e siamo diventati noi'],['febbraio 2026','uno di quei momenti che capiamo solo noi due'],['marzo 2026','un ricordo piccolo per il mondo ma enorme per me'],['aprile 2026','una delle mille volte in cui mi hai fatto pensare quanto sono fortunato'],['maggio 2026','noi nella nostra versione più scema e più bella'],['giugno 2026','un momento che non voglio dimenticare mai'],['luglio 2026','cinque mesi dopo e io ti sceglierei ancora']],
+moods:{'mi manchi':'allora resta qui un po’ con me. questo posto esiste anche per quando vorresti avermi più vicino ♡','sono triste':'non devo aggiustare tutto. voglio solo ricordarti che puoi appoggiarti a me anche nei giorni storti','sono felice':'allora sorridi ancora un secondo perché sapere che stai bene rende felice anche me','sono arrabbiata con te':'ok probabilmente ho fatto il coglione. ma anche quando litighiamo non smetto di scegliere noi','non riesco a dormire':'se fossi lì ti stringerei finché la testa non smette di correre. per ora resta qui con me','ho bisogno di te':'ci sono. magari non dentro questo schermo nel modo che vorrei ma ci sono davvero','voglio sentirmi amata':'sei amata nei dettagli che forse non noti, nei pensieri improvvisi e nelle cose che vorrei raccontare prima a te','voglio ridere':'qui finirà il contenuto più imbarazzante che abbiamo. sì, proprio quello'},
+months:[['mese uno','quando ancora stavamo imparando cosa significava essere noi'],['mese due','quando averti ha iniziato a sembrarmi la mia normalità preferita'],['mese tre','più ricordi, più confidenza, più noi'],['mese quattro','anche nei giorni storti ho capito quanto tengo a questa storia'],['mese cinque','non un traguardo. solo un altro pezzo di strada con te']]
+};
+let stopped=false;
+async function intro(){for(const x of data.intro){if(stopped)return;$("#it").classList.remove("on");await sleep(220);$("#it").innerHTML=x;$("#it").classList.add("on");await sleep(1150)}$("#enter").classList.add("on")}
+function enter(){stopped=true;const i=$("#intro");i.style.opacity=0;$("#audio").play().then(()=>$("#music").textContent="Ⅱ").catch(()=>{});setTimeout(()=>i.remove(),760)}
+$("#enter").onclick=enter;$("#skip").onclick=()=>{stopped=true;$("#it").innerHTML='questa volta voglio lasciarti <span class="pink">qualcosa che resti</span>';$("#it").classList.add("on");$("#enter").classList.add("on")};intro();
+let n=new Date(),h=n.getHours();$("#greet").textContent=h<10?'buongiorno patatina':h>=23||h<5?'ancora sveglia amore?':h<18?'ciao patatina':'buonasera amore';$("#days").textContent=Math.floor((n-new Date('2026-02-09T00:00:00'))/86400000)+' giorni di noi — e siamo solo all’inizio';
+$("#music").onclick=()=>{let a=$("#audio");if(a.paused)a.play().then(()=>$("#music").textContent="Ⅱ");else{a.pause();$("#music").textContent="♪"}};
+data.mem.forEach((m,i)=>{let s=document.createElement('button');s.className='star';s.style.left=(8+(i*37)%84)+'%';s.style.top=(10+(i*53)%78)+'%';s.style.animationDelay=(i*.3)+'s';s.onclick=()=>{$("#md").textContent=m[0];$("#mt").textContent=m[1];$("#modal").classList.remove("hide")};$("#galaxy").appendChild(s)});$("#close").onclick=()=>$("#modal").classList.add("hide");
+Object.entries(data.moods).forEach(([k,v])=>{let b=document.createElement('button');b.textContent=k;b.onclick=()=>{$("#answer").textContent=v;$("#answer").classList.remove("hide")};$("#moods").appendChild(b)});
+let c=0;$("#doorBtn").onclick=()=>{if(new Date()>=new Date('2026-07-20T00:00:00')){$("#doorTitle").textContent='ora puoi entrare';$("#doorText").textContent='quindi è arrivato davvero questo giorno…';$("#doorBtn").classList.add("hide")}else{c++;$("#doorText").textContent=['non ancora amore','ho detto non ancora curiosona','camilla giuro che cambio la password del sito 😭'][Math.min(c-1,2)]}};
+data.months.forEach(m=>{let d=document.createElement('div');d.className='month';d.innerHTML='<h3>'+m[0]+'</h3><p>'+m[1]+'</p>';$("#timeline").appendChild(d)});
+$("#heart").onclick=()=>{let m=data.mem[Math.floor(Math.random()*data.mem.length)];$("#out").textContent=m[0]+' — '+m[1]};
+})();
 </script>
 </body></html>
