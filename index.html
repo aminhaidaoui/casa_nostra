@@ -210,10 +210,108 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
   transform:translate(-50%,-50%) !important;
   z-index:12 !important;
 }
+
+/* === V17 — PAGINA VIVA === */
+
+/* Header Casa Nostra sempre visibile */
+.site-header, header.topbar, .topbar, .site-top, .masthead{
+  position:sticky !important;
+  top:0 !important;
+  z-index:900 !important;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+/* Se il progetto usa il primo header come testata principale */
+body > header:first-of-type{
+  position:sticky;
+  top:0;
+  z-index:900;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+/* Riduzione del vuoto tra storia e contatore */
+.story-section, #story, .story{
+  margin-bottom:clamp(18px,3vw,42px) !important;
+}
+.days-section, .days-together, #daysTogether{
+  margin-top:clamp(12px,2vw,28px) !important;
+}
+
+/* Spazio video futuro: presente ma non invasivo */
+.v17-video-slot{
+  width:min(760px,92%);
+  margin:clamp(18px,3vw,36px) auto;
+  border:1px dashed rgba(120,82,98,.28);
+  border-radius:24px;
+  padding:18px;
+  text-align:center;
+  color:rgba(80,55,65,.58);
+  background:rgba(255,255,255,.28);
+}
+.v17-video-slot strong{display:block;font:400 1.05rem Georgia,serif}
+.v17-video-slot small{display:block;margin-top:5px;font-size:.72rem;letter-spacing:.05em}
+
+/* Mood room */
+.v17-mood{
+  width:min(1040px,92%);
+  margin:clamp(55px,8vw,110px) auto;
+  text-align:center;
+}
+.v17-mood .eyebrow{
+  text-transform:uppercase;letter-spacing:.18em;font-size:.68rem;color:#a85f78;
+}
+.v17-mood h2{
+  margin:.5rem 0 .7rem;font:400 clamp(2.2rem,6vw,5rem) Georgia,serif;color:#443437;
+}
+.v17-mood .intro{color:#755f64;margin-bottom:28px}
+.v17-mood-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+}
+.v17-mood-btn{
+  min-height:112px;border:1px solid rgba(129,84,100,.18);border-radius:22px;
+  background:rgba(255,255,255,.48);cursor:pointer;padding:15px 10px;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+  color:#49383d;
+}
+.v17-mood-btn:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(90,55,70,.12);background:#fff}
+.v17-mood-btn .ico{display:block;font-size:1.8rem;margin-bottom:8px}
+.v17-mood-btn .lbl{display:block;font:400 1rem Georgia,serif}
+.v17-mood-response{
+  min-height:72px;margin:22px auto 0;width:min(680px,100%);padding:18px 22px;
+  border-radius:20px;background:rgba(239,214,220,.46);color:#5b4249;
+  display:grid;place-items:center;font:italic 1rem Georgia,serif;
+}
+
+/* Countdown / stanza */
+.v17-countdown{
+  width:min(1040px,92%);margin:clamp(55px,8vw,110px) auto;text-align:center;
+  padding:clamp(28px,5vw,62px);border-radius:32px;
+  border:1px solid rgba(160,105,125,.22);
+  background:linear-gradient(145deg,rgba(244,221,226,.72),rgba(255,250,246,.82));
+}
+.v17-countdown .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.68rem;color:#a85f78}
+.v17-countdown h2{font:400 clamp(2rem,5vw,4.4rem) Georgia,serif;color:#443437;margin:.55rem 0}
+.v17-timer{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.v17-timebox{min-width:82px;padding:14px 10px;border-radius:18px;background:rgba(255,255,255,.65);border:1px solid rgba(130,90,105,.14)}
+.v17-timebox b{display:block;font:400 1.65rem Georgia,serif}.v17-timebox span{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;opacity:.62}
+.v17-wait{margin-top:18px;color:#745c63;font:italic .95rem Georgia,serif}
+
+@media(max-width:700px){
+  .v17-mood-grid{grid-template-columns:repeat(2,1fr)}
+  .v17-mood-btn{min-height:98px}
+  .v17-timebox{min-width:68px}
+}
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
-<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b><span>iniziato il 09 · 02 · 2026</span></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1><p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
+<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b><span>iniziato il 09 · 02 · 2026</span></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
+<div class="v17-video-slot" id="nostroVideo">
+  <strong>qui potrebbe vivere un tuo video per lei ♡</strong>
+  <small>spazio pronto, ma non riempito a caso</small>
+</div>
+<p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
 
 <section class="section memory-prologue"><div><p class="ey">la nostra storia</p><h2>non una galleria.<br>un posto da attraversare.</h2><p class="muted">Ci sono ricordi che non voglio mettere in fila. Voglio che tu li scopra, uno spazio alla volta.</p></div><div class="quote">“alcune cose non si guardano soltanto. <span class="accent">si attraversano.</span>”</div></section>
 <section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div>
@@ -222,6 +320,36 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
     <div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
 <section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
 <section class="section"><div id="distanceRoom" class="locked-room"><div><p class="ey">anche da lontano</p><h2>questa stanza<br>non è ancora pronta</h2><div class="lockmark">🔒</div><p class="muted">si aprirà quando arriverà il suo momento</p><p id="roomCountdown" class="countdown"></p></div></div></section>
+
+<section class="v17-mood" id="comeTiSenti">
+  <div class="eyebrow">solo per te</div>
+  <h2>come ti senti, patatina?</h2>
+  <p class="intro">Scegli quello che ti senti. Non devi spiegare niente.</p>
+  <div class="v17-mood-grid">
+    <button class="v17-mood-btn" data-mood="felice"><span class="ico">☀️</span><span class="lbl">felice</span></button>
+    <button class="v17-mood-btn" data-mood="triste"><span class="ico">🌧️</span><span class="lbl">triste</span></button>
+    <button class="v17-mood-btn" data-mood="nostalgica"><span class="ico">🌙</span><span class="lbl">nostalgica</span></button>
+    <button class="v17-mood-btn" data-mood="incazzata"><span class="ico">🌋</span><span class="lbl">incazzata con me</span></button>
+    <button class="v17-mood-btn" data-mood="ansiosa"><span class="ico">🫧</span><span class="lbl">ansiosa</span></button>
+    <button class="v17-mood-btn" data-mood="stanca"><span class="ico">☁️</span><span class="lbl">stanca</span></button>
+    <button class="v17-mood-btn" data-mood="sola"><span class="ico">🕯️</span><span class="lbl">sola</span></button>
+    <button class="v17-mood-btn" data-mood="coccole"><span class="ico">🧸</span><span class="lbl">ho bisogno di coccole</span></button>
+  </div>
+  <div class="v17-mood-response" id="moodResponse">Qualunque cosa scegli, qui c'è sempre un pezzetto di me.</div>
+</section>
+
+<section class="v17-countdown" id="countdownLontano">
+  <div class="eyebrow">anche da lontano</div>
+  <h2>una stanza che si apre<br>un giorno alla volta</h2>
+  <p>La porta si aprirà il 20 luglio 2026 alle 14:30 ♡</p>
+  <div class="v17-timer" id="v17Timer">
+    <div class="v17-timebox"><b id="v17d">--</b><span>giorni</span></div>
+    <div class="v17-timebox"><b id="v17h">--</b><span>ore</span></div>
+    <div class="v17-timebox"><b id="v17m">--</b><span>minuti</span></div>
+    <div class="v17-timebox"><b id="v17s">--</b><span>secondi</span></div>
+  </div>
+  <div class="v17-wait" id="v17Wait">Aspetta ancora un pochino, Camilla. Questa porta sa quando aprirsi. 🔒</div>
+</section>
 <footer>questa pagina non finisce qui · cresce con voi<br><b>amin ♡ camilla</b></footer>
 </main>
 <div id="warp" class="warp hidden"></div>
@@ -362,5 +490,38 @@ setTimeout(()=>{
     if(txt.includes('aprile')) el.classList.add('v16-aprile');
   });
 },0);
+
+
+/* === V17 LIVE MOOD + COUNTDOWN === */
+(()=>{
+ const moodTexts={
+  felice:"Se sei felice, voglio immaginarti con quel sorriso che mi sistema la giornata. ☀️",
+  triste:"Se oggi pesa tutto un po' di più, resta qui quanto vuoi. Io ti sceglierei anche nei giorni storti. 🌧️",
+  nostalgica:"Se ti manca qualcosa di noi, apri una galassia. Ci abbiamo lasciato dentro abbastanza luce per ritrovarci. 🌙",
+  incazzata:"Ok patatina… se sei incazzata con me probabilmente me lo merito almeno un pochino. Però ti amo anche mentre mi mandi a fanculo. 🌋",
+  ansiosa:"Non devi risolvere tutto adesso. Una cosa alla volta, e se posso portarne una io, dammela. 🫧",
+  stanca:"Oggi puoi anche non essere forte. Riposati, mangia qualcosa e immagina che ti stia coprendo io. ☁️",
+  sola:"Se ti senti sola, questa pagina esiste anche per ricordarti che da qualche parte c'è Amin che pensa a te. 🕯️",
+  coccole:"Questa scelta vale come richiesta ufficiale: appena posso, abbraccio lungo e nessuna fretta di lasciarti. 🧸"
+ };
+ document.querySelectorAll('.v17-mood-btn').forEach(b=>b.addEventListener('click',()=>{
+   const r=document.getElementById('moodResponse');
+   if(r) r.textContent=moodTexts[b.dataset.mood]||'Sono qui ♡';
+ }));
+
+ const target=new Date('2026-07-20T14:30:00+02:00').getTime();
+ function tick(){
+   const diff=target-Date.now(), wait=document.getElementById('v17Wait');
+   if(diff<=0){
+     ['v17d','v17h','v17m','v17s'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='00'});
+     if(wait) wait.textContent='La stanza è pronta ad aprirsi. ♡';
+     return;
+   }
+   const d=Math.floor(diff/86400000),hh=Math.floor(diff%86400000/3600000),mm=Math.floor(diff%3600000/60000),ss=Math.floor(diff%60000/1000);
+   const vals={v17d:d,v17h:String(hh).padStart(2,'0'),v17m:String(mm).padStart(2,'0'),v17s:String(ss).padStart(2,'0')};
+   Object.entries(vals).forEach(([id,v])=>{const e=document.getElementById(id);if(e)e.textContent=v});
+ }
+ tick();setInterval(tick,1000);
+})();
 
 </script><div id="lockWhisper" class="lock-whisper"></div></body></html>
