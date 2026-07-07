@@ -159,6 +159,82 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 @keyframes secretTwinkle{0%{filter:brightness(.72);transform:translate(-50%,-50%) scale(.88)}100%{filter:brightness(1.35);transform:translate(-50%,-50%) scale(1.12)}}
 .mystery-whisper{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);z-index:20;color:#fff8;font:italic .82rem Georgia,serif;letter-spacing:.04em;white-space:nowrap}
 .easter-star{z-index:25}
+
+/* === V15: centratura mobile + cometa ciclica === */
+@media(max-width:650px){
+  .solar-shell{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+  }
+  .solar-system{
+    width:min(112vw,760px);
+    height:auto;
+    aspect-ratio:1/1;
+    max-height:none;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+    flex:0 0 auto;
+  }
+  .solar-title{
+    top:7%;
+  }
+  .mystery-whisper{
+    bottom:4%;
+    width:92vw;
+    white-space:normal;
+    text-align:center;
+    line-height:1.35;
+  }
+}
+
+/* La cometa ora attraversa TUTTO il sistema, svanisce fuori campo,
+   resta assente per un po', poi ricompare per un nuovo passaggio. */
+.easter-star{
+  opacity:0;
+  left:-18%;
+  top:18%;
+  animation:cometPass 11s linear infinite !important;
+  filter:drop-shadow(0 0 7px #fff) drop-shadow(0 0 15px var(--month));
+}
+.easter-star::after{
+  display:block !important;
+  width:150px;
+  height:2px;
+  right:16px;
+  top:12px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--month) 70%,white),#fff);
+  opacity:.9;
+}
+@keyframes cometPass{
+  0%,8%{
+    left:-18%; top:16%; opacity:0;
+    transform:rotate(18deg) scale(.7);
+  }
+  10%{opacity:1}
+  22%{
+    left:18%; top:29%; opacity:1;
+    transform:rotate(20deg) scale(.9);
+  }
+  38%{
+    left:48%; top:47%; opacity:1;
+    transform:rotate(22deg) scale(1.08);
+  }
+  54%{
+    left:78%; top:64%; opacity:1;
+    transform:rotate(24deg) scale(.95);
+  }
+  66%{
+    left:118%; top:82%; opacity:0;
+    transform:rotate(26deg) scale(.65);
+  }
+  100%{
+    left:118%; top:82%; opacity:0;
+    transform:rotate(26deg) scale(.65);
+  }
+}
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
@@ -198,7 +274,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)closeMemory()});
 const galaxies=[
  {name:'febbraio',x:18,y:27,c1:'#ffd4df',c2:'#9b5478'},
  {name:'marzo',x:72,y:20,c1:'#c8c0ff',c2:'#5e5794'},
- {name:'aprile',x:30,y:47,c1:'#ffd2a9',c2:'#a5675d'},
+ {name:'aprile',x:50,y:50,c1:'#ffd2a9',c2:'#a5675d'},
  {name:'maggio',x:79,y:68,c1:'#b8eee4',c2:'#477d7a'},
  {name:'giugno',x:25,y:73,c1:'#efbde6',c2:'#7e4e79'}
 ];
@@ -258,7 +334,6 @@ function openWorld(g,idx){
  });
 
  const star=document.getElementById('easterStar');
- star.addEventListener('animationend',()=>star.classList.add('settled'));
  star.onclick=()=>openMystery('segreto',g,99);
  monthWorld.classList.remove('hidden');
  document.body.style.overflow='hidden';

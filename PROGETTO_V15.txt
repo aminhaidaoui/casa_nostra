@@ -1,0 +1,11 @@
+V15 — CORREZIONI DA TEST IPHONE
+1. APRILE: riposizionata al centro del buco nero nella mappa esterna.
+2. SISTEMA SOLARE MOBILE: ricentrato nel viewport; non deve più apparire spostato lateralmente.
+3. COMETA/EASTER EGG:
+   - entra da fuori schermo
+   - attraversa diagonalmente tutto il sistema solare
+   - svanisce oltre il bordo
+   - resta assente per alcuni secondi
+   - ritorna con un nuovo ciclo
+   - non si ferma più
+   - non resta visibile in movimento continuo
