@@ -142,6 +142,23 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 @keyframes starJourney{0%{left:-12%;top:12%;opacity:0;transform:rotate(14deg) scale(.5)}8%{opacity:1}35%{left:72%;top:23%;transform:rotate(23deg) scale(1.05)}62%{left:18%;top:70%;transform:rotate(-18deg) scale(.8)}82%{left:76%;top:62%;transform:rotate(8deg)}100%{left:68%;top:17%;opacity:1;transform:rotate(0) scale(1)}}.easter-star.settled:after{display:none}
 .solar-legend{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);z-index:20;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;color:#fff9;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.solar-legend span{display:flex;align-items:center;gap:5px}.solar-legend i{width:7px;height:7px;border-radius:50%;background:var(--month);box-shadow:0 0 8px var(--month)}
 @media(max-width:650px){.solar-system{width:108vw;max-height:none}.month-heart{transform:translate(-50%,-50%) scale(.76)}.memory-body{scale:.82}.solar-title{top:11%}.solar-legend{bottom:10%;width:82%;gap:8px 12px}}
+
+/* === V14 COSTELLAZIONE SEGRETA === */
+.secret-star{
+ position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);
+ transform:translate(-50%,-50%);border:0;border-radius:50%;cursor:pointer;z-index:14;
+ background:radial-gradient(circle,#fff 0 18%,color-mix(in srgb,var(--month) 72%,white) 28%,var(--month) 52%,transparent 72%);
+ box-shadow:0 0 7px #fff,0 0 15px var(--month),0 0 30px color-mix(in srgb,var(--month) 40%,transparent);
+ animation:secretTwinkle var(--d) ease-in-out infinite alternate;
+ transition:filter .25s ease,scale .25s ease,opacity .25s ease;
+}
+.secret-star:before,.secret-star:after{content:"";position:absolute;left:50%;top:50%;background:linear-gradient(90deg,transparent,#fff,transparent);transform:translate(-50%,-50%);opacity:.7}
+.secret-star:before{width:calc(var(--s) * 2.3);height:1px}.secret-star:after{width:1px;height:calc(var(--s) * 2.3)}
+.secret-star:hover{scale:1.28;filter:brightness(1.35)}
+.secret-star.visited{opacity:.68;filter:saturate(.7)}.secret-star.visited:hover{opacity:1}
+@keyframes secretTwinkle{0%{filter:brightness(.72);transform:translate(-50%,-50%) scale(.88)}100%{filter:brightness(1.35);transform:translate(-50%,-50%) scale(1.12)}}
+.mystery-whisper{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);z-index:20;color:#fff8;font:italic .82rem Georgia,serif;letter-spacing:.04em;white-space:nowrap}
+.easter-star{z-index:25}
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
@@ -206,6 +223,7 @@ function openWorld(g,idx){
   'assets/maggio/001_image.jpg','assets/giugno/001_image.jpg'
  ];
  const photo=demoPhotos[idx]||demoPhotos[0];
+ const kinds=['foto','frase','foto','video','audio','foto','lettera','foto','frase','segreto','foto','audio','video','foto','lettera','foto','frase','foto'];
  monthWorld.style.setProperty('--month',g.c1||'#e9a8c2');
  monthWorld.innerHTML=`
   <button id="backSpace" class="back-space">← torna alle galassie</button>
@@ -213,29 +231,49 @@ function openWorld(g,idx){
    <div class="solar-title"><small>universo di</small><strong>${g.name}</strong></div>
    <i class="orbit o1"></i><i class="orbit o2"></i><i class="orbit o3"></i><i class="orbit o4"></i><i class="orbit o5"></i>
    <div class="month-heart"><i class="shine"></i><i class="pulse"></i></div>
-   <button class="memory-body body-photo" data-kind="foto" data-src="${photo}"><img src="${photo}" alt=""><span class="tag">foto</span></button>
-   <button class="memory-body body-video" data-kind="video"><span class="tag">video</span></button>
-   <button class="memory-body body-letter" data-kind="lettera"><span class="tag">lettera</span></button>
-   <button class="memory-body body-audio" data-kind="audio"><span class="tag">audio</span></button>
-   <button class="easter-star" id="easterStar" aria-label="easter egg"></button>
-   <div class="solar-legend"><span><i></i>foto</span><span><i></i>video</span><span><i></i>lettere</span><span><i></i>audio</span><span><i></i>segreti</span></div>
+   <div id="secretStars"></div>
+   <button class="easter-star" id="easterStar" aria-label="stella misteriosa"></button>
+   <div class="mystery-whisper">scegli una luce. scoprirai solo dopo cosa custodisce ✦</div>
   </div></div>`;
+
  document.getElementById('backSpace').onclick=closeWorld;
- monthWorld.querySelectorAll('.memory-body').forEach(btn=>btn.onclick=()=>{
-   const k=btn.dataset.kind;
-   if(k==='foto') openPhoto(btn.dataset.src,g.name+' · foto');
-   else openDemoMemory(k,g);
+ const field=document.getElementById('secretStars');
+
+ const positions=[
+  [19,28],[32,20],[48,24],[65,19],[79,31],[16,48],[29,42],[42,36],[61,39],
+  [82,49],[20,67],[35,61],[50,68],[67,59],[80,70],[29,79],[55,80],[72,78]
+ ];
+ positions.forEach((pos,i)=>{
+   const b=document.createElement('button');
+   b.className='secret-star';
+   b.style.cssText=`--x:${pos[0]}%;--y:${pos[1]}%;--s:${9+(i%4)*3}px;--d:${1.5+(i%6)*.38}s;animation-delay:${(i%7)*-.31}s`;
+   b.setAttribute('aria-label','ricordo misterioso');
+   b.onclick=()=>{
+     b.classList.add('visited');
+     const kind=kinds[(i+idx*3)%kinds.length];
+     if(kind==='foto') openPhoto(photo,g.name+' · un ricordo');
+     else openMystery(kind,g,i);
+   };
+   field.appendChild(b);
  });
+
  const star=document.getElementById('easterStar');
  star.addEventListener('animationend',()=>star.classList.add('settled'));
- star.onclick=()=>openDemoMemory('segreto',g);
+ star.onclick=()=>openMystery('segreto',g,99);
  monthWorld.classList.remove('hidden');
  document.body.style.overflow='hidden';
 }
-function openDemoMemory(kind,g){
- const messages={video:'Qui entrerà un vostro video di '+g.name+' 🎬',lettera:'Qui si aprirà una lettera vera, scritta per lei ♡',audio:'Qui partirà una nota vocale del mese ♪',segreto:'Hai preso la stella. Questo sarà un easter egg nascosto ✦'};
+function openMystery(kind,g,i){
+ const messages={
+  video:'Qui comparirà un vostro video, senza che lei potesse saperlo prima 🎬',
+  lettera:'Sorpresa: questa luce custodisce una lettera ♡',
+  audio:'Questa stella farà partire una tua nota vocale ♪',
+  frase:'“Ci sono ricordi che continuano a brillare anche quando nessuno li guarda.”',
+  segreto:'Hai trovato qualcosa che non doveva essere facile trovare ✦'
+ };
  mediaMount.innerHTML='<div style="min-height:240px;display:grid;place-items:center;padding:35px;text-align:center;font:1.5rem Georgia,serif;color:#3e3037">'+messages[kind]+'</div>';
- mc.textContent=g.name+' · '+kind;modal.classList.remove('hidden');
+ mc.textContent='';
+ modal.classList.remove('hidden');
 }
 
 function updateRoom(){
