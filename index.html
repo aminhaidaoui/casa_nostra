@@ -1,102 +1,118 @@
-<!doctype html>
-<html lang="it">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#fff8f4">
-  <title>Casa Nostra — La Galassia di Noi</title>
-  <link rel="stylesheet" href="./style.css?v=20260707-2">
-</head>
-<body>
-  <section class="landing" id="landing">
-    <div class="landing-glow"></div>
-    <div class="landing-inner">
-      <div class="portrait-shell">
-        <div class="portrait-arch">
-          <img src="assets/febbraio/001_image.jpg" alt="Un nostro ricordo">
-        </div>
-        <span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">·</span>
-      </div>
-      <div class="landing-copy">
-        <p class="eyebrow dark">CASA NOSTRA</p>
-        <h1 id="greeting">Ciao patatina <span>♥</span></h1>
-        <p class="lead">Ho rimesso ogni nostro ricordo nel posto in cui appartiene: nel nostro universo.</p>
-        <div class="days-card"><strong id="days">—</strong><span>giorni di noi</span></div>
-        <button class="cta" id="enterBtn">Entra nella nostra galassia <b>✦</b></button>
-      </div>
-    </div>
-  </section>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Nostra ♡</title>
+<style>
+:root{--bg:#f8f3ee;--paper:#fffaf6;--blush:#f1e2e1;--ink:#3b302d;--muted:#806f69;--rose:#c77d8b;--cherry:#9d4657;--line:rgba(59,48,45,.13)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}button{font:inherit}.hidden{display:none!important}.section{width:min(1160px,100%);margin:auto;padding:88px 24px}.ey{text-transform:uppercase;letter-spacing:.15em;font-size:.8rem;font-weight:700;color:var(--cherry)}h1,h2,h3{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(3.2rem,7vw,7rem);line-height:.9}h2{font-size:clamp(2.4rem,5vw,4.7rem);line-height:.98}.muted{color:var(--muted);line-height:1.65}.pill{border:1px solid var(--line);background:#fff9;color:var(--ink);border-radius:999px;padding:13px 18px;cursor:pointer}
+#intro{position:fixed;inset:0;z-index:50;background:linear-gradient(145deg,var(--bg),var(--blush));display:grid;place-items:center;transition:.8s}#it{font:clamp(2.1rem,5vw,5rem)/1.08 Georgia,serif;min-height:2.3em;text-align:center;opacity:0;transition:.6s}#it.on{opacity:1}#enter{opacity:0;pointer-events:none}#enter.on{opacity:1;pointer-events:auto}.accent{color:var(--cherry);font-style:italic}
+.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;position:relative;padding-top:90px}.nav{position:absolute;top:24px;left:24px;right:24px;display:flex;justify-content:space-between}.heroimg{height:min(72vh,720px);border-radius:220px 220px 28px 28px;overflow:hidden}.heroimg img{width:100%;height:100%;object-fit:cover}.note{padding:32px;background:var(--paper);border:1px solid var(--line);border-radius:26px}.note p{font:clamp(1.6rem,3vw,2.8rem)/1.16 Georgia,serif}
+.story{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:30px}.ph{overflow:hidden;border-radius:22px;min-height:280px;cursor:pointer}.ph img{width:100%;height:100%;object-fit:cover}.ph:nth-child(5n+1){grid-column:span 7;height:500px}.ph:nth-child(5n+2){grid-column:span 5;height:500px}.ph:nth-child(5n+3),.ph:nth-child(5n+4),.ph:nth-child(5n+5){grid-column:span 4;height:340px}
+.galaxy{height:620px;border-radius:32px;position:relative;overflow:hidden;background:radial-gradient(circle at 25% 30%,#ead2d8,transparent 28%),radial-gradient(circle at 75% 65%,#f2d9cf,transparent 25%),#58434b}.star{position:absolute;border:0;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff;cursor:pointer}.planet{position:absolute;border:1px solid #ffffff88;border-radius:50%;background:#d9a6ae;cursor:pointer;box-shadow:0 10px 30px #0002}
+.moods{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.mood{padding:15px;min-height:90px;border:1px solid var(--line);border-radius:18px;background:var(--paper);text-align:left;cursor:pointer}.mood span{display:block;font-size:1.3rem}.door{width:min(620px,100%);min-height:500px;margin:auto;border-radius:260px 260px 28px 28px;background:linear-gradient(#f0d9da,#fff7f1);border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:40px}
+.modal{position:fixed;inset:0;z-index:70;background:#3b302d88;display:grid;place-items:center;padding:18px}.card{width:min(760px,100%);background:var(--paper);border-radius:26px;padding:18px;position:relative}.card img{width:100%;max-height:72vh;object-fit:contain;border-radius:18px}.close{position:absolute;right:10px;top:10px;border:0;border-radius:50%;width:40px;height:40px;background:white;font-size:1.5rem}
+footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-width:800px){.hero{grid-template-columns:1fr}.heroimg{order:-1;height:52vh;border-radius:150px 150px 22px 22px}.story{gap:9px}.ph,.ph:nth-child(n){grid-column:span 6;height:270px;min-height:0}.moods{grid-template-columns:repeat(2,1fr)}}
 
-  <main id="app" class="is-hidden">
-    <header class="topbar">
-      <button class="brand" id="homeBtn">♡ Casa Nostra</button>
-      <div class="navmonths" id="monthNav"></div>
-    </header>
+/* === V8: galassia viva + emozioni + stanza temporale === */
+.galaxy-stage{height:min(78vw,760px);min-height:560px;border-radius:34px;position:relative;overflow:hidden;
+ background:radial-gradient(circle at 50% 50%,#8d62704a 0 8%,transparent 34%),radial-gradient(circle at 22% 25%,#ead2d82a,transparent 24%),linear-gradient(145deg,#382b3d,#171322 72%);
+ box-shadow:inset 0 0 90px #0005}
+.galaxy-stage:before,.galaxy-stage:after{content:"";position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:47px 47px;opacity:.35;animation:drift 28s linear infinite}
+.galaxy-stage:after{background-size:83px 83px;transform:translate(17px,29px);opacity:.2;animation-duration:44s}
+@keyframes drift{to{transform:translate3d(35px,-25px,0)}}
+.heart-core{position:absolute;left:50%;top:50%;width:86px;height:78px;transform:translate(-50%,-50%) rotate(-45deg);background:linear-gradient(135deg,#ffcad5,#c96e89);border-radius:14px;z-index:8;box-shadow:0 0 28px #f3a1b7,0 0 90px #d77f9a88;animation:heartbeat 2.2s ease-in-out infinite}
+.heart-core:before,.heart-core:after{content:"";position:absolute;width:86px;height:78px;border-radius:50%;background:inherit}.heart-core:before{top:-43px;left:0}.heart-core:after{left:43px;top:0}
+@keyframes heartbeat{0%,100%{transform:translate(-50%,-50%) rotate(-45deg) scale(1)}12%{transform:translate(-50%,-50%) rotate(-45deg) scale(1.08)}24%{transform:translate(-50%,-50%) rotate(-45deg) scale(1)}36%{transform:translate(-50%,-50%) rotate(-45deg) scale(1.045)}}
+.orbit-ring{position:absolute;left:50%;top:50%;border:1px solid #ffffff24;border-radius:50%;transform:translate(-50%,-50%) rotate(var(--tilt));width:var(--w);height:var(--h);pointer-events:none}
+.planet-wrap{position:absolute;left:50%;top:50%;width:var(--w);height:var(--h);transform:translate(-50%,-50%) rotate(var(--tilt));animation:spin var(--speed) linear infinite;z-index:var(--z)}
+.planet-wrap:hover{animation-play-state:paused}.planet-btn{position:absolute;left:50%;top:-13px;width:var(--size);height:var(--size);transform:translateX(-50%) rotate(calc(-1 * var(--tilt)));border:0;border-radius:50%;cursor:pointer;color:#fff;box-shadow:0 0 20px var(--glow);background:radial-gradient(circle at 32% 28%,#fff 0 4%,var(--c1) 22%,var(--c2) 68%,#3a2638);transition:.25s}
+.planet-btn:hover{scale:1.25}.planet-btn span{position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);white-space:nowrap;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 2px 8px #000}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(calc(360deg + var(--tilt)))}}
+.comet{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff;animation:comet 11s linear infinite;z-index:12}.comet:after{content:"";position:absolute;right:3px;top:2px;width:90px;height:2px;background:linear-gradient(90deg,transparent,#fff)}
+@keyframes comet{0%{left:-12%;top:75%;opacity:0}8%{opacity:1}65%{opacity:1}75%,100%{left:112%;top:18%;opacity:0}}
+.galaxy-tip{text-align:center;color:#d8c9cf;margin-top:14px}
+.moods{grid-template-columns:repeat(4,1fr)}.mood{transition:.25s}.mood:hover{transform:translateY(-4px);box-shadow:0 16px 35px #5b394315}
+.mood-result{margin-top:18px;padding:22px;border-radius:20px;background:var(--paper);border:1px solid var(--line);min-height:80px}
+.vault{width:min(900px,100%);margin:auto;padding:42px;border-radius:34px;background:linear-gradient(145deg,#ead5d8,#fff8f3);border:1px solid var(--line)}
+.vault-head{text-align:center}.vault-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.day-card{padding:18px;border-radius:18px;border:1px solid var(--line);background:#fff9;text-align:left}.day-card.locked{opacity:.48;filter:grayscale(.3)}.slot{display:flex;justify-content:space-between;gap:8px;margin-top:10px;padding:10px;border-radius:12px;background:#fff;border:1px solid var(--line)}.slot button{border:0;background:none;color:var(--cherry);cursor:pointer}.slot.locked{opacity:.5}
+@media(max-width:800px){.galaxy-stage{height:115vw;min-height:500px}.moods{grid-template-columns:repeat(2,1fr)}.vault-grid{grid-template-columns:1fr}.planet-btn span{display:none}}
+</style></head><body>
+<section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
+<main>
+<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><span>09 · 02 · 2026</span></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1><p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
+<section class="section"><p class="ey">amin era qui</p><h2>qualcosa lasciato solo per te</h2><div class="note"><p>ho costruito questo posto perché anche quando saremo lontani tu possa sempre trovare un pezzetto di me qui</p></div></section>
+<section class="section"><p class="ey">febbraio · demo reale</p><h2>non una galleria.<br>una storia che respira.</h2><div id="story" class="story"></div></section>
+<section class="section"><p class="ey">la nostra galassia</p><h2>sei mondi.<br>un solo universo.</h2><p class="muted">I pianeti girano davvero intorno al nostro cuore. Passaci sopra per rallentare l’orbita; clicca per entrare nei ricordi del mese.</p><div id="galaxy" class="galaxy-stage"><div class="heart-core" aria-label="il cuore della nostra storia"></div><div class="comet"></div></div><p class="galaxy-tip">✦ febbraio · marzo · aprile · maggio · giugno · luglio</p></section>
+<section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti. qui dentro troverai qualcosa pensato per quel momento ♡</div></section>
+<section class="section"><div class="vault"><div class="vault-head"><p class="ey">anche da lontano</p><h2>una stanza che si apre<br>un giorno alla volta</h2><p id="vaultStatus" class="muted"></p></div><div id="vaultGrid" class="vault-grid"></div></div></section>
+<footer>questa pagina non finisce qui · cresce con voi<br><b>amin ♡ camilla</b></footer>
+</main>
+<div id="modal" class="modal hidden"><div class="card"><button id="close" class="close">×</button><img id="mi"><p id="mc" class="muted"></p></div></div>
+<script>
+const photos=["assets/photos/feb_01.jpg", "assets/photos/feb_02.jpg", "assets/photos/feb_03.jpg", "assets/photos/feb_04.jpg", "assets/photos/feb_05.jpg", "assets/photos/feb_06.jpg", "assets/photos/feb_07.jpg", "assets/photos/feb_08.jpg", "assets/photos/feb_09.jpg", "assets/photos/feb_10.jpg", "assets/photos/feb_11.jpg", "assets/photos/feb_12.jpg", "assets/photos/feb_13.jpg", "assets/photos/feb_14.jpg", "assets/photos/feb_15.jpg", "assets/photos/feb_16.jpg", "assets/photos/feb_17.jpg", "assets/photos/feb_18.jpg", "assets/photos/feb_19.jpg", "assets/photos/feb_20.jpg", "assets/photos/feb_21.jpg", "assets/photos/feb_22.jpg", "assets/photos/feb_23.jpg", "assets/photos/feb_24.jpg"];const $=s=>document.querySelector(s),sleep=m=>new Promise(r=>setTimeout(r,m));
+const intros=['ti ricordi l’ultima volta che ti ho fatto entrare in un posto così?','quella volta avevo <span class="accent">una domanda</span> da farti','questa volta no','questa volta voglio lasciarti <span class="accent">qualcosa che resti</span>'];
+(async()=>{for(const x of intros){it.classList.remove('on');await sleep(300);it.innerHTML=x;it.classList.add('on');await sleep(2100)}enter.classList.add('on')})();enter.onclick=()=>{document.getElementById('intro').style.opacity=0;setTimeout(()=>document.getElementById('intro')?.remove(),800)};
+let now=new Date();greet.textContent=now.getHours()<10?'buongiorno patatina':now.getHours()<18?'ciao patatina':'buonasera amore';days.textContent=Math.floor((now-new Date('2026-02-09'))/86400000)+' giorni di noi — e siamo solo all’inizio';
+function openPhoto(src,txt){mi.src=src;mc.textContent=txt;modal.classList.remove('hidden')}document.getElementById('close').addEventListener('click',()=>document.getElementById('modal').classList.add('hidden'));
+document.getElementById('modal').addEventListener('click',(e)=>{if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.add('hidden')});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape')document.getElementById('modal').classList.add('hidden')});
+photos.slice(1,13).forEach((p,i)=>{let d=document.createElement('div');d.className='ph';d.innerHTML='<img loading="lazy" src="'+p+'">';d.onclick=()=>openPhoto(p,'febbraio · ricordo '+(i+1));story.appendChild(d)});
 
-    <section class="cosmos-intro">
-      <div class="cosmos-stars" aria-hidden="true"></div>
-      <div class="intro-content">
-        <p class="eyebrow">LA GALASSIA DI NOI</p>
-        <h2>Ogni punto di luce<br><em>è successo davvero.</em></h2>
-        <p>Clicca sulle stelle, sui pianeti e sulle comete. Ognuno custodisce una foto o un video di noi.</p>
-        <div class="scrollhint">scorri per attraversare il nostro universo ↓</div>
-      </div>
-    </section>
+// === V8: una sola galassia viva ===
+const monthWorlds=[
+ {name:'febbraio',photo:photos[1],w:'34%',h:'22%',tilt:'-10deg',speed:'13s',size:'24px',c1:'#f2b6c2',c2:'#a65370',glow:'#e9a2b7'},
+ {name:'marzo',photo:photos[5],w:'46%',h:'31%',tilt:'16deg',speed:'18s',size:'30px',c1:'#c8b6e8',c2:'#67558d',glow:'#b9a5e6'},
+ {name:'aprile',photo:photos[8],w:'58%',h:'39%',tilt:'-22deg',speed:'23s',size:'27px',c1:'#f1cfaa',c2:'#b9785e',glow:'#efc090'},
+ {name:'maggio',photo:photos[12],w:'70%',h:'48%',tilt:'9deg',speed:'29s',size:'34px',c1:'#b9d6d0',c2:'#557c78',glow:'#9ed0c8'},
+ {name:'giugno',photo:photos[17],w:'82%',h:'57%',tilt:'-15deg',speed:'35s',size:'29px',c1:'#e4b5d5',c2:'#87577c',glow:'#dca4cf'},
+ {name:'luglio',photo:photos[22],w:'94%',h:'66%',tilt:'20deg',speed:'42s',size:'38px',c1:'#ffd1a8',c2:'#b66b67',glow:'#f5b99f'}
+];
+monthWorlds.forEach((m,i)=>{
+ const ring=document.createElement('div');ring.className='orbit-ring';ring.style.cssText=`--w:${m.w};--h:${m.h};--tilt:${m.tilt}`;galaxy.appendChild(ring);
+ const wrap=document.createElement('div');wrap.className='planet-wrap';wrap.style.cssText=`--w:${m.w};--h:${m.h};--tilt:${m.tilt};--speed:${m.speed};--z:${5+i}`;
+ const b=document.createElement('button');b.className='planet-btn';b.style.cssText=`--size:${m.size};--c1:${m.c1};--c2:${m.c2};--glow:${m.glow};--tilt:${m.tilt}`;b.innerHTML=`<span>${m.name}</span>`;
+ b.onclick=()=>openPhoto(m.photo,m.name+' · qui entreranno foto e videoclip reali di questo mese');
+ wrap.appendChild(b);galaxy.appendChild(wrap);
+});
 
-    <div id="universes"></div>
+// === V8: otto emozioni ===
+const md=[
+ ['🥰','sono felice','Allora conserva questa luce. E quando vuoi, torna qui a prenderne ancora un po’.'],
+ ['😔','sono triste','Qui voglio lasciarti qualcosa che non provi a risolvere tutto: solo ricordarti che ci sono.'],
+ ['🥺','mi manchi','Apri un ricordo di noi. La distanza non cancella niente di quello che abbiamo vissuto.'],
+ ['😤','sono incazzata con te','Okay patatina: prima cosa, probabilmente ho fatto il coglione. Seconda cosa: ti amo anche mentre mi mandi a fanculo ♡'],
+ ['😰','sono ansiosa','Niente fretta. Un minuto alla volta. Qui in futuro mettiamo un mio video fatto apposta per calmarti.'],
+ ['🥱','sono stanca','Oggi non devi dimostrare niente a nessuno. Riposati, poi torno a romperti le palle domani.'],
+ ['🫂','ho bisogno di coccole','Richiesta ufficialmente ricevuta. Vale come buono coccole senza scadenza.'],
+ ['💗','voglio sentirmi amata','Allora resta qui un secondo: tra milioni di possibilità, io continuo a scegliere te.']
+];
+md.forEach(([e,x,msg],i)=>{let b=document.createElement('button');b.className='mood';b.innerHTML='<span>'+e+'</span>'+x;b.onclick=()=>{moodResult.textContent=msg;if(i===2||i===6)openPhoto(photos[(i*3)%photos.length],msg)};moods.appendChild(b)});
 
-    <section class="fake-end">
-      <p class="eyebrow">GIUGNO</p>
-      <h2>Forse potrei<br>fermarmi qui…</h2>
-      <div class="pause-line"></div>
-      <h3>…ma poi è arrivato <em>luglio.</em></h3>
-      <button class="cta light" id="unlockJuly">Apri l’ultima galassia ✦</button>
-    </section>
+// === V8: stanza temporale ===
+// Configurazione demo. I contenuti futuri si aggiungono qui senza rifare il sito.
+const vaultConfig=[
+ {date:'2026-07-20',morning:'Benvenuta nella stanza che continuerà a crescere mentre sei via ♡',night:'La prima buonanotte da lontano.'},
+ {date:'2026-07-21',morning:'Buongiorno patatina ☀️',night:'Buonanotte amore 🌙'},
+ {date:'2026-07-22',morning:'Un nuovo buongiorno ti aspetta qui.',night:'La sorpresa della sera.'},
+ {date:'2026-07-23',morning:'Mini sketch del mattino.',night:'Un pensiero prima di dormire.'},
+ {date:'2026-07-24',morning:'Buongiorno numero cinque.',night:'Buonanotte numero cinque.'}
+];
+const ROOM_OPEN=new Date('2026-07-20T14:30:00');
+function renderVault(){
+ const now=new Date();vaultGrid.innerHTML='';
+ if(now<ROOM_OPEN){vaultStatus.textContent='questa stanza si aprirà il 20 luglio 2026 alle 14:30 ♡';}
+ else{vaultStatus.textContent='il passato resta con te. il futuro si apre solo quando arriva davvero.';}
+ vaultConfig.forEach(d=>{
+   const day=new Date(d.date+'T00:00:00'),future=now<day,roomLocked=now<ROOM_OPEN;
+   const morningOpen=!roomLocked&&!future;
+   const nightOpen=morningOpen&&(now.toDateString()!==day.toDateString()||now.getHours()>=21);
+   const card=document.createElement('div');card.className='day-card '+((future||roomLocked)?'locked':'');
+   const label=day.toLocaleDateString('it-IT',{day:'numeric',month:'long'});
+   card.innerHTML=`<b>${label}</b>
+    <div class="slot ${morningOpen?'':'locked'}"><span>☀️ buongiorno</span><button>${morningOpen?'apri':'🔒'}</button></div>
+    <div class="slot ${nightOpen?'':'locked'}"><span>🌙 buonanotte</span><button>${nightOpen?'apri':'🔒'}</button></div>`;
+   const btns=card.querySelectorAll('button');
+   btns[0].onclick=()=>{if(morningOpen)moodResult.textContent=d.morning};
+   btns[1].onclick=()=>{if(nightOpen)moodResult.textContent=d.night};
+   vaultGrid.appendChild(card);
+ });
+}
+renderVault();
 
-    <div id="julyMount"></div>
-
-    <section class="moods">
-      <p class="eyebrow">COME TI SENTI OGGI?</p>
-      <h2>Scegli un piccolo pianeta.</h2>
-      <div class="mood-row">
-        <button data-mood="felice">☀️ <span>Felice</span></button>
-        <button data-mood="nostalgia">🌙 <span>Nostalgica</span></button>
-        <button data-mood="coccole">🫶 <span>Voglia di coccole</span></button>
-        <button data-mood="noi">💫 <span>Voglia di noi</span></button>
-      </div>
-      <p class="mood-answer" id="moodAnswer"></p>
-    </section>
-
-    <section class="letter">
-      <div class="letter-paper">
-        <p class="eyebrow dark">PER TE</p>
-        <h2>La parte che nessuna foto riesce a dire.</h2>
-        <p>In questi cinque mesi non ho raccolto soltanto foto e video. Ho raccolto pezzi di vita con te: giornate importanti, momenti stupidi, risate, baci, silenzi e quella normalità che con te ha iniziato ad avere un sapore diverso.</p>
-        <p>Guardando tutto questo c’è una cosa che sento con chiarezza: sono felice che, in mezzo a milioni di possibilità, ci siamo trovati noi.</p>
-        <strong>E ti sceglierei ancora. ♥</strong>
-      </div>
-    </section>
-
-    <section class="finale">
-      <p class="eyebrow">IL PROSSIMO CAPITOLO</p>
-      <h2>Continuiamo?</h2>
-      <button class="cta light" id="continueBtn">Sì, insieme ♡</button>
-      <div id="future" class="future is-hidden">
-        <h3>Il resto dobbiamo ancora riempirlo insieme.</h3>
-        <span>∞</span>
-      </div>
-    </section>
-  </main>
-
-  <div class="viewer is-hidden" id="viewer" role="dialog" aria-modal="true">
-    <button class="viewer-close" id="viewerClose" aria-label="Chiudi">×</button>
-    <button class="viewer-arrow prev" id="prevBtn" aria-label="Precedente">‹</button>
-    <div class="viewer-body" id="viewerBody"></div>
-    <button class="viewer-arrow next" id="nextBtn" aria-label="Successivo">›</button>
-    <div class="viewer-meta"><span id="viewerMonth"></span><p id="viewerCaption"></p></div>
-  </div>
-
-  <script>window.MEMORIES = {"febbraio": [{"src": "assets/febbraio/001_image.jpg", "type": "image"}, {"src": "assets/febbraio/002_image.jpg", "type": "image"}, {"src": "assets/febbraio/003_image.jpg", "type": "image"}, {"src": "assets/febbraio/004_image.jpg", "type": "image"}, {"src": "assets/febbraio/005_image.jpg", "type": "image"}, {"src": "assets/febbraio/006_image.jpg", "type": "image"}, {"src": "assets/febbraio/007_image.jpg", "type": "image"}, {"src": "assets/febbraio/008_image.jpg", "type": "image"}, {"src": "assets/febbraio/009_video.mp4", "type": "video"}, {"src": "assets/febbraio/010_image.jpg", "type": "image"}, {"src": "assets/febbraio/011_image.jpg", "type": "image"}, {"src": "assets/febbraio/012_image.jpg", "type": "image"}, {"src": "assets/febbraio/013_image.jpg", "type": "image"}, {"src": "assets/febbraio/014_image.jpg", "type": "image"}, {"src": "assets/febbraio/015_image.jpg", "type": "image"}, {"src": "assets/febbraio/016_image.jpg", "type": "image"}, {"src": "assets/febbraio/017_image.jpg", "type": "image"}, {"src": "assets/febbraio/018_image.jpg", "type": "image"}, {"src": "assets/febbraio/019_image.jpg", "type": "image"}, {"src": "assets/febbraio/020_image.jpg", "type": "image"}, {"src": "assets/febbraio/021_video.mp4", "type": "video"}, {"src": "assets/febbraio/022_image.jpg", "type": "image"}, {"src": "assets/febbraio/023_image.jpg", "type": "image"}, {"src": "assets/febbraio/024_image.jpg", "type": "image"}, {"src": "assets/febbraio/025_image.jpg", "type": "image"}, {"src": "assets/febbraio/026_image.jpg", "type": "image"}, {"src": "assets/febbraio/027_image.jpg", "type": "image"}, {"src": "assets/febbraio/028_image.jpg", "type": "image"}, {"src": "assets/febbraio/029_image.jpg", "type": "image"}, {"src": "assets/febbraio/030_image.jpg", "type": "image"}, {"src": "assets/febbraio/031_image.jpg", "type": "image"}, {"src": "assets/febbraio/032_image.jpg", "type": "image"}, {"src": "assets/febbraio/033_image.jpg", "type": "image"}, {"src": "assets/febbraio/034_video.mp4", "type": "video"}, {"src": "assets/febbraio/035_image.jpg", "type": "image"}, {"src": "assets/febbraio/036_image.jpg", "type": "image"}, {"src": "assets/febbraio/037_video.mp4", "type": "video"}, {"src": "assets/febbraio/038_video.mp4", "type": "video"}], "marzo": [{"src": "assets/marzo/001_video.mp4", "type": "video"}, {"src": "assets/marzo/002_image.jpg", "type": "image"}, {"src": "assets/marzo/003_image.jpg", "type": "image"}, {"src": "assets/marzo/004_video.mp4", "type": "video"}, {"src": "assets/marzo/005_image.jpg", "type": "image"}, {"src": "assets/marzo/006_video.mp4", "type": "video"}, {"src": "assets/marzo/007_image.jpg", "type": "image"}, {"src": "assets/marzo/008_image.jpg", "type": "image"}, {"src": "assets/marzo/009_image.jpg", "type": "image"}, {"src": "assets/marzo/010_image.jpg", "type": "image"}, {"src": "assets/marzo/011_image.jpg", "type": "image"}, {"src": "assets/marzo/012_image.jpg", "type": "image"}, {"src": "assets/marzo/013_image.jpg", "type": "image"}, {"src": "assets/marzo/014_image.jpg", "type": "image"}, {"src": "assets/marzo/015_image.jpg", "type": "image"}, {"src": "assets/marzo/016_image.jpg", "type": "image"}, {"src": "assets/marzo/017_image.jpg", "type": "image"}, {"src": "assets/marzo/018_image.jpg", "type": "image"}, {"src": "assets/marzo/019_video.mp4", "type": "video"}, {"src": "assets/marzo/020_video.mp4", "type": "video"}, {"src": "assets/marzo/021_video.mp4", "type": "video"}, {"src": "assets/marzo/022_image.jpg", "type": "image"}, {"src": "assets/marzo/023_image.jpg", "type": "image"}, {"src": "assets/marzo/024_image.jpg", "type": "image"}, {"src": "assets/marzo/025_image.jpg", "type": "image"}, {"src": "assets/marzo/026_image.jpg", "type": "image"}, {"src": "assets/marzo/027_image.jpg", "type": "image"}, {"src": "assets/marzo/028_image.jpg", "type": "image"}, {"src": "assets/marzo/029_image.jpg", "type": "image"}, {"src": "assets/marzo/030_image.jpg", "type": "image"}, {"src": "assets/marzo/031_image.jpg", "type": "image"}, {"src": "assets/marzo/032_video.mp4", "type": "video"}, {"src": "assets/marzo/033_image.jpg", "type": "image"}, {"src": "assets/marzo/034_image.jpg", "type": "image"}, {"src": "assets/marzo/035_video.mp4", "type": "video"}, {"src": "assets/marzo/036_image.jpg", "type": "image"}, {"src": "assets/marzo/037_image.jpg", "type": "image"}, {"src": "assets/marzo/038_image.jpg", "type": "image"}, {"src": "assets/marzo/039_video.mp4", "type": "video"}, {"src": "assets/marzo/040_video.mp4", "type": "video"}, {"src": "assets/marzo/041_video.mp4", "type": "video"}, {"src": "assets/marzo/042_video.mp4", "type": "video"}, {"src": "assets/marzo/043_video.mp4", "type": "video"}], "aprile": [{"src": "assets/aprile/001_image.jpg", "type": "image"}, {"src": "assets/aprile/002_image.jpg", "type": "image"}, {"src": "assets/aprile/003_image.jpg", "type": "image"}, {"src": "assets/aprile/004_image.jpg", "type": "image"}, {"src": "assets/aprile/005_video.mp4", "type": "video"}, {"src": "assets/aprile/006_video.mp4", "type": "video"}, {"src": "assets/aprile/007_video.mp4", "type": "video"}, {"src": "assets/aprile/008_video.mp4", "type": "video"}, {"src": "assets/aprile/009_image.jpg", "type": "image"}, {"src": "assets/aprile/010_video.mp4", "type": "video"}, {"src": "assets/aprile/011_video.mp4", "type": "video"}, {"src": "assets/aprile/012_video.mp4", "type": "video"}, {"src": "assets/aprile/013_video.mp4", "type": "video"}, {"src": "assets/aprile/014_image.jpg", "type": "image"}, {"src": "assets/aprile/015_image.jpg", "type": "image"}, {"src": "assets/aprile/016_image.jpg", "type": "image"}, {"src": "assets/aprile/017_image.jpg", "type": "image"}, {"src": "assets/aprile/018_image.jpg", "type": "image"}, {"src": "assets/aprile/019_image.jpg", "type": "image"}, {"src": "assets/aprile/020_image.jpg", "type": "image"}, {"src": "assets/aprile/021_image.jpg", "type": "image"}, {"src": "assets/aprile/022_image.jpg", "type": "image"}, {"src": "assets/aprile/023_image.jpg", "type": "image"}, {"src": "assets/aprile/024_image.jpg", "type": "image"}, {"src": "assets/aprile/025_image.jpg", "type": "image"}, {"src": "assets/aprile/026_image.jpg", "type": "image"}, {"src": "assets/aprile/027_image.jpg", "type": "image"}, {"src": "assets/aprile/028_image.jpg", "type": "image"}, {"src": "assets/aprile/029_image.jpg", "type": "image"}, {"src": "assets/aprile/030_video.mp4", "type": "video"}, {"src": "assets/aprile/031_image.jpg", "type": "image"}], "maggio": [{"src": "assets/maggio/001_image.jpg", "type": "image"}, {"src": "assets/maggio/002_image.jpg", "type": "image"}, {"src": "assets/maggio/003_image.jpg", "type": "image"}, {"src": "assets/maggio/004_video.mp4", "type": "video"}, {"src": "assets/maggio/005_image.jpg", "type": "image"}, {"src": "assets/maggio/006_image.jpg", "type": "image"}, {"src": "assets/maggio/007_video.mp4", "type": "video"}, {"src": "assets/maggio/008_image.jpg", "type": "image"}, {"src": "assets/maggio/009_image.jpg", "type": "image"}, {"src": "assets/maggio/010_image.jpg", "type": "image"}, {"src": "assets/maggio/011_image.jpg", "type": "image"}, {"src": "assets/maggio/012_image.jpg", "type": "image"}, {"src": "assets/maggio/013_image.jpg", "type": "image"}, {"src": "assets/maggio/014_video.mp4", "type": "video"}, {"src": "assets/maggio/015_image.jpg", "type": "image"}, {"src": "assets/maggio/016_image.jpg", "type": "image"}, {"src": "assets/maggio/017_image.jpg", "type": "image"}, {"src": "assets/maggio/018_image.jpg", "type": "image"}, {"src": "assets/maggio/019_image.jpg", "type": "image"}, {"src": "assets/maggio/020_image.jpg", "type": "image"}, {"src": "assets/maggio/021_image.jpg", "type": "image"}, {"src": "assets/maggio/022_image.jpg", "type": "image"}, {"src": "assets/maggio/023_video.mp4", "type": "video"}, {"src": "assets/maggio/024_image.jpg", "type": "image"}, {"src": "assets/maggio/025_image.jpg", "type": "image"}, {"src": "assets/maggio/026_video.mp4", "type": "video"}, {"src": "assets/maggio/027_image.jpg", "type": "image"}, {"src": "assets/maggio/028_image.jpg", "type": "image"}, {"src": "assets/maggio/029_image.jpg", "type": "image"}, {"src": "assets/maggio/030_image.jpg", "type": "image"}, {"src": "assets/maggio/031_image.jpg", "type": "image"}, {"src": "assets/maggio/032_image.jpg", "type": "image"}, {"src": "assets/maggio/033_video.mp4", "type": "video"}, {"src": "assets/maggio/034_video.mp4", "type": "video"}], "giugno": [{"src": "assets/giugno/001_image.jpg", "type": "image"}, {"src": "assets/giugno/002_image.jpg", "type": "image"}, {"src": "assets/giugno/003_image.jpg", "type": "image"}, {"src": "assets/giugno/004_image.jpg", "type": "image"}, {"src": "assets/giugno/005_image.jpg", "type": "image"}, {"src": "assets/giugno/006_image.jpg", "type": "image"}, {"src": "assets/giugno/007_image.jpg", "type": "image"}, {"src": "assets/giugno/008_video.mp4", "type": "video"}, {"src": "assets/giugno/009_image.jpg", "type": "image"}, {"src": "assets/giugno/010_image.jpg", "type": "image"}, {"src": "assets/giugno/011_video.mp4", "type": "video"}, {"src": "assets/giugno/012_image.jpg", "type": "image"}, {"src": "assets/giugno/013_image.jpg", "type": "image"}, {"src": "assets/giugno/014_image.jpg", "type": "image"}, {"src": "assets/giugno/015_image.jpg", "type": "image"}, {"src": "assets/giugno/016_image.jpg", "type": "image"}, {"src": "assets/giugno/017_image.jpg", "type": "image"}, {"src": "assets/giugno/018_image.jpg", "type": "image"}, {"src": "assets/giugno/019_image.jpg", "type": "image"}, {"src": "assets/giugno/020_image.jpg", "type": "image"}, {"src": "assets/giugno/021_image.jpg", "type": "image"}, {"src": "assets/giugno/022_image.jpg", "type": "image"}, {"src": "assets/giugno/023_image.jpg", "type": "image"}, {"src": "assets/giugno/024_image.jpg", "type": "image"}], "luglio": [{"src": "assets/luglio/001_video.mp4", "type": "video"}, {"src": "assets/luglio/002_video.mp4", "type": "video"}, {"src": "assets/luglio/003_video.mp4", "type": "video"}, {"src": "assets/luglio/004_image.jpg", "type": "image"}, {"src": "assets/luglio/005_video.mp4", "type": "video"}, {"src": "assets/luglio/006_video.mp4", "type": "video"}, {"src": "assets/luglio/007_video.mp4", "type": "video"}, {"src": "assets/luglio/008_video.mp4", "type": "video"}, {"src": "assets/luglio/009_image.jpg", "type": "image"}, {"src": "assets/luglio/010_video.mp4", "type": "video"}, {"src": "assets/luglio/011_video.mp4", "type": "video"}, {"src": "assets/luglio/012_video.mp4", "type": "video"}, {"src": "assets/luglio/013_image.jpg", "type": "image"}, {"src": "assets/luglio/014_image.jpg", "type": "image"}, {"src": "assets/luglio/015_image.jpg", "type": "image"}, {"src": "assets/luglio/016_image.jpg", "type": "image"}, {"src": "assets/luglio/017_image.jpg", "type": "image"}, {"src": "assets/luglio/018_image.jpg", "type": "image"}, {"src": "assets/luglio/019_image.jpg", "type": "image"}, {"src": "assets/luglio/020_image.jpg", "type": "image"}, {"src": "assets/luglio/021_image.jpg", "type": "image"}, {"src": "assets/luglio/022_image.jpg", "type": "image"}, {"src": "assets/luglio/023_video.mp4", "type": "video"}, {"src": "assets/luglio/024_image.jpg", "type": "image"}, {"src": "assets/luglio/025_image.jpg", "type": "image"}, {"src": "assets/luglio/026_image.jpg", "type": "image"}, {"src": "assets/luglio/027_image.jpg", "type": "image"}, {"src": "assets/luglio/028_video.mp4", "type": "video"}, {"src": "assets/luglio/029_image.jpg", "type": "image"}, {"src": "assets/luglio/030_image.jpg", "type": "image"}, {"src": "assets/luglio/031_image.jpg", "type": "image"}, {"src": "assets/luglio/032_image.jpg", "type": "image"}, {"src": "assets/luglio/033_image.jpg", "type": "image"}, {"src": "assets/luglio/034_image.jpg", "type": "image"}, {"src": "assets/luglio/035_image.jpg", "type": "image"}, {"src": "assets/luglio/036_image.jpg", "type": "image"}, {"src": "assets/luglio/037_image.jpg", "type": "image"}, {"src": "assets/luglio/038_image.jpg", "type": "image"}, {"src": "assets/luglio/039_image.jpg", "type": "image"}, {"src": "assets/luglio/040_image.jpg", "type": "image"}, {"src": "assets/luglio/041_image.jpg", "type": "image"}, {"src": "assets/luglio/042_image.jpg", "type": "image"}, {"src": "assets/luglio/043_image.jpg", "type": "image"}, {"src": "assets/luglio/044_image.jpg", "type": "image"}, {"src": "assets/luglio/045_image.jpg", "type": "image"}, {"src": "assets/luglio/046_image.jpg", "type": "image"}, {"src": "assets/luglio/047_video.mp4", "type": "video"}, {"src": "assets/luglio/048_video.mp4", "type": "video"}, {"src": "assets/luglio/049_video.mp4", "type": "video"}, {"src": "assets/luglio/050_video.mp4", "type": "video"}, {"src": "assets/luglio/051_video.mp4", "type": "video"}, {"src": "assets/luglio/052_video.mp4", "type": "video"}, {"src": "assets/luglio/053_image.jpg", "type": "image"}, {"src": "assets/luglio/054_image.jpg", "type": "image"}, {"src": "assets/luglio/055_image.jpg", "type": "image"}, {"src": "assets/luglio/056_image.jpg", "type": "image"}, {"src": "assets/luglio/057_image.jpg", "type": "image"}, {"src": "assets/luglio/058_image.jpg", "type": "image"}, {"src": "assets/luglio/059_image.jpg", "type": "image"}, {"src": "assets/luglio/060_image.jpg", "type": "image"}, {"src": "assets/luglio/061_image.jpg", "type": "image"}, {"src": "assets/luglio/062_image.jpg", "type": "image"}, {"src": "assets/luglio/063_image.jpg", "type": "image"}, {"src": "assets/luglio/064_video.mp4", "type": "video"}, {"src": "assets/luglio/065_image.jpg", "type": "image"}, {"src": "assets/luglio/066_image.jpg", "type": "image"}, {"src": "assets/luglio/067_image.jpg", "type": "image"}, {"src": "assets/luglio/068_image.jpg", "type": "image"}, {"src": "assets/luglio/069_image.jpg", "type": "image"}, {"src": "assets/luglio/070_image.jpg", "type": "image"}, {"src": "assets/luglio/071_image.jpg", "type": "image"}, {"src": "assets/luglio/072_image.jpg", "type": "image"}, {"src": "assets/luglio/073_image.jpg", "type": "image"}, {"src": "assets/luglio/074_image.jpg", "type": "image"}, {"src": "assets/luglio/075_image.jpg", "type": "image"}, {"src": "assets/luglio/076_image.jpg", "type": "image"}, {"src": "assets/luglio/077_image.jpg", "type": "image"}, {"src": "assets/luglio/078_image.jpg", "type": "image"}, {"src": "assets/luglio/079_image.jpg", "type": "image"}, {"src": "assets/luglio/080_image.jpg", "type": "image"}, {"src": "assets/luglio/081_video.mp4", "type": "video"}, {"src": "assets/luglio/082_video.mp4", "type": "video"}, {"src": "assets/luglio/083_video.mp4", "type": "video"}, {"src": "assets/luglio/084_image.jpg", "type": "image"}, {"src": "assets/luglio/085_image.jpg", "type": "image"}, {"src": "assets/luglio/086_image.jpg", "type": "image"}, {"src": "assets/luglio/087_video.mp4", "type": "video"}, {"src": "assets/luglio/088_video.mp4", "type": "video"}, {"src": "assets/luglio/089_video.mp4", "type": "video"}, {"src": "assets/luglio/090_image.jpg", "type": "image"}, {"src": "assets/luglio/091_image.jpg", "type": "image"}, {"src": "assets/luglio/092_image.jpg", "type": "image"}, {"src": "assets/luglio/093_video.mp4", "type": "video"}, {"src": "assets/luglio/094_image.jpg", "type": "image"}, {"src": "assets/luglio/095_image.jpg", "type": "image"}, {"src": "assets/luglio/096_image.jpg", "type": "image"}, {"src": "assets/luglio/097_image.jpg", "type": "image"}, {"src": "assets/luglio/098_image.jpg", "type": "image"}, {"src": "assets/luglio/099_image.jpg", "type": "image"}, {"src": "assets/luglio/100_video.mp4", "type": "video"}, {"src": "assets/luglio/101_video.mp4", "type": "video"}, {"src": "assets/luglio/102_video.mp4", "type": "video"}, {"src": "assets/luglio/103_image.jpg", "type": "image"}, {"src": "assets/luglio/104_image.jpg", "type": "image"}, {"src": "assets/luglio/105_image.jpg", "type": "image"}, {"src": "assets/luglio/106_image.jpg", "type": "image"}, {"src": "assets/luglio/107_image.jpg", "type": "image"}, {"src": "assets/luglio/108_image.jpg", "type": "image"}, {"src": "assets/luglio/109_image.jpg", "type": "image"}, {"src": "assets/luglio/110_image.jpg", "type": "image"}, {"src": "assets/luglio/111_video.mp4", "type": "video"}]};</script>
-  <script src="./script.js?v=20260707-2"></script>
-</body>
-</html>
+</script></body></html>

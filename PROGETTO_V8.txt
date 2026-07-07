@@ -1,0 +1,22 @@
+CASA NOSTRA V8 — BASE V7 PRESERVATA
+
+GIÀ IMPLEMENTATO:
+- Intro originale V7 con le 4 frasi animate
+- Home/hero originale V7
+- Storia fotografica originale
+- Una sola galassia viva
+- Cuore centrale pulsante costruito in CSS
+- 6 pianeti orbitanti con velocità e inclinazioni diverse
+- Hover che mette in pausa il pianeta
+- Cometa animata
+- 8 stati emotivi
+- Stanza temporale dal 20/07/2026 alle 14:30
+- Giorni futuri bloccati
+- Buongiorno disponibile nel giorno corrente
+- Buonanotte disponibile dalle 21:00
+- Giorni passati consultabili
+
+PROSSIMO PASSO:
+- Collegare i 281 media reali ai 6 pianeti
+- Sostituire i testi demo della stanza con video/foto reali
+- Decidere la protezione: solo browser oppure server reale anti-anticipo
