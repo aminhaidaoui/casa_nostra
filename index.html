@@ -411,7 +411,49 @@ section[class*="story"]{
 /* evita qualsiasi residuo della vecchia barra fallback */
 .v18-fallback-header{display:none !important;}
 
+
+/* V21 */
+body > header:first-of-type,header:first-of-type,.site-header:first-of-type,.topbar:first-of-type{
+position:fixed!important;top:0!important;left:0!important;right:0!important;width:100vw!important;
+z-index:2147483000!important;transform:translateZ(0)!important;-webkit-transform:translateZ(0)!important;
+background:rgba(205,224,233,.94)!important;-webkit-backdrop-filter:blur(16px) saturate(135%)!important;
+backdrop-filter:blur(16px) saturate(135%)!important;border-bottom:1px solid rgba(42,72,90,.18)!important;box-sizing:border-box!important}
+[data-month="aprile"],.galaxy-aprile,.aprile-galaxy,#aprile{transform:translateX(-40px)!important}
+.v21-moods{width:min(1040px,92%);margin:clamp(48px,7vw,92px) auto;text-align:center}
+.v21-moods .eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#9b5069}
+.v21-moods h2{margin:.55rem 0 .5rem;font:400 clamp(2.1rem,5vw,4.6rem) Georgia,serif;color:#342b31}
+.v21-moods .sub{margin:0 0 24px;color:#5e5960}.v21-mood-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.v21-mood{min-height:105px;padding:14px 10px;border-radius:20px;border:1px solid rgba(48,75,91,.20);
+background:rgba(242,248,250,.62);color:#2f3540;cursor:pointer;transition:.22s ease}
+.v21-mood:hover,.v21-mood:active{transform:translateY(-3px);background:rgba(248,252,253,.90)}
+.v21-mood .ico{display:block;font-size:1.65rem;margin-bottom:8px}.v21-mood .txt{font:400 .95rem Georgia,serif}
+.v21-mood-answer{width:min(680px,100%);min-height:62px;margin:18px auto 0;padding:16px 20px;display:grid;place-items:center;
+border-radius:18px;background:rgba(225,237,243,.72);color:#34434d;font:italic 1rem Georgia,serif}
+.v21-countdown{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:18px auto 8px}
+.v21-countdown .box{min-width:68px;padding:11px 8px;border-radius:15px;background:rgba(255,255,255,.52);border:1px solid rgba(74,99,112,.14)}
+.v21-countdown b{display:block;font:400 1.45rem Georgia,serif;color:#354752}.v21-countdown span{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;opacity:.65}
+.v21-lock-msg{position:fixed;left:50%;bottom:28px;transform:translate(-50%,18px);width:min(520px,calc(100vw - 32px));padding:15px 18px;
+border-radius:18px;background:rgba(24,39,49,.94);color:#f6fbfd;text-align:center;font:400 .95rem Georgia,serif;z-index:2147483646;
+opacity:0;pointer-events:none;transition:.2s}.v21-lock-msg.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:700px){body{padding-top:56px!important}.v21-mood-grid{grid-template-columns:repeat(2,1fr)}
+body > header:first-of-type,header:first-of-type,.site-header:first-of-type,.topbar:first-of-type{min-height:56px!important;padding:8px 12px!important}
+[data-month="aprile"],.galaxy-aprile,.aprile-galaxy,#aprile{transform:translateX(-52px)!important}}
+
 </style></head><body>
+
+<section class="v21-moods" id="comeTiSentiV21">
+<div class="eyebrow">dimmi solo una cosa</div><h2>come ti senti oggi, patatina?</h2>
+<p class="sub">Scegli quello che senti. Il resto lo capiamo insieme.</p>
+<div class="v21-mood-grid">
+<button class="v21-mood" data-v21m="bene"><span class="ico">☀️</span><span class="txt">sto bene</span></button>
+<button class="v21-mood" data-v21m="felice"><span class="ico">✨</span><span class="txt">sono felice</span></button>
+<button class="v21-mood" data-v21m="triste"><span class="ico">🌧️</span><span class="txt">sono triste</span></button>
+<button class="v21-mood" data-v21m="incazzata"><span class="ico">🌋</span><span class="txt">sono incazzata</span></button>
+<button class="v21-mood" data-v21m="conme"><span class="ico">😤</span><span class="txt">mi hai fatto incazzare</span></button>
+<button class="v21-mood" data-v21m="nostalgica"><span class="ico">🌙</span><span class="txt">sono nostalgica</span></button>
+<button class="v21-mood" data-v21m="ansiosa"><span class="ico">🫧</span><span class="txt">sono in ansia</span></button>
+<button class="v21-mood" data-v21m="coccole"><span class="ico">🧸</span><span class="txt">voglio le coccole</span></button>
+</div><div class="v21-mood-answer" id="v21MoodAnswer">Qualunque cosa scegli, io resto qui. ♡</div></section>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
 <section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
@@ -423,7 +465,9 @@ section[class*="story"]{
     <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
     <div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
 <section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
-<section class="section"><div id="distanceRoom" class="locked-room"><div><p class="ey">anche da lontano</p><h2>questa stanza<br>non è ancora pronta</h2><div class="lockmark">🔒</div><p class="muted">si aprirà quando arriverà il suo momento</p><p id="roomCountdown" class="countdown"></p></div></div></section>
+<section class="section"><div id="distanceRoom" class="locked-room"><div><p class="ey">anche da lontano</p><h2>questa stanza<br>non è ancora pronta</h2><div class="lockmark"><div class="v21-countdown" id="v21Countdown">
+<div class="box"><b id="v21d">--</b><span>giorni</span></div><div class="box"><b id="v21h">--</b><span>ore</span></div>
+<div class="box"><b id="v21m">--</b><span>minuti</span></div><div class="box"><b id="v21s">--</b><span>secondi</span></div></div>🔒</div><p class="muted">si aprirà quando arriverà il suo momento</p><p id="roomCountdown" class="countdown"></p></div></div></section>
 
 <footer>questa pagina non finisce qui · cresce con noi<br><b>amin ♡ camilla</b></footer>
 </main>
@@ -572,4 +616,25 @@ setTimeout(()=>{
 </script><div id="lockWhisper" class="lock-whisper"></div>
 
 
+<script>
+(()=>{
+const R={bene:"E allora goditela tutta. Vederti stare bene è già una cosa bella. ☀️",felice:"Il tuo sorriso è una delle mie cose preferite al mondo. ✨",
+triste:"Oggi non devi fare finta di stare bene. Vieni qui, anche solo virtualmente. 🌧️",incazzata:"Ok, sfogati pure. Ti ascolto anche quando escono le fiamme. 🌋",
+conme:"Eh no… questa è grave. Dimmi cosa ho combinato e poi provo a farmi perdonare. 😤❤️",nostalgica:"Apri una galassia e torna da noi per qualche minuto. Io sono già lì. 🌙",
+ansiosa:"Una cosa alla volta, patatina. Non devi sistemare tutto adesso. 🫧",coccole:"Richiesta ricevuta: abbraccio lungo e zero fretta appena possibile. 🧸"};
+document.querySelectorAll('.v21-mood').forEach(b=>b.onclick=()=>{const o=document.getElementById('v21MoodAnswer');if(o)o.textContent=R[b.dataset.v21m]});
+const target=new Date('2026-07-20T14:30:00+02:00').getTime();
+function tick(){let x=target-Date.now(),ids=['v21d','v21h','v21m','v21s'];if(x<=0){ids.forEach(id=>{let e=document.getElementById(id);if(e)e.textContent='00'});return}
+let v=[Math.floor(x/86400000),String(Math.floor(x%86400000/3600000)).padStart(2,'0'),String(Math.floor(x%3600000/60000)).padStart(2,'0'),String(Math.floor(x%60000/1000)).padStart(2,'0')];
+ids.forEach((id,i)=>{let e=document.getElementById(id);if(e)e.textContent=v[i]})}tick();setInterval(tick,1000);
+const L=["Non ancora, devi aspettare. 🔒","Camilla no. Ti vedo. Non è ancora il momento.","Ti ho detto di aspettare, patatina. 😌","Basta cliccare, cazzo fai? 😂",
+"Fatti una vita per altri cinque minuti e poi riprova.","No amore, il lucchetto non si commuove.","Bel tentativo. Respinta con affetto. ❤️","Ancora chiuso. Sì, anche se fai quella faccia.",
+"Amin ha detto no. Per ora. 😏","Non barare, curiosona.","La pazienza è romantica. Più o meno.","Questo contenuto sta dormendo. Non rompergli i coglioni. 😂",
+"Nope. Torna quando l’universo decide.","Hai premuto di nuovo? Sei incredibile.","Camilla, giù le mani dal lucchetto. 🔐","Spoiler: cliccare venti volte non accelera il tempo.",
+"Ti amo, ma no. Aspetta.","Quasi quasi lo apro… no, scherzavo. 😌","Accesso negato alla patatina troppo curiosa.","Ultimo avviso: vai a bere un po’ d’acqua e torna dopo. ❤️"];
+let t=document.createElement('div');t.className='v21-lock-msg';document.body.appendChild(t);let last=-1,to;
+function msg(){let i;do{i=Math.floor(Math.random()*L.length)}while(i===last);last=i;t.textContent=L[i];t.classList.add('show');clearTimeout(to);to=setTimeout(()=>t.classList.remove('show'),2600)}
+document.addEventListener('click',e=>{let q=e.target.closest('[class*="lock"],[data-lock],.locked');if(q){e.preventDefault();msg()}},true);
+})();
+</script>
 </body></html>
