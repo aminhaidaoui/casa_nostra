@@ -439,7 +439,37 @@ opacity:0;pointer-events:none;transition:.2s}.v21-lock-msg.show{opacity:1;transf
 body > header:first-of-type,header:first-of-type,.site-header:first-of-type,.topbar:first-of-type{min-height:56px!important;padding:8px 12px!important}
 [data-month="aprile"],.galaxy-aprile,.aprile-galaxy,#aprile{transform:translateX(-52px)!important}}
 
+
+/* V22 CLEAN — ordine narrativo stabile */
+#comeTiSentiV21{
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+  transform:none!important;
+  z-index:auto!important;
+  clear:both!important;
+}
+@media(max-width:700px){
+  #comeTiSentiV21{
+    margin-top:48px!important;
+    margin-bottom:48px!important;
+  }
+}
+
 </style></head><body>
+
+
+<section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
+<main>
+<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
+<p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
+
+<section class="section memory-prologue"><div><p class="ey">la nostra storia</p><h2>non una galleria.<br>un posto da attraversare.</h2><p class="muted">Ci sono ricordi che non voglio mettere in fila. Voglio che tu li scopra, uno spazio alla volta.</p></div><div class="quote">“alcune cose non si guardano soltanto. <span class="accent">si attraversano.</span>”</div></section>
+<section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div>
+    <div class="cosmic-nebula"></div>
+    <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
+    <div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
+<section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
 
 <section class="v21-moods" id="comeTiSentiV21">
 <div class="eyebrow">dimmi solo una cosa</div><h2>come ti senti oggi, patatina?</h2>
@@ -454,17 +484,6 @@ body > header:first-of-type,header:first-of-type,.site-header:first-of-type,.top
 <button class="v21-mood" data-v21m="ansiosa"><span class="ico">🫧</span><span class="txt">sono in ansia</span></button>
 <button class="v21-mood" data-v21m="coccole"><span class="ico">🧸</span><span class="txt">voglio le coccole</span></button>
 </div><div class="v21-mood-answer" id="v21MoodAnswer">Qualunque cosa scegli, io resto qui. ♡</div></section>
-<section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
-<main>
-<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
-<p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
-
-<section class="section memory-prologue"><div><p class="ey">la nostra storia</p><h2>non una galleria.<br>un posto da attraversare.</h2><p class="muted">Ci sono ricordi che non voglio mettere in fila. Voglio che tu li scopra, uno spazio alla volta.</p></div><div class="quote">“alcune cose non si guardano soltanto. <span class="accent">si attraversano.</span>”</div></section>
-<section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div>
-    <div class="cosmic-nebula"></div>
-    <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
-    <div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
-<section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
 <section class="section"><div id="distanceRoom" class="locked-room"><div><p class="ey">anche da lontano</p><h2>questa stanza<br>non è ancora pronta</h2><div class="lockmark"><div class="v21-countdown" id="v21Countdown">
 <div class="box"><b id="v21d">--</b><span>giorni</span></div><div class="box"><b id="v21h">--</b><span>ore</span></div>
 <div class="box"><b id="v21m">--</b><span>minuti</span></div><div class="box"><b id="v21s">--</b><span>secondi</span></div></div>🔒</div><p class="muted">si aprirà quando arriverà il suo momento</p><p id="roomCountdown" class="countdown"></p></div></div></section>
