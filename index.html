@@ -360,10 +360,61 @@ header:first-of-type,
 /* evita sovrapposizione del contenuto sotto la barra */
 body { padding-top: 0 !important; scroll-padding-top: 64px; }
 
+
+/* === V20 METALLIC ICE BLUE === */
+html{
+  background:#9fb6c4 !important;
+}
+body{
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(229,245,250,.92) 0%, rgba(229,245,250,0) 30%),
+    radial-gradient(ellipse at 88% 24%, rgba(111,151,174,.48) 0%, rgba(111,151,174,0) 34%),
+    radial-gradient(ellipse at 28% 58%, rgba(190,220,232,.58) 0%, rgba(190,220,232,0) 31%),
+    radial-gradient(ellipse at 82% 82%, rgba(78,112,135,.34) 0%, rgba(78,112,135,0) 38%),
+    linear-gradient(135deg,#8ea8b8 0%,#d6e5eb 28%,#9bb5c4 52%,#718fa2 73%,#bdd1da 100%) !important;
+  background-attachment:fixed !important;
+}
+
+/* velo metallico/perlato molto leggero */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    linear-gradient(115deg,
+      rgba(255,255,255,.16) 0%,
+      rgba(255,255,255,0) 22%,
+      rgba(210,238,248,.22) 42%,
+      rgba(255,255,255,0) 61%,
+      rgba(65,101,124,.10) 100%);
+}
+
+/* La testata resta leggibile e coerente col nuovo fondo */
+body > header:first-of-type,
+header:first-of-type,
+.site-header:first-of-type,
+.topbar:first-of-type{
+  background:rgba(214,229,235,.86) !important;
+  border-bottom:1px solid rgba(48,78,96,.20) !important;
+  box-shadow:0 8px 28px rgba(42,70,88,.08) !important;
+}
+
+/* Le grandi sezioni chiare diventano vetro caldo: contrasto senza perdere romanticismo */
+main > section:not(.galaxy-section):not([class*="galax"]),
+section.story-section,
+section[class*="story"]{
+  background-color:rgba(250,247,243,.78);
+}
+
+/* evita qualsiasi residuo della vecchia barra fallback */
+.v18-fallback-header{display:none !important;}
+
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
-<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b><span>iniziato il 09 · 02 · 2026 ❤️❤️</span></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
+<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
 <p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
 
 <section class="section memory-prologue"><div><p class="ey">la nostra storia</p><h2>non una galleria.<br>un posto da attraversare.</h2><p class="muted">Ci sono ricordi che non voglio mettere in fila. Voglio che tu li scopra, uno spazio alla volta.</p></div><div class="quote">“alcune cose non si guardano soltanto. <span class="accent">si attraversano.</span>”</div></section>
