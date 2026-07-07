@@ -24,13 +24,70 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 .locked-room{width:min(760px,100%);min-height:520px;margin:auto;border-radius:320px 320px 30px 30px;background:linear-gradient(145deg,#ead5d8,#fff8f3);border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:44px;position:relative;overflow:hidden}.locked-room:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#fff8;filter:blur(30px);top:8%}.locked-room>div{position:relative}.lockmark{font-size:2.2rem;margin:18px}.countdown{font:clamp(1.2rem,3vw,2rem) Georgia,serif;color:var(--cherry)}
 .moods{grid-template-columns:repeat(4,1fr)}.mood-result{margin-top:18px;padding:22px;border-radius:20px;background:var(--paper);border:1px solid var(--line)}
 @media(max-width:800px){.hero{grid-template-columns:1fr}.heroimg{order:-1;height:48vh;justify-self:center}.memory-prologue{grid-template-columns:1fr}.galaxy-map{height:125vw;min-height:560px}.destination{width:86px;height:86px}.destination span{top:90%}.moods{grid-template-columns:repeat(2,1fr)}}
+
+/* === V10 CUORE COSMICO === */
+.galaxy-map{
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse at 50% 50%,#2f183b 0 7%,transparent 27%),
+    radial-gradient(ellipse at 23% 30%,#8b4d8660,transparent 26%),
+    radial-gradient(ellipse at 78% 28%,#405f8b55,transparent 25%),
+    radial-gradient(ellipse at 74% 76%,#a65e7555,transparent 28%),
+    radial-gradient(ellipse at 22% 76%,#5d477f55,transparent 26%),
+    linear-gradient(145deg,#07050d,#120b1a 55%,#05040a);
+}
+.cosmic-nebula{position:absolute;inset:-12%;z-index:1;pointer-events:none;filter:blur(10px) saturate(1.2);animation:nebulaBreath 9s ease-in-out infinite alternate}
+.cosmic-nebula:before,.cosmic-nebula:after{content:"";position:absolute;inset:0;border-radius:48%;
+ background:conic-gradient(from 30deg at 50% 50%,transparent 0 8%,#bd75922d 13%,transparent 23%,#7060a62d 34%,transparent 48%,#d59aab24 61%,transparent 75%,#5c7d9d25 88%,transparent);
+ animation:nebulaSpin 48s linear infinite}
+.cosmic-nebula:after{inset:8%;filter:blur(18px);animation-direction:reverse;animation-duration:67s}
+@keyframes nebulaBreath{to{transform:scale(1.06) rotate(2deg);filter:blur(14px) saturate(1.45)}}
+@keyframes nebulaSpin{to{transform:rotate(360deg)}}
+.cosmic-filaments{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.7}
+.cosmic-filaments svg{width:100%;height:100%}.cosmic-filaments path{fill:none;stroke:url(#filamentGlow);stroke-width:.45;stroke-dasharray:3 3;filter:drop-shadow(0 0 4px #eeb8d3);animation:dashFlow 8s linear infinite}
+@keyframes dashFlow{to{stroke-dashoffset:-30}}
+.gravity-heart{position:absolute;left:50%;top:50%;width:190px;height:170px;transform:translate(-50%,-50%);z-index:4;pointer-events:none;filter:drop-shadow(0 0 28px #c87b9b66)}
+.gravity-heart .void{position:absolute;inset:29px 35px 25px;border-radius:48% 48% 52% 52% / 43% 43% 58% 58%;background:radial-gradient(circle at 50% 48%,#000 0 48%,#08030b 61%,transparent 68%);clip-path:path("M 60 15 C 38 -5 3 10 4 45 C 5 77 35 99 60 123 C 85 99 115 77 116 45 C 117 10 82 -5 60 15 Z");transform:scale(1.25);box-shadow:inset 0 0 18px #000,0 0 24px #000}
+.gravity-heart .disk{position:absolute;left:50%;top:50%;width:190px;height:62px;transform:translate(-50%,-50%) rotate(-13deg);border-radius:50%;border:8px solid transparent;background:linear-gradient(#0000,#0000) padding-box,conic-gradient(from 0deg,#fff1,#ffd9e8,#b26c9b,#6c5b9f,#fff5,#ffd9e8) border-box;filter:blur(.2px) drop-shadow(0 0 9px #f5b6d2);animation:diskSpin 5.5s linear infinite}
+.gravity-heart .disk2{position:absolute;left:50%;top:50%;width:150px;height:43px;transform:translate(-50%,-50%) rotate(18deg);border-radius:50%;border:2px solid #f7c9dcaa;box-shadow:0 0 12px #e998ba;animation:diskSpin2 7s linear infinite}
+.gravity-heart .lens{position:absolute;inset:8px;border-radius:50%;border-top:2px solid #fff8;border-bottom:2px solid #b97ea088;filter:blur(.3px);animation:lensPulse 3s ease-in-out infinite}
+@keyframes diskSpin{to{transform:translate(-50%,-50%) rotate(347deg)}}
+@keyframes diskSpin2{to{transform:translate(-50%,-50%) rotate(-342deg)}}
+@keyframes lensPulse{50%{transform:scale(1.08);opacity:.65}}
+.destination{z-index:6}.destination .nebula{box-shadow:0 0 18px var(--c1),0 0 52px var(--c2),0 0 95px color-mix(in srgb,var(--c2) 45%,transparent)}
+.destination.holding:before{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid #fff8;animation:chargeRing .7s ease-out infinite}
+@keyframes chargeRing{to{transform:scale(1.6);opacity:0}}
+.blackhole-caption{position:absolute;left:50%;top:calc(50% + 104px);transform:translateX(-50%);z-index:7;color:#d9c8d4;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;opacity:.72}
+.warp{background:radial-gradient(circle at 50% 50%,#24152d 0,#07050b 22%,#030205 70%)}
+.warpline{animation-duration:3.55s}
+.warp-title{animation-duration:3.55s}
+@keyframes warpLine{
+  0%{opacity:0;height:2px}
+  12%{opacity:.35;height:12px}
+  34%{opacity:.9;height:var(--len)}
+  72%{height:120vh;opacity:1}
+  100%{height:190vh;opacity:0}
+}
+@keyframes warpTitle{
+  0%,30%{opacity:0;transform:scale(.8)}
+  48%{opacity:1;transform:scale(1)}
+  72%{opacity:.9;transform:scale(1.2)}
+  100%{opacity:0;transform:scale(3.1)}
+}
+.warp-core{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 25px #fff,0 0 90px #d59abb;transform:translate(-50%,-50%);animation:warpCore 3.55s ease-in forwards}
+@keyframes warpCore{0%{transform:translate(-50%,-50%) scale(.1);opacity:0}38%{opacity:1}78%{transform:translate(-50%,-50%) scale(3)}100%{transform:translate(-50%,-50%) scale(80);opacity:0}}
+.modal{z-index:300}.month-world{z-index:220}.warp{z-index:400}
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
 <section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b><span>iniziato il 09 · 02 · 2026</span></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1><p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
 
 <section class="section memory-prologue"><div><p class="ey">la nostra storia</p><h2>non una galleria.<br>un posto da attraversare.</h2><p class="muted">Ci sono ricordi che non voglio mettere in fila. Voglio che tu li scopra, uno spazio alla volta.</p></div><div class="quote">“alcune cose non si guardano soltanto. <span class="accent">si attraversano.</span>”</div></section>
-<section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div><div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
+<section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div>
+    <div class="cosmic-nebula"></div>
+    <div class="cosmic-filaments"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><defs><linearGradient id="filamentGlow"><stop offset="0" stop-color="#7f6aa8"/><stop offset=".5" stop-color="#f0b7cf"/><stop offset="1" stop-color="#7895b2"/></linearGradient></defs><path d="M50,50 C38,40 29,30 18,27 M50,50 C60,38 67,24 72,20 M50,50 C48,47 47,45 46,43 M50,50 C61,58 70,64 79,68 M50,50 C39,60 31,69 25,73"/></svg></div>
+    <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
+    <div class="blackhole-caption">il centro del nostro universo</div><div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
 <section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
 <section class="section"><div id="distanceRoom" class="locked-room"><div><p class="ey">anche da lontano</p><h2>questa stanza<br>non è ancora pronta</h2><div class="lockmark">🔒</div><p class="muted">si aprirà quando arriverà il suo momento</p><p id="roomCountdown" class="countdown"></p></div></div></section>
 <footer>questa pagina non finisce qui · cresce con voi<br><b>amin ♡ camilla</b></footer>
@@ -49,8 +106,10 @@ greet.textContent=now.getHours()<10?'buongiorno patatina':now.getHours()<18?'cia
 days.textContent=Math.max(0,Math.floor((now-new Date('2026-02-09T00:00:00'))/86400000))+' giorni di noi — e siamo solo all’inizio';
 todayDate.textContent=now.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'});
 
-function openPhoto(src,txt){mediaMount.innerHTML='<img id="mi" src="'+src+'">';mc.textContent=txt;modal.classList.remove('hidden')}
-close.onclick=()=>modal.classList.add('hidden');modal.onclick=e=>{if(e.target===modal)modal.classList.add('hidden')};
+function openPhoto(src,txt){mediaMount.innerHTML='<img id="mi" src="'+src+'" alt="ricordo">';mc.textContent=txt||'';modal.classList.remove('hidden')}
+function closeMemory(){modal.classList.add('hidden');mediaMount.innerHTML='';mc.textContent='';document.querySelectorAll('video,audio').forEach(m=>{try{m.pause();m.currentTime=0}catch(e){}})}
+function closeWorld(){closeMemory();monthWorld.classList.add('hidden');document.body.style.overflow=''}
+close.onclick=closeMemory;modal.onclick=e=>{if(e.target===modal)closeMemory()};
 
 const galaxies=[
  {name:'febbraio',x:18,y:27,c1:'#ffd4df',c2:'#9b5478'},
@@ -69,16 +128,16 @@ galaxies.forEach((g,idx)=>{
  b.addEventListener('touchstart',e=>{e.preventDefault();begin()},{passive:false});b.addEventListener('touchend',cancel);
 });
 function travel(g,idx){
- warp.innerHTML='<div class="warp-title">'+g.name+'</div>';
- for(let i=0;i<95;i++){let l=document.createElement('i');l.className='warpline';l.style.cssText=`--a:${Math.random()*360}deg;--len:${120+Math.random()*420}px;animation-delay:${Math.random()*.28}s`;warp.appendChild(l)}
+ warp.innerHTML='<div class="warp-core"></div><div class="warp-title">'+g.name+'</div>';
+ for(let i=0;i<155;i++){let l=document.createElement('i');l.className='warpline';l.style.cssText=`--a:${Math.random()*360}deg;--len:${120+Math.random()*420}px;animation-delay:${Math.random()*.7}s`;warp.appendChild(l)}
  warp.classList.remove('hidden');
- setTimeout(()=>{openWorld(g,idx);warp.classList.add('hidden')},1450);
+ setTimeout(()=>{openWorld(g,idx);warp.classList.add('hidden')},3550);
 }
 function openWorld(g,idx){
  worldTitle.textContent=g.name;memorySky.innerHTML='';monthWorld.classList.remove('hidden');
- for(let i=0;i<34;i++){let b=document.createElement('button'),kind=['foto','video','parole','voce'][i%4];b.className='memory-node '+(i%3?'starlet':'');b.dataset.kind=kind;b.style.cssText=`--x:${7+(i*37)%86}%;--y:${17+(i*53)%72}%;--s:${7+(i%5)*5}px;--c:${g.c1};--d:${2.5+(i%7)*.45}s`;b.onclick=()=>openPhoto(photos[(i+idx*4)%photos.length],g.name+' · '+kind);memorySky.appendChild(b)}
+ for(let i=0;i<34;i++){let b=document.createElement('button'),kind='ricordo';b.className='memory-node '+(i%3?'starlet':'');b.dataset.kind=kind;b.style.cssText=`--x:${7+(i*37)%86}%;--y:${17+(i*53)%72}%;--s:${7+(i%5)*5}px;--c:${g.c1};--d:${2.5+(i%7)*.45}s`;b.onclick=()=>openPhoto(photos[(i+idx*4)%photos.length],g.name+' · ricordo');memorySky.appendChild(b)}
 }
-backSpace.onclick=()=>monthWorld.classList.add('hidden');
+backSpace.onclick=closeWorld;
 
 const md=[
  ['🥰','sono felice','Allora tieni stretta questa luce.'],
@@ -99,5 +158,8 @@ function updateRoom(){
  else{distanceRoom.innerHTML='<div><p class="ey">anche da lontano</p><h2>adesso puoi entrare ♡</h2><p class="muted">da qui in poi, un giorno alla volta.</p><button class="pill">apri la stanza</button></div>'}
 }
 updateRoom();setInterval(updateRoom,60000);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.add('hidden');monthWorld.classList.add('hidden')}});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){ if(!modal.classList.contains('hidden')) closeMemory(); else if(!monthWorld.classList.contains('hidden')) closeWorld(); }
+ if((e.key==='s'||e.key==='S')&&!monthWorld.classList.contains('hidden')) closeWorld();
+});
 </script></body></html>
