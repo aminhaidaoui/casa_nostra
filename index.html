@@ -102,6 +102,23 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
   transition:.35s
 }
 .lock-whisper.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* === V12: centro cosmico rifinito === */
+.gravity-heart{width:210px;height:190px}
+.gravity-heart .void{
+  inset:44px 50px 40px;
+  clip-path:none;
+  border-radius:50%;
+  background:radial-gradient(circle at 46% 42%,#050207 0 48%,#000 58%,#160b1b 63%,transparent 68%);
+  transform:none;
+  box-shadow:0 0 0 1px #f3c6dc20,0 0 26px #000,0 0 55px #c87b9b30;
+}
+.gravity-heart .disk{
+  width:205px;height:58px;border-width:6px;
+  opacity:.92;
+}
+.gravity-heart .disk2{width:168px;height:48px;opacity:.75}
+.gravity-heart .lens{inset:15px;opacity:.72}
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
@@ -111,7 +128,7 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 <section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div>
     <div class="cosmic-nebula"></div>
     <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
-    <div class="blackhole-caption">il centro del nostro universo</div><div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
+    <div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
 <section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
 <section class="section"><div id="distanceRoom" class="locked-room"><div><p class="ey">anche da lontano</p><h2>questa stanza<br>non è ancora pronta</h2><div class="lockmark">🔒</div><p class="muted">si aprirà quando arriverà il suo momento</p><p id="roomCountdown" class="countdown"></p></div></div></section>
 <footer>questa pagina non finisce qui · cresce con voi<br><b>amin ♡ camilla</b></footer>
@@ -133,8 +150,9 @@ todayDate.textContent=now.toLocaleDateString('it-IT',{day:'2-digit',month:'2-dig
 function openPhoto(src,txt){mediaMount.innerHTML='<img id="mi" src="'+src+'" alt="ricordo">';mc.textContent=txt||'';modal.classList.remove('hidden')}
 function closeMemory(){modal.classList.add('hidden');mediaMount.innerHTML='';mc.textContent='';document.querySelectorAll('video,audio').forEach(m=>{try{m.pause();m.currentTime=0}catch(e){}})}
 function closeWorld(){closeMemory();monthWorld.classList.add('hidden');document.body.style.overflow=''}
-close.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();closeMemory()});
-close.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeMemory()});
+const closeBtn=document.getElementById('close');
+closeBtn.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();closeMemory()});
+closeBtn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeMemory()});
 modal.addEventListener('click',e=>{if(e.target===modal)closeMemory()});
 
 const galaxies=[
