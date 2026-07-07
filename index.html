@@ -335,12 +335,32 @@ body > header:first-of-type{
 /* evita che la testata fissa copra l'inizio pagina */
 body{scroll-padding-top:72px}
 
-</style></head><body>
-<div class="v18-fixed-header v18-fallback-header" aria-label="Casa Nostra">
-  <strong>casa nostra ♡</strong>
-  <div><b id="v18Today"></b><small>iniziato il 09 · 02 · 2026 ❤️❤️</small></div>
-</div>
 
+/* === V19 HEADER FIX: una sola testata, quella originale === */
+body > header:first-of-type,
+header:first-of-type,
+.site-header:first-of-type,
+.topbar:first-of-type {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 99999 !important;
+  box-sizing: border-box !important;
+  background: rgba(250,246,241,.94) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(70,50,55,.10) !important;
+}
+
+/* neutralizza completamente l'eventuale fallback residua */
+.v18-fallback-header { display:none !important; }
+
+/* evita sovrapposizione del contenuto sotto la barra */
+body { padding-top: 0 !important; scroll-padding-top: 64px; }
+
+</style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
 <section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><div class="todaybox"><b id="todayDate"></b><span>iniziato il 09 · 02 · 2026 ❤️❤️</span></div></div><div><p id="greet" class="ey"></p><h1>un posto che<br><span class="accent">continua a vivere</span><br>con noi</h1>
@@ -499,14 +519,6 @@ setTimeout(()=>{
 
 
 </script><div id="lockWhisper" class="lock-whisper"></div>
-<script>
-(()=>{
-  const e=document.getElementById('v18Today');
-  if(e){
-    const d=new Date();
-    e.textContent=[String(d.getDate()).padStart(2,'0'),String(d.getMonth()+1).padStart(2,'0'),d.getFullYear()].join('/');
-  }
-})();
-</script>
+
 
 </body></html>
