@@ -1,1 +1,0 @@
-Apri index.html. Per GitHub Pages carica il contenuto nella root del repository.

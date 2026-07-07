@@ -1,0 +1,12 @@
+PATCH GALASSIA CORRETTA
+
+1. Apri Documenti\GitHub\casa_nostra
+2. Copia QUI dentro index.html, style.css e script.js di questo pacchetto
+3. Conferma "Sostituisci i file nella destinazione"
+4. NON toccare la cartella assets: i 281 media restano quelli già caricati
+5. In GitHub Desktop: Summary = Fix completo layout galassia
+6. Commit to main
+7. Push origin
+8. Sul sito fai Ctrl+F5
+
+Il parametro ?v=20260707-2 forza il browser a scaricare il CSS e JS nuovi invece di usare la cache vecchia.
