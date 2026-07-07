@@ -456,6 +456,35 @@ body > header:first-of-type,header:first-of-type,.site-header:first-of-type,.top
   }
 }
 
+
+/* V23 — sezione emozioni integrata nel flusso, non più isola */
+#comeTiSentiV21,
+.v21-moods{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:clamp(64px,8vw,110px) max(24px,calc((100vw - 1180px)/2))!important;
+  border-radius:0!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  position:relative!important;
+  left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+  transform:none!important;
+  box-sizing:border-box!important;
+}
+#comeTiSentiV21::before,
+#comeTiSentiV21::after{display:none!important}
+.v21-mood-grid{width:100%!important;max-width:1100px!important;margin-left:auto!important;margin-right:auto!important}
+.v21-mood-answer{max-width:760px!important}
+@media(max-width:700px){
+  #comeTiSentiV21,.v21-moods{
+    margin:0!important;
+    padding:56px 18px!important;
+    width:100%!important;
+  }
+}
+
 </style></head><body>
 
 
@@ -469,7 +498,7 @@ body > header:first-of-type,header:first-of-type,.site-header:first-of-type,.top
     <div class="cosmic-nebula"></div>
     <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
     <div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
-<section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
+<section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
 
 <section class="v21-moods" id="comeTiSentiV21">
 <div class="eyebrow">dimmi solo una cosa</div><h2>come ti senti oggi, patatina?</h2>
