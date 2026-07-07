@@ -77,6 +77,31 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 .warp-core{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 25px #fff,0 0 90px #d59abb;transform:translate(-50%,-50%);animation:warpCore 3.55s ease-in forwards}
 @keyframes warpCore{0%{transform:translate(-50%,-50%) scale(.1);opacity:0}38%{opacity:1}78%{transform:translate(-50%,-50%) scale(3)}100%{transform:translate(-50%,-50%) scale(80);opacity:0}}
 .modal{z-index:300}.month-world{z-index:220}.warp{z-index:400}
+
+/* === V11 rifiniture === */
+.modal .box{position:relative}
+#close{
+  position:absolute;right:10px;top:10px;z-index:9999;
+  width:38px;height:38px;border:0;border-radius:50%;
+  background:#fff;color:#241b20;font-size:20px;font-weight:700;
+  display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 8px 24px #0003;
+  pointer-events:auto;touch-action:manipulation
+}
+#close:hover{transform:scale(1.08)}
+#close:active{transform:scale(.94)}
+.locked-room{cursor:pointer;transition:transform .25s ease,box-shadow .25s ease}
+.locked-room:hover{transform:translateY(-3px);box-shadow:0 24px 60px #6d46551a}
+.locked-room.lock-shake{animation:lockShake .42s ease}
+@keyframes lockShake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+.lock-whisper{
+  position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(18px);
+  z-index:10000;max-width:min(88vw,520px);padding:15px 20px;border-radius:999px;
+  background:#241820eF;color:#fff;text-align:center;font:italic 1rem Georgia,serif;
+  box-shadow:0 16px 50px #0005;opacity:0;pointer-events:none;
+  transition:.35s
+}
+.lock-whisper.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
 <main>
@@ -85,7 +110,6 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 <section class="section memory-prologue"><div><p class="ey">la nostra storia</p><h2>non una galleria.<br>un posto da attraversare.</h2><p class="muted">Ci sono ricordi che non voglio mettere in fila. Voglio che tu li scopra, uno spazio alla volta.</p></div><div class="quote">“alcune cose non si guardano soltanto. <span class="accent">si attraversano.</span>”</div></section>
 <section class="cosmos-shell"><div class="cosmos-copy"><p class="ey">la nostra galassia</p><h2>cinque destinazioni.<br>scegli dove tornare.</h2><p class="muted">Tieni premuta una luce. Quando senti che ti sta chiamando, non lasciarla andare.</p></div><div id="galaxyMap" class="galaxy-map"><div class="starfield"></div>
     <div class="cosmic-nebula"></div>
-    <div class="cosmic-filaments"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><defs><linearGradient id="filamentGlow"><stop offset="0" stop-color="#7f6aa8"/><stop offset=".5" stop-color="#f0b7cf"/><stop offset="1" stop-color="#7895b2"/></linearGradient></defs><path d="M50,50 C38,40 29,30 18,27 M50,50 C60,38 67,24 72,20 M50,50 C48,47 47,45 46,43 M50,50 C61,58 70,64 79,68 M50,50 C39,60 31,69 25,73"/></svg></div>
     <div class="gravity-heart" aria-label="cuore gravitazionale"><i class="disk"></i><i class="disk2"></i><i class="lens"></i><i class="void"></i></div>
     <div class="blackhole-caption">il centro del nostro universo</div><div class="holdhint">tieni premuta una galassia per partire ✦</div></div></section>
 <section class="section"><p class="ey">dimmi solo una cosa</p><h2>come ti senti oggi, patatina?</h2><div id="moods" class="moods"></div><div id="moodResult" class="mood-result muted">scegli quello che senti ♡</div></section>
@@ -109,12 +133,14 @@ todayDate.textContent=now.toLocaleDateString('it-IT',{day:'2-digit',month:'2-dig
 function openPhoto(src,txt){mediaMount.innerHTML='<img id="mi" src="'+src+'" alt="ricordo">';mc.textContent=txt||'';modal.classList.remove('hidden')}
 function closeMemory(){modal.classList.add('hidden');mediaMount.innerHTML='';mc.textContent='';document.querySelectorAll('video,audio').forEach(m=>{try{m.pause();m.currentTime=0}catch(e){}})}
 function closeWorld(){closeMemory();monthWorld.classList.add('hidden');document.body.style.overflow=''}
-close.onclick=closeMemory;modal.onclick=e=>{if(e.target===modal)closeMemory()};
+close.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();closeMemory()});
+close.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeMemory()});
+modal.addEventListener('click',e=>{if(e.target===modal)closeMemory()});
 
 const galaxies=[
  {name:'febbraio',x:18,y:27,c1:'#ffd4df',c2:'#9b5478'},
  {name:'marzo',x:72,y:20,c1:'#c8c0ff',c2:'#5e5794'},
- {name:'aprile',x:46,y:43,c1:'#ffd2a9',c2:'#a5675d'},
+ {name:'aprile',x:30,y:47,c1:'#ffd2a9',c2:'#a5675d'},
  {name:'maggio',x:79,y:68,c1:'#b8eee4',c2:'#477d7a'},
  {name:'giugno',x:25,y:73,c1:'#efbde6',c2:'#7e4e79'}
 ];
@@ -158,8 +184,26 @@ function updateRoom(){
  else{distanceRoom.innerHTML='<div><p class="ey">anche da lontano</p><h2>adesso puoi entrare ♡</h2><p class="muted">da qui in poi, un giorno alla volta.</p><button class="pill">apri la stanza</button></div>'}
 }
 updateRoom();setInterval(updateRoom,60000);
+const lockedMessages=[
+ 'Camilla, aspetta… non è ancora pronto ♡',
+ 'Amorina, lo so che sei curiosa. Ancora un pochino.',
+ 'Patatina! Ho visto quel click 👀',
+ 'No no no… il futuro non si sbircia 😌',
+ 'Questa porta si apre al momento giusto. Promesso.',
+ 'Se continui a premere magari mi intenerisco… ma il lucchetto no 😂',
+ 'Cami, torna qui il 20 luglio. Ne varrà la pena ♡'
+];
+let lockMsgIndex=0, whisperTimer;
+distanceRoom.addEventListener('click',()=>{
+ if(new Date()>=OPEN_AT)return;
+ distanceRoom.classList.remove('lock-shake'); void distanceRoom.offsetWidth; distanceRoom.classList.add('lock-shake');
+ lockWhisper.textContent=lockedMessages[lockMsgIndex++%lockedMessages.length];
+ lockWhisper.classList.add('show');
+ clearTimeout(whisperTimer);whisperTimer=setTimeout(()=>lockWhisper.classList.remove('show'),2600);
+});
+
 document.addEventListener('keydown',e=>{
  if(e.key==='Escape'){ if(!modal.classList.contains('hidden')) closeMemory(); else if(!monthWorld.classList.contains('hidden')) closeWorld(); }
  if((e.key==='s'||e.key==='S')&&!monthWorld.classList.contains('hidden')) closeWorld();
 });
-</script></body></html>
+</script><div id="lockWhisper" class="lock-whisper"></div></body></html>
