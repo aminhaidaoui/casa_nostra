@@ -1,33 +1,412 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Casa Nostra — Prototipo</title><style>
-:root{--bg:#f8f3ee;--paper:#fffaf6;--ink:#3b302d;--muted:#806f69;--rose:#d78a9a;--wine:#9d4657;--space:#1d1820;--line:#3b302d1f}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}button{font:inherit}.hidden{display:none!important}.section{width:min(1180px,100%);margin:auto;padding:86px 20px}.ey{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wine);font-weight:700}h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(3rem,7vw,6.7rem);line-height:.9}h2{font-size:clamp(2.4rem,5vw,4.8rem);line-height:.98}.muted{color:var(--muted);line-height:1.6}.pill{border:1px solid var(--line);background:#fff9;border-radius:999px;padding:13px 18px;color:var(--ink)}
-.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;position:relative;padding-top:85px}.nav{position:absolute;top:22px;left:20px;right:20px;display:flex;justify-content:space-between}.heroimg{height:min(70vh,700px);border-radius:220px 220px 28px 28px;overflow:hidden}.heroimg img{width:100%;height:100%;object-fit:cover}
-#space{height:min(80vh,760px);min-height:590px;position:relative;overflow:hidden;border-radius:34px;background:radial-gradient(circle at 50% 50%,#6d344c66 0 10%,transparent 30%),radial-gradient(circle at 20% 30%,#6b506044,transparent 24%),var(--space)}
-.orbit{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid #ffffff18;border-radius:50%;pointer-events:none}.o1{width:25%;aspect-ratio:1}.o2{width:48%;aspect-ratio:1}.o3{width:72%;aspect-ratio:1}.o4{width:98%;aspect-ratio:1}
-.heart{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(4rem,9vw,7rem);z-index:10;filter:drop-shadow(0 0 22px #ff6f8b99);animation:pulse 2.2s ease-in-out infinite;cursor:pointer}@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.12) rotateY(18deg)}}
-.star,.planet{position:absolute;transform:translate(-50%,-50%);border:0;cursor:pointer}.star{width:9px;height:9px;border-radius:50%;background:white;box-shadow:0 0 13px white}.star.important{width:13px;height:13px;box-shadow:0 0 24px white,0 0 35px #ff9caf}.star.audio{background:#ff9fbd;box-shadow:0 0 20px #ff9fbd}.star.video{width:15px;height:15px;box-shadow:0 0 28px white}.planet{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#ffd8df,#bd6c7d 45%,#713a48);box-shadow:0 8px 20px #0006}
-.comet{position:absolute;width:10px;height:10px;border-radius:50%;background:white;box-shadow:0 0 18px white;animation:fly 8s linear infinite;cursor:pointer}.comet:after{content:"";position:absolute;right:5px;top:4px;width:90px;height:2px;background:linear-gradient(90deg,transparent,#fff)}@keyframes fly{from{left:-10%;top:18%}to{left:110%;top:72%}}
-.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.legend div{padding:13px;border:1px solid var(--line);border-radius:15px;background:var(--paper)}
-.moods{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.mood{padding:14px;min-height:90px;border:1px solid var(--line);border-radius:18px;background:var(--paper);text-align:left}.mood span{display:block;font-size:1.3rem}
-.door{width:min(620px,100%);min-height:500px;margin:auto;border-radius:260px 260px 28px 28px;background:linear-gradient(#f0d9da,#fff7f1);border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:35px}
-.modal{position:fixed;inset:0;background:#1d1820cc;z-index:50;display:grid;place-items:center;padding:16px}.card{width:min(760px,100%);background:var(--paper);border-radius:25px;padding:17px;position:relative}.card img{width:100%;max-height:72vh;object-fit:contain;border-radius:16px}.close{position:absolute;right:9px;top:9px;width:42px;height:42px;border:0;border-radius:50%;background:white;font-size:1.5rem}
-footer{padding:70px 20px;text-align:center;background:#f1e2e1}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.heroimg{order:-1;height:52vh;border-radius:150px 150px 22px 22px}.legend{grid-template-columns:1fr 1fr}.moods{grid-template-columns:1fr 1fr}#space{min-height:650px}}
-</style></head><body>
-<main>
-<section class="section hero"><div class="nav"><b style="font-family:Georgia">casa nostra ♡</b><span id="liveDate"></span></div><div><p id="greet" class="ey"></p><h1>un posto che<br><i style="color:var(--wine)">continua a vivere</i><br>con noi</h1><p id="days" class="muted"></p></div><div class="heroimg"><img src="assets/photos/feb_01.jpg"></div></section>
-<section class="section"><p class="ey">cuore del progetto</p><h2>la galassia di noi</h2><p class="muted">Più un ricordo è vicino al cuore, più conta. Questa demo usa solo febbraio per capire densità e struttura.</p><div id="space"><div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div><div class="orbit o4"></div><button id="heart" class="heart" style="border:0;background:none">❤️</button><button id="comet" class="comet" aria-label="ricordo casuale"></button></div>
-<div class="legend"><div>🤍 vicino → fondamentali</div><div>✨ medio → quotidianità</div><div>🌌 lontano → buffi/casuali</div><div>💡 luminosa → video</div><div>🩷 rosa → audio</div><div>🪐 pianeta → evento</div></div></section>
-<section class="section"><p class="ey">parte viva</p><h2>come ti senti oggi?</h2><div id="moods" class="moods"></div></section>
-<section class="section"><div class="door"><div><p class="ey">una stanza ancora chiusa</p><h2>20 luglio 2026</h2><p class="muted">non ancora, patatina ♡</p><button class="pill">🔒</button></div></div></section>
-<footer>questa pagina cresce con voi · amin ♡ camilla</footer></main>
-<div id="modal" class="modal hidden"><div class="card"><button id="closeBtn" class="close">×</button><img id="photo"><p id="caption"></p></div></div>
-<script>
-const photos=["assets/photos/feb_01.jpg", "assets/photos/feb_02.jpg", "assets/photos/feb_03.jpg", "assets/photos/feb_04.jpg", "assets/photos/feb_05.jpg", "assets/photos/feb_06.jpg", "assets/photos/feb_07.jpg", "assets/photos/feb_08.jpg", "assets/photos/feb_09.jpg", "assets/photos/feb_10.jpg", "assets/photos/feb_11.jpg", "assets/photos/feb_12.jpg", "assets/photos/feb_13.jpg", "assets/photos/feb_14.jpg", "assets/photos/feb_15.jpg", "assets/photos/feb_16.jpg", "assets/photos/feb_17.jpg", "assets/photos/feb_18.jpg", "assets/photos/feb_19.jpg", "assets/photos/feb_20.jpg", "assets/photos/feb_21.jpg", "assets/photos/feb_22.jpg", "assets/photos/feb_23.jpg", "assets/photos/feb_24.jpg"],now=new Date();liveDate.textContent=now.toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'});greet.textContent=now.getHours()<10?'buongiorno patatina':now.getHours()<18?'ciao patatina':'buonasera amore';days.textContent=Math.floor((now-new Date('2026-02-09'))/86400000)+' giorni di noi';
-const space=document.getElementById('space'),modal=document.getElementById('modal'),photo=document.getElementById('photo'),caption=document.getElementById('caption');function openM(i,t){photo.src=photos[i%photos.length];caption.textContent=t;modal.classList.remove('hidden')}
-const rings=[{r:13,n:6},{r:25,n:8},{r:37,n:10},{r:49,n:12}];let k=0;rings.forEach((q,ri)=>{for(let i=0;i<q.n;i++){let a=i/q.n*Math.PI*2+ri*.4,b=document.createElement('button');b.className=(k%11===0?'planet':'star')+(ri===0?' important':'')+(k%13===0?' audio':'')+(k%9===0?' video':'');b.style.left=(50+Math.cos(a)*q.r)+'%';b.style.top=(50+Math.sin(a)*q.r*.72)+'%';let idx=k++,txt=ri===0?'ricordo fondamentale':ri<3?'vita quotidiana':'momento buffo o casuale';b.onclick=()=>openM(idx,txt);space.appendChild(b)}});
-heart.onclick=()=>openM(0,'noi — il centro di tutto');comet.onclick=()=>openM(Math.floor(Math.random()*photos.length),'ricordo casuale');
-closeBtn.onclick=()=>modal.classList.add('hidden');modal.onclick=e=>{if(e.target===modal)modal.classList.add('hidden')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.add('hidden')});
-[['🥺','mi manchi'],['😔','sono triste'],['🥰','sono felice'],['😤','sono arrabbiata'],['🌙','non dormo'],['🫂','ho bisogno di te'],['💗','voglio sentirmi amata'],['😂','voglio ridere']].forEach(([e,t],i)=>{let b=document.createElement('button');b.className='mood';b.innerHTML='<span>'+e+'</span>'+t;b.onclick=()=>openM(i*3,'qui potrà uscire foto, frase, audio o video');moods.appendChild(b)});
-</script></body></html>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cinque mesi di noi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="noise"></div>
+<header class="hero">
+  <div class="hero-inner reveal">
+    <p class="eyebrow">La nostra storia</p>
+    <h1>Cinque mesi.<br><em>Centinaia di ricordi.</em><br>Una sola persona.</h1>
+    <p class="lead">E se potessi tornare indietro, sceglierei ancora te.</p>
+    <button class="primary" id="startBtn">Torna con me all’inizio ↓</button>
+  </div>
+</header>
+
+<main id="story">
+
+<section class="chapter" id="febbraio">
+  <div class="chapter-head reveal">
+    <span class="eyebrow">Febbraio</span>
+    <h2>L’inizio di noi</h2>
+    <p>Senza accorgercene, stavamo iniziando a diventare noi.</p>
+  </div>
+  <div class="memory-grid"><button class="memory" data-open="assets/febbraio/001_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/001_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/002_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/002_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/003_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/003_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/004_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/004_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/005_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/005_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/006_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/006_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/007_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/007_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/008_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/008_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/febbraio/009_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/febbraio/009_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/febbraio/010_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/010_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/011_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/011_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/012_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/012_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/013_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/013_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/014_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/014_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/015_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/015_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/016_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/016_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/017_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/017_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/018_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/018_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/019_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/019_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/020_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/020_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/febbraio/021_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/febbraio/021_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/febbraio/022_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/022_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/023_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/023_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/024_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/024_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/025_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/025_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/026_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/026_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/027_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/027_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/028_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/028_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/029_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/029_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/030_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/030_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/031_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/031_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/032_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/032_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/033_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/033_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/febbraio/034_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/febbraio/034_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/febbraio/035_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/035_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/febbraio/036_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/febbraio/036_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/febbraio/037_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/febbraio/037_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/febbraio/038_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/febbraio/038_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button></div>
+</section>
+
+<section class="question reveal">
+  <p class="eyebrow">Una domanda</p>
+  <h2>Secondo te, quando ho iniziato davvero a capire che eri speciale?</h2>
+  <div class="choices">
+    <button data-answer="1">Dal primo momento</button>
+    <button data-answer="2">Quando ho iniziato a cercarti anche senza un motivo</button>
+    <button data-answer="3">Quando stare con te ha iniziato a sembrarmi casa</button>
+  </div>
+  <p id="answerText"></p>
+</section>
+
+
+<section class="chapter" id="marzo">
+  <div class="chapter-head reveal">
+    <span class="eyebrow">Marzo</span>
+    <h2>Sempre più vicini</h2>
+    <p>A un certo punto non erano più solo appuntamenti. Era qualcosa di nostro.</p>
+  </div>
+  <div class="memory-grid"><button class="memory video-card" data-open="assets/marzo/001_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/001_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/marzo/002_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/002_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/003_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/003_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/marzo/004_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/004_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/marzo/005_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/005_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/marzo/006_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/006_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/marzo/007_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/007_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/008_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/008_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/009_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/009_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/010_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/010_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/011_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/011_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/012_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/012_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/013_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/013_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/014_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/014_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/015_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/015_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/016_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/016_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/017_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/017_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/018_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/018_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/marzo/019_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/019_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/marzo/020_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/020_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/marzo/021_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/021_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/marzo/022_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/022_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/023_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/023_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/024_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/024_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/025_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/025_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/026_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/026_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/027_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/027_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/028_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/028_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/029_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/029_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/030_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/030_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/031_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/031_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/marzo/032_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/032_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/marzo/033_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/033_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/034_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/034_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/marzo/035_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/035_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/marzo/036_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/036_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/037_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/037_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/marzo/038_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/marzo/038_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/marzo/039_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/039_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/marzo/040_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/040_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/marzo/041_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/041_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/marzo/042_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/042_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/marzo/043_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/marzo/043_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button></div>
+</section>
+<section class="chapter" id="aprile">
+  <div class="chapter-head reveal">
+    <span class="eyebrow">Aprile</span>
+    <h2>La nostra normalità</h2>
+    <p>Ho capito che non servivano giornate speciali. Mi bastava viverle con te.</p>
+  </div>
+  <div class="memory-grid"><button class="memory" data-open="assets/aprile/001_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/001_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/002_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/002_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/003_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/003_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/004_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/004_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/aprile/005_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/005_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/aprile/006_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/006_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/aprile/007_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/007_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/aprile/008_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/008_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/aprile/009_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/009_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/aprile/010_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/010_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/aprile/011_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/011_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/aprile/012_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/012_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/aprile/013_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/013_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/aprile/014_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/014_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/015_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/015_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/016_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/016_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/017_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/017_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/018_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/018_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/019_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/019_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/020_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/020_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/021_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/021_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/022_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/022_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/023_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/023_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/024_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/024_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/025_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/025_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/026_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/026_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/027_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/027_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/028_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/028_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/aprile/029_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/029_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/aprile/030_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/aprile/030_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/aprile/031_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/aprile/031_image.jpg" loading="lazy" alt="Un nostro ricordo"></button></div>
+</section>
+
+<section class="secret reveal">
+  <div>
+    <p class="eyebrow">C’è una cosa nascosta qui</p>
+    <h2>Non tutti i ricordi fanno rumore.</h2>
+    <p>Alcuni restano lì, piccoli, e cambiano tutto.</p>
+  </div>
+  <button id="secretHeart" aria-label="Sorpresa nascosta">♡</button>
+  <p id="secretText">Se hai trovato questo cuore: grazie per essere diventata una parte così bella delle mie giornate.</p>
+</section>
+
+
+<section class="chapter" id="maggio">
+  <div class="chapter-head reveal">
+    <span class="eyebrow">Maggio</span>
+    <h2>Noi, ovunque</h2>
+    <p>Romantici, scemi, in giro. Sempre noi.</p>
+  </div>
+  <div class="memory-grid"><button class="memory" data-open="assets/maggio/001_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/001_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/002_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/002_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/003_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/003_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/maggio/004_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/004_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/maggio/005_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/005_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/006_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/006_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/maggio/007_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/007_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/maggio/008_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/008_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/009_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/009_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/010_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/010_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/011_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/011_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/012_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/012_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/013_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/013_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/maggio/014_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/014_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/maggio/015_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/015_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/016_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/016_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/017_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/017_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/018_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/018_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/019_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/019_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/020_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/020_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/021_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/021_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/022_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/022_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/maggio/023_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/023_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/maggio/024_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/024_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/025_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/025_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/maggio/026_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/026_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/maggio/027_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/027_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/028_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/028_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/029_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/029_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/030_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/030_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/031_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/031_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/maggio/032_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/maggio/032_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/maggio/033_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/033_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/maggio/034_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/maggio/034_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button></div>
+</section>
+<section class="chapter" id="giugno">
+  <div class="chapter-head reveal">
+    <span class="eyebrow">Giugno</span>
+    <h2>Sempre più casa</h2>
+    <p>Tra tutte le cose belle, la mia preferita restava sentirmi vicino a te.</p>
+  </div>
+  <div class="memory-grid"><button class="memory" data-open="assets/giugno/001_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/001_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/002_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/002_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/003_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/003_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/004_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/004_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/005_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/005_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/006_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/006_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/007_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/007_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/giugno/008_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/giugno/008_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/giugno/009_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/009_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/010_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/010_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/giugno/011_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/giugno/011_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/giugno/012_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/012_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/013_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/013_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/014_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/014_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/015_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/015_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/016_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/016_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/017_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/017_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/018_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/018_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/019_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/019_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/020_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/020_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/021_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/021_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/022_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/022_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/023_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/023_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/giugno/024_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/giugno/024_image.jpg" loading="lazy" alt="Un nostro ricordo"></button></div>
+</section>
+
+<section class="fake-end" id="fakeEnd">
+  <p class="reveal">E forse potrei fermarmi qui…</p>
+  <div class="pause"></div>
+  <h2 class="reveal">…ma poi è arrivato <em>luglio.</em></h2>
+  <button class="primary reveal" id="unlockJuly">Apri luglio</button>
+</section>
+
+<section class="chapter july hidden" id="luglio">
+  <div class="chapter-head reveal">
+    <span class="eyebrow">Luglio</span>
+    <h2>Il nostro mondo</h2>
+    <p>Non un mese da mettere in fila. Un mondo intero da attraversare.</p>
+  </div>
+  <div class="july-part reveal"><h3>Noi che ridiamo</h3><p>Le facce, le battute, i momenti che capiamo solo noi.</p></div>
+    <div class="memory-grid july-grid"><button class="memory video-card" data-open="assets/luglio/001_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/001_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/002_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/002_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/003_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/003_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/004_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/004_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/005_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/005_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/006_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/006_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/007_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/007_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/008_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/008_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/009_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/009_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/010_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/010_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/011_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/011_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/012_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/012_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/013_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/013_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/014_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/014_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/015_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/015_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/016_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/016_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/017_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/017_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/018_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/018_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/019_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/019_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/020_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/020_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/021_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/021_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/022_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/022_image.jpg" loading="lazy" alt="Un nostro ricordo"></button></div>
+<div class="july-part reveal"><h3>Noi in giro</h3><p>Posti diversi. La stessa sensazione: esserci insieme.</p></div>
+    <div class="memory-grid july-grid"><button class="memory video-card" data-open="assets/luglio/023_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/023_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/024_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/024_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/025_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/025_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/026_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/026_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/027_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/027_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/028_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/028_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/029_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/029_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/030_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/030_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/031_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/031_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/032_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/032_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/033_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/033_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/034_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/034_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/035_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/035_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/036_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/036_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/037_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/037_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/038_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/038_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/039_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/039_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/040_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/040_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/041_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/041_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/042_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/042_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/043_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/043_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/044_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/044_image.jpg" loading="lazy" alt="Un nostro ricordo"></button></div>
+<div class="july-part reveal"><h3>Noi scemi</h3><p>Probabilmente la nostra versione più autentica.</p></div>
+    <div class="memory-grid july-grid"><button class="memory" data-open="assets/luglio/045_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/045_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/046_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/046_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/047_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/047_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/048_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/048_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/049_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/049_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/050_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/050_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/051_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/051_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/052_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/052_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/053_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/053_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/054_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/054_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/055_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/055_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/056_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/056_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/057_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/057_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/058_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/058_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/059_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/059_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/060_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/060_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/061_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/061_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/062_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/062_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/063_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/063_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/064_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/064_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/065_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/065_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/066_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/066_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/067_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/067_image.jpg" loading="lazy" alt="Un nostro ricordo"></button></div>
+<div class="july-part reveal"><h3>Noi vicini</h3><p>Quei momenti in cui il resto poteva aspettare.</p></div>
+    <div class="memory-grid july-grid"><button class="memory" data-open="assets/luglio/068_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/068_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/069_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/069_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/070_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/070_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/071_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/071_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/072_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/072_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/073_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/073_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/074_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/074_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/075_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/075_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/076_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/076_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/077_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/077_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/078_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/078_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/079_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/079_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/080_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/080_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/081_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/081_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/082_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/082_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/083_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/083_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/084_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/084_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/085_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/085_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/086_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/086_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/087_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/087_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/088_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/088_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/089_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/089_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button></div>
+<div class="july-part reveal"><h3>I ricordi che non voglio perdere</h3><p>Perché alcuni istanti meritano di restare.</p></div>
+    <div class="memory-grid july-grid"><button class="memory" data-open="assets/luglio/090_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/090_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/091_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/091_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/092_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/092_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/093_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/093_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/094_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/094_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/095_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/095_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/096_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/096_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/097_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/097_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/098_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/098_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/099_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/099_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/100_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/100_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/101_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/101_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory video-card" data-open="assets/luglio/102_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/102_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button>
+<button class="memory" data-open="assets/luglio/103_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/103_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/104_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/104_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/105_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/105_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/106_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/106_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/107_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/107_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/108_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/108_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/109_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/109_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory" data-open="assets/luglio/110_image.jpg" data-type="image" aria-label="Apri foto"><img src="assets/luglio/110_image.jpg" loading="lazy" alt="Un nostro ricordo"></button>
+<button class="memory video-card" data-open="assets/luglio/111_video.mp4" data-type="video" aria-label="Apri video"><video src="assets/luglio/111_video.mp4" muted playsinline preload="metadata"></video><span>▶</span></button></div>
+</section>
+
+<section class="letter reveal" id="letter">
+  <p class="eyebrow">Per te</p>
+  <h2>La parte che nessuna foto riesce a dire.</h2>
+  <p>In questi cinque mesi non ho raccolto soltanto foto e video. Ho raccolto pezzi di vita con te: giornate importanti, momenti stupidi, risate, baci, silenzi e quella normalità che con te ha iniziato ad avere un sapore diverso.</p>
+  <p>Non so cosa ci aspetta in ogni dettaglio. So però che, guardando tutto questo, c’è una cosa che sento con chiarezza: sono felice che in mezzo a milioni di possibilità ci siamo trovati noi.</p>
+  <p class="signature">E ti sceglierei ancora. ❤️</p>
+</section>
+
+<section class="finale reveal">
+  <p class="eyebrow">Febbraio → Luglio</p>
+  <h2>Abbiamo già riempito così tanto.</h2>
+  <button class="primary" id="continueBtn">Continuiamo?</button>
+  <div id="future" class="future hidden">
+    <h3>Il resto dobbiamo ancora riempirlo insieme.</h3>
+    <p>Questa pagina è vuota apposta. È per tutto quello che deve ancora succedere.</p>
+    <span>∞</span>
+  </div>
+</section>
+</main>
+
+<div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+  <button id="closeModal" aria-label="Chiudi">×</button>
+  <div id="modalContent"></div>
+</div>
+
+<script>window.MEMORIES={"Febbraio": [{"src": "assets/febbraio/001_image.jpg", "type": "image"}, {"src": "assets/febbraio/002_image.jpg", "type": "image"}, {"src": "assets/febbraio/003_image.jpg", "type": "image"}, {"src": "assets/febbraio/004_image.jpg", "type": "image"}, {"src": "assets/febbraio/005_image.jpg", "type": "image"}, {"src": "assets/febbraio/006_image.jpg", "type": "image"}, {"src": "assets/febbraio/007_image.jpg", "type": "image"}, {"src": "assets/febbraio/008_image.jpg", "type": "image"}, {"src": "assets/febbraio/009_video.mp4", "type": "video"}, {"src": "assets/febbraio/010_image.jpg", "type": "image"}, {"src": "assets/febbraio/011_image.jpg", "type": "image"}, {"src": "assets/febbraio/012_image.jpg", "type": "image"}, {"src": "assets/febbraio/013_image.jpg", "type": "image"}, {"src": "assets/febbraio/014_image.jpg", "type": "image"}, {"src": "assets/febbraio/015_image.jpg", "type": "image"}, {"src": "assets/febbraio/016_image.jpg", "type": "image"}, {"src": "assets/febbraio/017_image.jpg", "type": "image"}, {"src": "assets/febbraio/018_image.jpg", "type": "image"}, {"src": "assets/febbraio/019_image.jpg", "type": "image"}, {"src": "assets/febbraio/020_image.jpg", "type": "image"}, {"src": "assets/febbraio/021_video.mp4", "type": "video"}, {"src": "assets/febbraio/022_image.jpg", "type": "image"}, {"src": "assets/febbraio/023_image.jpg", "type": "image"}, {"src": "assets/febbraio/024_image.jpg", "type": "image"}, {"src": "assets/febbraio/025_image.jpg", "type": "image"}, {"src": "assets/febbraio/026_image.jpg", "type": "image"}, {"src": "assets/febbraio/027_image.jpg", "type": "image"}, {"src": "assets/febbraio/028_image.jpg", "type": "image"}, {"src": "assets/febbraio/029_image.jpg", "type": "image"}, {"src": "assets/febbraio/030_image.jpg", "type": "image"}, {"src": "assets/febbraio/031_image.jpg", "type": "image"}, {"src": "assets/febbraio/032_image.jpg", "type": "image"}, {"src": "assets/febbraio/033_image.jpg", "type": "image"}, {"src": "assets/febbraio/034_video.mp4", "type": "video"}, {"src": "assets/febbraio/035_image.jpg", "type": "image"}, {"src": "assets/febbraio/036_image.jpg", "type": "image"}, {"src": "assets/febbraio/037_video.mp4", "type": "video"}, {"src": "assets/febbraio/038_video.mp4", "type": "video"}], "Marzo": [{"src": "assets/marzo/001_video.mp4", "type": "video"}, {"src": "assets/marzo/002_image.jpg", "type": "image"}, {"src": "assets/marzo/003_image.jpg", "type": "image"}, {"src": "assets/marzo/004_video.mp4", "type": "video"}, {"src": "assets/marzo/005_image.jpg", "type": "image"}, {"src": "assets/marzo/006_video.mp4", "type": "video"}, {"src": "assets/marzo/007_image.jpg", "type": "image"}, {"src": "assets/marzo/008_image.jpg", "type": "image"}, {"src": "assets/marzo/009_image.jpg", "type": "image"}, {"src": "assets/marzo/010_image.jpg", "type": "image"}, {"src": "assets/marzo/011_image.jpg", "type": "image"}, {"src": "assets/marzo/012_image.jpg", "type": "image"}, {"src": "assets/marzo/013_image.jpg", "type": "image"}, {"src": "assets/marzo/014_image.jpg", "type": "image"}, {"src": "assets/marzo/015_image.jpg", "type": "image"}, {"src": "assets/marzo/016_image.jpg", "type": "image"}, {"src": "assets/marzo/017_image.jpg", "type": "image"}, {"src": "assets/marzo/018_image.jpg", "type": "image"}, {"src": "assets/marzo/019_video.mp4", "type": "video"}, {"src": "assets/marzo/020_video.mp4", "type": "video"}, {"src": "assets/marzo/021_video.mp4", "type": "video"}, {"src": "assets/marzo/022_image.jpg", "type": "image"}, {"src": "assets/marzo/023_image.jpg", "type": "image"}, {"src": "assets/marzo/024_image.jpg", "type": "image"}, {"src": "assets/marzo/025_image.jpg", "type": "image"}, {"src": "assets/marzo/026_image.jpg", "type": "image"}, {"src": "assets/marzo/027_image.jpg", "type": "image"}, {"src": "assets/marzo/028_image.jpg", "type": "image"}, {"src": "assets/marzo/029_image.jpg", "type": "image"}, {"src": "assets/marzo/030_image.jpg", "type": "image"}, {"src": "assets/marzo/031_image.jpg", "type": "image"}, {"src": "assets/marzo/032_video.mp4", "type": "video"}, {"src": "assets/marzo/033_image.jpg", "type": "image"}, {"src": "assets/marzo/034_image.jpg", "type": "image"}, {"src": "assets/marzo/035_video.mp4", "type": "video"}, {"src": "assets/marzo/036_image.jpg", "type": "image"}, {"src": "assets/marzo/037_image.jpg", "type": "image"}, {"src": "assets/marzo/038_image.jpg", "type": "image"}, {"src": "assets/marzo/039_video.mp4", "type": "video"}, {"src": "assets/marzo/040_video.mp4", "type": "video"}, {"src": "assets/marzo/041_video.mp4", "type": "video"}, {"src": "assets/marzo/042_video.mp4", "type": "video"}, {"src": "assets/marzo/043_video.mp4", "type": "video"}], "Aprile": [{"src": "assets/aprile/001_image.jpg", "type": "image"}, {"src": "assets/aprile/002_image.jpg", "type": "image"}, {"src": "assets/aprile/003_image.jpg", "type": "image"}, {"src": "assets/aprile/004_image.jpg", "type": "image"}, {"src": "assets/aprile/005_video.mp4", "type": "video"}, {"src": "assets/aprile/006_video.mp4", "type": "video"}, {"src": "assets/aprile/007_video.mp4", "type": "video"}, {"src": "assets/aprile/008_video.mp4", "type": "video"}, {"src": "assets/aprile/009_image.jpg", "type": "image"}, {"src": "assets/aprile/010_video.mp4", "type": "video"}, {"src": "assets/aprile/011_video.mp4", "type": "video"}, {"src": "assets/aprile/012_video.mp4", "type": "video"}, {"src": "assets/aprile/013_video.mp4", "type": "video"}, {"src": "assets/aprile/014_image.jpg", "type": "image"}, {"src": "assets/aprile/015_image.jpg", "type": "image"}, {"src": "assets/aprile/016_image.jpg", "type": "image"}, {"src": "assets/aprile/017_image.jpg", "type": "image"}, {"src": "assets/aprile/018_image.jpg", "type": "image"}, {"src": "assets/aprile/019_image.jpg", "type": "image"}, {"src": "assets/aprile/020_image.jpg", "type": "image"}, {"src": "assets/aprile/021_image.jpg", "type": "image"}, {"src": "assets/aprile/022_image.jpg", "type": "image"}, {"src": "assets/aprile/023_image.jpg", "type": "image"}, {"src": "assets/aprile/024_image.jpg", "type": "image"}, {"src": "assets/aprile/025_image.jpg", "type": "image"}, {"src": "assets/aprile/026_image.jpg", "type": "image"}, {"src": "assets/aprile/027_image.jpg", "type": "image"}, {"src": "assets/aprile/028_image.jpg", "type": "image"}, {"src": "assets/aprile/029_image.jpg", "type": "image"}, {"src": "assets/aprile/030_video.mp4", "type": "video"}, {"src": "assets/aprile/031_image.jpg", "type": "image"}], "Maggio": [{"src": "assets/maggio/001_image.jpg", "type": "image"}, {"src": "assets/maggio/002_image.jpg", "type": "image"}, {"src": "assets/maggio/003_image.jpg", "type": "image"}, {"src": "assets/maggio/004_video.mp4", "type": "video"}, {"src": "assets/maggio/005_image.jpg", "type": "image"}, {"src": "assets/maggio/006_image.jpg", "type": "image"}, {"src": "assets/maggio/007_video.mp4", "type": "video"}, {"src": "assets/maggio/008_image.jpg", "type": "image"}, {"src": "assets/maggio/009_image.jpg", "type": "image"}, {"src": "assets/maggio/010_image.jpg", "type": "image"}, {"src": "assets/maggio/011_image.jpg", "type": "image"}, {"src": "assets/maggio/012_image.jpg", "type": "image"}, {"src": "assets/maggio/013_image.jpg", "type": "image"}, {"src": "assets/maggio/014_video.mp4", "type": "video"}, {"src": "assets/maggio/015_image.jpg", "type": "image"}, {"src": "assets/maggio/016_image.jpg", "type": "image"}, {"src": "assets/maggio/017_image.jpg", "type": "image"}, {"src": "assets/maggio/018_image.jpg", "type": "image"}, {"src": "assets/maggio/019_image.jpg", "type": "image"}, {"src": "assets/maggio/020_image.jpg", "type": "image"}, {"src": "assets/maggio/021_image.jpg", "type": "image"}, {"src": "assets/maggio/022_image.jpg", "type": "image"}, {"src": "assets/maggio/023_video.mp4", "type": "video"}, {"src": "assets/maggio/024_image.jpg", "type": "image"}, {"src": "assets/maggio/025_image.jpg", "type": "image"}, {"src": "assets/maggio/026_video.mp4", "type": "video"}, {"src": "assets/maggio/027_image.jpg", "type": "image"}, {"src": "assets/maggio/028_image.jpg", "type": "image"}, {"src": "assets/maggio/029_image.jpg", "type": "image"}, {"src": "assets/maggio/030_image.jpg", "type": "image"}, {"src": "assets/maggio/031_image.jpg", "type": "image"}, {"src": "assets/maggio/032_image.jpg", "type": "image"}, {"src": "assets/maggio/033_video.mp4", "type": "video"}, {"src": "assets/maggio/034_video.mp4", "type": "video"}], "Giugno": [{"src": "assets/giugno/001_image.jpg", "type": "image"}, {"src": "assets/giugno/002_image.jpg", "type": "image"}, {"src": "assets/giugno/003_image.jpg", "type": "image"}, {"src": "assets/giugno/004_image.jpg", "type": "image"}, {"src": "assets/giugno/005_image.jpg", "type": "image"}, {"src": "assets/giugno/006_image.jpg", "type": "image"}, {"src": "assets/giugno/007_image.jpg", "type": "image"}, {"src": "assets/giugno/008_video.mp4", "type": "video"}, {"src": "assets/giugno/009_image.jpg", "type": "image"}, {"src": "assets/giugno/010_image.jpg", "type": "image"}, {"src": "assets/giugno/011_video.mp4", "type": "video"}, {"src": "assets/giugno/012_image.jpg", "type": "image"}, {"src": "assets/giugno/013_image.jpg", "type": "image"}, {"src": "assets/giugno/014_image.jpg", "type": "image"}, {"src": "assets/giugno/015_image.jpg", "type": "image"}, {"src": "assets/giugno/016_image.jpg", "type": "image"}, {"src": "assets/giugno/017_image.jpg", "type": "image"}, {"src": "assets/giugno/018_image.jpg", "type": "image"}, {"src": "assets/giugno/019_image.jpg", "type": "image"}, {"src": "assets/giugno/020_image.jpg", "type": "image"}, {"src": "assets/giugno/021_image.jpg", "type": "image"}, {"src": "assets/giugno/022_image.jpg", "type": "image"}, {"src": "assets/giugno/023_image.jpg", "type": "image"}, {"src": "assets/giugno/024_image.jpg", "type": "image"}], "Luglio": [{"src": "assets/luglio/001_video.mp4", "type": "video"}, {"src": "assets/luglio/002_video.mp4", "type": "video"}, {"src": "assets/luglio/003_video.mp4", "type": "video"}, {"src": "assets/luglio/004_image.jpg", "type": "image"}, {"src": "assets/luglio/005_video.mp4", "type": "video"}, {"src": "assets/luglio/006_video.mp4", "type": "video"}, {"src": "assets/luglio/007_video.mp4", "type": "video"}, {"src": "assets/luglio/008_video.mp4", "type": "video"}, {"src": "assets/luglio/009_image.jpg", "type": "image"}, {"src": "assets/luglio/010_video.mp4", "type": "video"}, {"src": "assets/luglio/011_video.mp4", "type": "video"}, {"src": "assets/luglio/012_video.mp4", "type": "video"}, {"src": "assets/luglio/013_image.jpg", "type": "image"}, {"src": "assets/luglio/014_image.jpg", "type": "image"}, {"src": "assets/luglio/015_image.jpg", "type": "image"}, {"src": "assets/luglio/016_image.jpg", "type": "image"}, {"src": "assets/luglio/017_image.jpg", "type": "image"}, {"src": "assets/luglio/018_image.jpg", "type": "image"}, {"src": "assets/luglio/019_image.jpg", "type": "image"}, {"src": "assets/luglio/020_image.jpg", "type": "image"}, {"src": "assets/luglio/021_image.jpg", "type": "image"}, {"src": "assets/luglio/022_image.jpg", "type": "image"}, {"src": "assets/luglio/023_video.mp4", "type": "video"}, {"src": "assets/luglio/024_image.jpg", "type": "image"}, {"src": "assets/luglio/025_image.jpg", "type": "image"}, {"src": "assets/luglio/026_image.jpg", "type": "image"}, {"src": "assets/luglio/027_image.jpg", "type": "image"}, {"src": "assets/luglio/028_video.mp4", "type": "video"}, {"src": "assets/luglio/029_image.jpg", "type": "image"}, {"src": "assets/luglio/030_image.jpg", "type": "image"}, {"src": "assets/luglio/031_image.jpg", "type": "image"}, {"src": "assets/luglio/032_image.jpg", "type": "image"}, {"src": "assets/luglio/033_image.jpg", "type": "image"}, {"src": "assets/luglio/034_image.jpg", "type": "image"}, {"src": "assets/luglio/035_image.jpg", "type": "image"}, {"src": "assets/luglio/036_image.jpg", "type": "image"}, {"src": "assets/luglio/037_image.jpg", "type": "image"}, {"src": "assets/luglio/038_image.jpg", "type": "image"}, {"src": "assets/luglio/039_image.jpg", "type": "image"}, {"src": "assets/luglio/040_image.jpg", "type": "image"}, {"src": "assets/luglio/041_image.jpg", "type": "image"}, {"src": "assets/luglio/042_image.jpg", "type": "image"}, {"src": "assets/luglio/043_image.jpg", "type": "image"}, {"src": "assets/luglio/044_image.jpg", "type": "image"}, {"src": "assets/luglio/045_image.jpg", "type": "image"}, {"src": "assets/luglio/046_image.jpg", "type": "image"}, {"src": "assets/luglio/047_video.mp4", "type": "video"}, {"src": "assets/luglio/048_video.mp4", "type": "video"}, {"src": "assets/luglio/049_video.mp4", "type": "video"}, {"src": "assets/luglio/050_video.mp4", "type": "video"}, {"src": "assets/luglio/051_video.mp4", "type": "video"}, {"src": "assets/luglio/052_video.mp4", "type": "video"}, {"src": "assets/luglio/053_image.jpg", "type": "image"}, {"src": "assets/luglio/054_image.jpg", "type": "image"}, {"src": "assets/luglio/055_image.jpg", "type": "image"}, {"src": "assets/luglio/056_image.jpg", "type": "image"}, {"src": "assets/luglio/057_image.jpg", "type": "image"}, {"src": "assets/luglio/058_image.jpg", "type": "image"}, {"src": "assets/luglio/059_image.jpg", "type": "image"}, {"src": "assets/luglio/060_image.jpg", "type": "image"}, {"src": "assets/luglio/061_image.jpg", "type": "image"}, {"src": "assets/luglio/062_image.jpg", "type": "image"}, {"src": "assets/luglio/063_image.jpg", "type": "image"}, {"src": "assets/luglio/064_video.mp4", "type": "video"}, {"src": "assets/luglio/065_image.jpg", "type": "image"}, {"src": "assets/luglio/066_image.jpg", "type": "image"}, {"src": "assets/luglio/067_image.jpg", "type": "image"}, {"src": "assets/luglio/068_image.jpg", "type": "image"}, {"src": "assets/luglio/069_image.jpg", "type": "image"}, {"src": "assets/luglio/070_image.jpg", "type": "image"}, {"src": "assets/luglio/071_image.jpg", "type": "image"}, {"src": "assets/luglio/072_image.jpg", "type": "image"}, {"src": "assets/luglio/073_image.jpg", "type": "image"}, {"src": "assets/luglio/074_image.jpg", "type": "image"}, {"src": "assets/luglio/075_image.jpg", "type": "image"}, {"src": "assets/luglio/076_image.jpg", "type": "image"}, {"src": "assets/luglio/077_image.jpg", "type": "image"}, {"src": "assets/luglio/078_image.jpg", "type": "image"}, {"src": "assets/luglio/079_image.jpg", "type": "image"}, {"src": "assets/luglio/080_image.jpg", "type": "image"}, {"src": "assets/luglio/081_video.mp4", "type": "video"}, {"src": "assets/luglio/082_video.mp4", "type": "video"}, {"src": "assets/luglio/083_video.mp4", "type": "video"}, {"src": "assets/luglio/084_image.jpg", "type": "image"}, {"src": "assets/luglio/085_image.jpg", "type": "image"}, {"src": "assets/luglio/086_image.jpg", "type": "image"}, {"src": "assets/luglio/087_video.mp4", "type": "video"}, {"src": "assets/luglio/088_video.mp4", "type": "video"}, {"src": "assets/luglio/089_video.mp4", "type": "video"}, {"src": "assets/luglio/090_image.jpg", "type": "image"}, {"src": "assets/luglio/091_image.jpg", "type": "image"}, {"src": "assets/luglio/092_image.jpg", "type": "image"}, {"src": "assets/luglio/093_video.mp4", "type": "video"}, {"src": "assets/luglio/094_image.jpg", "type": "image"}, {"src": "assets/luglio/095_image.jpg", "type": "image"}, {"src": "assets/luglio/096_image.jpg", "type": "image"}, {"src": "assets/luglio/097_image.jpg", "type": "image"}, {"src": "assets/luglio/098_image.jpg", "type": "image"}, {"src": "assets/luglio/099_image.jpg", "type": "image"}, {"src": "assets/luglio/100_video.mp4", "type": "video"}, {"src": "assets/luglio/101_video.mp4", "type": "video"}, {"src": "assets/luglio/102_video.mp4", "type": "video"}, {"src": "assets/luglio/103_image.jpg", "type": "image"}, {"src": "assets/luglio/104_image.jpg", "type": "image"}, {"src": "assets/luglio/105_image.jpg", "type": "image"}, {"src": "assets/luglio/106_image.jpg", "type": "image"}, {"src": "assets/luglio/107_image.jpg", "type": "image"}, {"src": "assets/luglio/108_image.jpg", "type": "image"}, {"src": "assets/luglio/109_image.jpg", "type": "image"}, {"src": "assets/luglio/110_image.jpg", "type": "image"}, {"src": "assets/luglio/111_video.mp4", "type": "video"}]};</script>
+<script src="script.js"></script>
+</body>
+</html>

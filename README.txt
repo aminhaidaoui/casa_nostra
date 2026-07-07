@@ -1,4 +1,7 @@
-PROTOTIPO STRUTTURA
-Foto reali usate: 24 da Febbraioo.zip.
-Scopo: decidere cosa va dove PRIMA di scegliere il resto.
-Include data giornaliera dinamica, galassia con cuore centrale, 4 livelli di importanza, stelle video/audio, pianeti-evento, cometa casuale, 8 stati d'animo e porta 20 luglio.
+CINQUE MESI DI NOI
+
+1) Estrai tutta la cartella.
+2) Apri index.html con Chrome o Edge.
+3) Non spostare index.html separatamente dalla cartella assets.
+
+Nota: i file HEIC/MOV dipendono dal supporto del browser. Chrome/Edge possono non mostrare alcuni HEIC.
