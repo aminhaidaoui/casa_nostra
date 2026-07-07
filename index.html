@@ -160,80 +160,55 @@ footer{padding:70px 20px;text-align:center;background:var(--blush)}@media(max-wi
 .mystery-whisper{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);z-index:20;color:#fff8;font:italic .82rem Georgia,serif;letter-spacing:.04em;white-space:nowrap}
 .easter-star{z-index:25}
 
-/* === V15: centratura mobile + cometa ciclica === */
+/* === V16 FIX CHIRURGICO — BASE V14 INVARIATA === */
+
+/* 1) Mobile: sistema interno centrato senza ingrandirlo */
 @media(max-width:650px){
-  .solar-shell{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0;
-  }
   .solar-system{
-    width:min(112vw,760px);
-    height:auto;
-    aspect-ratio:1/1;
-    max-height:none;
-    position:relative;
-    left:50%;
-    transform:translateX(-50%);
-    flex:0 0 auto;
+    width:100vw !important;
+    max-width:100vw !important;
+    left:auto !important;
+    right:auto !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    transform:none !important;
   }
-  .solar-title{
-    top:7%;
-  }
-  .mystery-whisper{
-    bottom:4%;
-    width:92vw;
-    white-space:normal;
-    text-align:center;
-    line-height:1.35;
+  .solar-shell{
+    display:grid !important;
+    place-items:center !important;
+    padding:0 !important;
   }
 }
 
-/* La cometa ora attraversa TUTTO il sistema, svanisce fuori campo,
-   resta assente per un po', poi ricompare per un nuovo passaggio. */
+/* 2) Cometa: un passaggio completo, sparisce, pausa, ritorna */
 .easter-star{
-  opacity:0;
-  left:-18%;
+  left:-20%;
   top:18%;
-  animation:cometPass 11s linear infinite !important;
-  filter:drop-shadow(0 0 7px #fff) drop-shadow(0 0 15px var(--month));
+  opacity:0;
+  animation:cometFlyThrough 12s linear infinite !important;
 }
 .easter-star::after{
   display:block !important;
-  width:150px;
-  height:2px;
-  right:16px;
-  top:12px;
-  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--month) 70%,white),#fff);
+  width:145px !important;
   opacity:.9;
 }
-@keyframes cometPass{
-  0%,8%{
-    left:-18%; top:16%; opacity:0;
-    transform:rotate(18deg) scale(.7);
-  }
-  10%{opacity:1}
-  22%{
-    left:18%; top:29%; opacity:1;
-    transform:rotate(20deg) scale(.9);
-  }
-  38%{
-    left:48%; top:47%; opacity:1;
-    transform:rotate(22deg) scale(1.08);
-  }
-  54%{
-    left:78%; top:64%; opacity:1;
-    transform:rotate(24deg) scale(.95);
-  }
-  66%{
-    left:118%; top:82%; opacity:0;
-    transform:rotate(26deg) scale(.65);
-  }
-  100%{
-    left:118%; top:82%; opacity:0;
-    transform:rotate(26deg) scale(.65);
-  }
+@keyframes cometFlyThrough{
+  0%,7%{left:-20%;top:18%;opacity:0;transform:rotate(20deg) scale(.7)}
+  9%{opacity:1}
+  24%{left:18%;top:32%;opacity:1;transform:rotate(21deg) scale(.9)}
+  40%{left:48%;top:49%;opacity:1;transform:rotate(22deg) scale(1.08)}
+  56%{left:78%;top:66%;opacity:1;transform:rotate(23deg) scale(.9)}
+  68%{left:120%;top:84%;opacity:0;transform:rotate(24deg) scale(.65)}
+  100%{left:120%;top:84%;opacity:0;transform:rotate(24deg) scale(.65)}
+}
+
+/* Aprile resta la stessa galassia della V14: cambia SOLO posizione.
+   Il buco nero centrale non viene modificato né sostituito. */
+.galaxy.v16-aprile{
+  left:50% !important;
+  top:43% !important;
+  transform:translate(-50%,-50%) !important;
+  z-index:12 !important;
 }
 </style></head><body>
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ♡</button></div></section>
@@ -274,7 +249,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)closeMemory()});
 const galaxies=[
  {name:'febbraio',x:18,y:27,c1:'#ffd4df',c2:'#9b5478'},
  {name:'marzo',x:72,y:20,c1:'#c8c0ff',c2:'#5e5794'},
- {name:'aprile',x:50,y:50,c1:'#ffd2a9',c2:'#a5675d'},
+ {name:'aprile',x:30,y:47,c1:'#ffd2a9',c2:'#a5675d'},
  {name:'maggio',x:79,y:68,c1:'#b8eee4',c2:'#477d7a'},
  {name:'giugno',x:25,y:73,c1:'#efbde6',c2:'#7e4e79'}
 ];
@@ -379,4 +354,13 @@ document.addEventListener('keydown',e=>{
  if(e.key==='Escape'){ if(!modal.classList.contains('hidden')) closeMemory(); else if(!monthWorld.classList.contains('hidden')) closeWorld(); }
  if((e.key==='s'||e.key==='S')&&!monthWorld.classList.contains('hidden')) closeWorld();
 });
+
+/* V16 APRILE POSITION ONLY */
+setTimeout(()=>{
+  document.querySelectorAll('.galaxy').forEach(el=>{
+    const txt=(el.textContent||'').trim().toLowerCase();
+    if(txt.includes('aprile')) el.classList.add('v16-aprile');
+  });
+},0);
+
 </script><div id="lockWhisper" class="lock-whisper"></div></body></html>
