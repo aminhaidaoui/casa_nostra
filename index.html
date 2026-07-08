@@ -563,6 +563,22 @@ header:first-of-type,
   .v29-vine{width:78px!important}
 }
 
+
+/* V31 — sfondo esterno con la foto di rose scelta da Amin */
+html{
+  background:#3a0009 url("assets/sfondo_rose.png") center top / cover fixed no-repeat !important;
+}
+body{
+  background:transparent !important;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:url("assets/sfondo_rose.png") center center / cover no-repeat;
+}
+
 </style>
 <style id="july-finale-v25">
 .july-heart-ready{cursor:pointer!important;filter:drop-shadow(0 0 24px rgba(255,190,220,.9));animation:julyReady 1.8s ease-in-out infinite!important}
