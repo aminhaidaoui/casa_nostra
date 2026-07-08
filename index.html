@@ -665,6 +665,27 @@ section.v21-moods::before,
   }
 }
 
+
+/* V34 — sezione mood: stesso sfondo bianco del resto della pagina, punto */
+.v21-moods,
+section.v21-moods,
+#moods,
+.moods-section{
+  background:#f7f4ef!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.v21-moods::before,
+section.v21-moods::before,
+#moods::before,
+.moods-section::before{
+  display:none!important;
+  content:none!important;
+}
+
 </style>
 <style id="july-finale-v25">
 .july-heart-ready{cursor:pointer!important;filter:drop-shadow(0 0 24px rgba(255,190,220,.9));animation:julyReady 1.8s ease-in-out infinite!important}
