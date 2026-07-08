@@ -534,6 +534,35 @@ header:first-of-type,
  .v29-pop{opacity:1!important;transform:none!important}
 }
 
+
+/* V30 FIX — rose sempre realmente visibili */
+.v29-rose-frame{overflow:visible!important}
+.v29-vine{
+  width:clamp(105px,12vw,190px)!important;
+  overflow:visible!important;
+}
+.v29-vine svg{overflow:visible!important}
+.v29-rose.v29-pop{
+  opacity:1!important;
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:none!important;
+}
+.v29-rose.v29-pop.show{
+  opacity:1!important;
+  animation:none!important;
+}
+.v29-leaf.v29-pop{
+  opacity:.96!important;
+  animation:none!important;
+}
+@media(max-width:800px){
+  .v29-vine{width:92px!important}
+}
+@media(max-width:430px){
+  .v29-vine{width:78px!important}
+}
+
 </style>
 <style id="july-finale-v25">
 .july-heart-ready{cursor:pointer!important;filter:drop-shadow(0 0 24px rgba(255,190,220,.9));animation:julyReady 1.8s ease-in-out infinite!important}
@@ -1164,10 +1193,7 @@ julyObserver.observe(document.body,{subtree:true,childList:true,attributes:true,
      const q=Math.max(0,Math.min(1,p*1.08-sideLag));
      el.style.strokeDashoffset=String(2400*(1-q));
    });
-   pops.forEach(el=>{
-     let at=Number(el.dataset.at||0)+(el.closest('.right')?.035:0);
-     el.classList.toggle('show',p>=at);
-   });
+   pops.forEach(el=>el.classList.add('show'));
    busy=false;
  }
  function request(){if(!busy){busy=true;requestAnimationFrame(draw)}}
