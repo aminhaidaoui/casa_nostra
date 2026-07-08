@@ -500,6 +500,40 @@ header:first-of-type,
   }
 }
 
+
+/* V27 — tralci di rose rampicanti ai lati */
+.v27-rose-vines{
+  position:fixed; inset:0; z-index:38; pointer-events:none; overflow:hidden;
+}
+.v27-vine{
+  position:absolute; top:0; bottom:0; width:clamp(42px,6vw,88px);
+  opacity:.88;
+}
+.v27-vine.left{left:0}
+.v27-vine.right{right:0; transform:scaleX(-1)}
+.v27-vine svg{width:100%;height:100%;overflow:visible}
+.v27-stem{
+  fill:none; stroke:#183f3b; stroke-width:3.2; stroke-linecap:round;
+  filter:drop-shadow(0 0 3px rgba(20,58,55,.24));
+  stroke-dasharray:1800; stroke-dashoffset:1800;
+  transition:stroke-dashoffset .12s linear;
+}
+.v27-branch{fill:none;stroke:#285a50;stroke-width:2.1;stroke-linecap:round;opacity:.92}
+.v27-leaf{fill:#285a50;filter:drop-shadow(0 1px 2px rgba(10,30,28,.2))}
+.v27-bud{fill:#8f1838;filter:drop-shadow(0 0 5px rgba(143,24,56,.28))}
+.v27-rose{transform-box:fill-box;transform-origin:center;transform:scale(.72);opacity:.78;
+  transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s}
+.v27-rose.bloom{transform:scale(1);opacity:1}
+.v27-rose .p1{fill:#8f1838}.v27-rose .p2{fill:#b6284b}.v27-rose .p3{fill:#d43b5c}.v27-rose .core{fill:#6f102b}
+@media(max-width:700px){
+  .v27-vine{width:34px;opacity:.7}
+  .v27-stem{stroke-width:2.5}
+}
+@media(prefers-reduced-motion:reduce){
+  .v27-stem{stroke-dashoffset:0!important}
+  .v27-rose{transform:scale(1);opacity:1}
+}
+
 </style>
 <style id="july-finale-v25">
 .july-heart-ready{cursor:pointer!important;filter:drop-shadow(0 0 24px rgba(255,190,220,.9));animation:julyReady 1.8s ease-in-out infinite!important}
@@ -516,6 +550,52 @@ header:first-of-type,
 .july-future-text{font:italic clamp(1rem,3vw,1.4rem) Georgia,serif;color:#f4dce7}
 </style>
 </head><body>
+<div class="v27-rose-vines" aria-hidden="true">
+  <div class="v27-vine left">
+    <svg viewBox="0 0 90 1800" preserveAspectRatio="none">
+      <path class="v27-stem" pathLength="1800" d="M18 1800 C70 1680,15 1540,55 1410 S20 1160,60 1010 S15 760,54 610 S18 330,58 0"/>
+      <path class="v27-branch" d="M39 1570 Q67 1528 82 1492 M33 1325 Q8 1285 5 1248 M48 1080 Q73 1040 84 995 M35 825 Q8 785 5 745 M48 565 Q74 520 84 478 M36 285 Q10 245 6 205"/>
+      <ellipse class="v27-leaf" cx="69" cy="1517" rx="12" ry="5" transform="rotate(-32 69 1517)"/>
+      <ellipse class="v27-leaf" cx="13" cy="1270" rx="12" ry="5" transform="rotate(34 13 1270)"/>
+      <ellipse class="v27-leaf" cx="73" cy="1028" rx="12" ry="5" transform="rotate(-35 73 1028)"/>
+      <ellipse class="v27-leaf" cx="14" cy="773" rx="12" ry="5" transform="rotate(34 14 773)"/>
+      <ellipse class="v27-leaf" cx="73" cy="514" rx="12" ry="5" transform="rotate(-34 73 514)"/>
+      <ellipse class="v27-leaf" cx="14" cy="235" rx="12" ry="5" transform="rotate(34 14 235)"/>
+      <g class="v27-rose" data-bloom=".18" transform="translate(58 1410)">
+        <circle class="p1" r="13"/><circle class="p2" cx="-7" cy="-3" r="8"/><circle class="p3" cx="6" cy="-4" r="8"/><circle class="p2" cy="6" r="8"/><circle class="core" r="4"/>
+      </g>
+      <g class="v27-rose" data-bloom=".48" transform="translate(58 1010)">
+        <circle class="p1" r="13"/><circle class="p2" cx="-7" cy="-3" r="8"/><circle class="p3" cx="6" cy="-4" r="8"/><circle class="p2" cy="6" r="8"/><circle class="core" r="4"/>
+      </g>
+      <g class="v27-rose" data-bloom=".76" transform="translate(54 610)">
+        <circle class="p1" r="13"/><circle class="p2" cx="-7" cy="-3" r="8"/><circle class="p3" cx="6" cy="-4" r="8"/><circle class="p2" cy="6" r="8"/><circle class="core" r="4"/>
+      </g>
+      <circle class="v27-bud" cx="80" cy="1490" r="5"/><circle class="v27-bud" cx="6" cy="1248" r="4"/>
+    </svg>
+  </div>
+  <div class="v27-vine right">
+    <svg viewBox="0 0 90 1800" preserveAspectRatio="none">
+      <path class="v27-stem" pathLength="1800" d="M18 1800 C70 1680,15 1540,55 1410 S20 1160,60 1010 S15 760,54 610 S18 330,58 0"/>
+      <path class="v27-branch" d="M39 1570 Q67 1528 82 1492 M33 1325 Q8 1285 5 1248 M48 1080 Q73 1040 84 995 M35 825 Q8 785 5 745 M48 565 Q74 520 84 478 M36 285 Q10 245 6 205"/>
+      <ellipse class="v27-leaf" cx="69" cy="1517" rx="12" ry="5" transform="rotate(-32 69 1517)"/>
+      <ellipse class="v27-leaf" cx="13" cy="1270" rx="12" ry="5" transform="rotate(34 13 1270)"/>
+      <ellipse class="v27-leaf" cx="73" cy="1028" rx="12" ry="5" transform="rotate(-35 73 1028)"/>
+      <ellipse class="v27-leaf" cx="14" cy="773" rx="12" ry="5" transform="rotate(34 14 773)"/>
+      <ellipse class="v27-leaf" cx="73" cy="514" rx="12" ry="5" transform="rotate(-34 73 514)"/>
+      <ellipse class="v27-leaf" cx="14" cy="235" rx="12" ry="5" transform="rotate(34 14 235)"/>
+      <g class="v27-rose" data-bloom=".3" transform="translate(58 1410)">
+        <circle class="p1" r="13"/><circle class="p2" cx="-7" cy="-3" r="8"/><circle class="p3" cx="6" cy="-4" r="8"/><circle class="p2" cy="6" r="8"/><circle class="core" r="4"/>
+      </g>
+      <g class="v27-rose" data-bloom=".6" transform="translate(58 1010)">
+        <circle class="p1" r="13"/><circle class="p2" cx="-7" cy="-3" r="8"/><circle class="p3" cx="6" cy="-4" r="8"/><circle class="p2" cy="6" r="8"/><circle class="core" r="4"/>
+      </g>
+      <g class="v27-rose" data-bloom=".86" transform="translate(54 610)">
+        <circle class="p1" r="13"/><circle class="p2" cx="-7" cy="-3" r="8"/><circle class="p3" cx="6" cy="-4" r="8"/><circle class="p2" cy="6" r="8"/><circle class="core" r="4"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
 
 
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ❤️</button></div></section>
@@ -775,4 +855,19 @@ document.addEventListener('click',e=>{
 const julyObserver=new MutationObserver(()=>setTimeout(updateJulyHeart,30));
 julyObserver.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
 </script>
+
+<script id="v27-rose-scroll">
+(()=>{
+ const stems=[...document.querySelectorAll('.v27-stem')];
+ const roses=[...document.querySelectorAll('.v27-rose')];
+ function grow(){
+   const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+   const p=Math.max(0,Math.min(1,scrollY/max));
+   stems.forEach(s=>s.style.strokeDashoffset=String(1800*(1-p)));
+   roses.forEach(r=>r.classList.toggle('bloom',p>=Number(r.dataset.bloom||0)));
+ }
+ addEventListener('scroll',grow,{passive:true});addEventListener('resize',grow);grow();
+})();
+</script>
+
 </body></html>
