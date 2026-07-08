@@ -611,6 +611,60 @@ section.v21-moods,
   }
 }
 
+
+/* V33 — mood completo identico al blocco precedente: velo bianco uniforme sulle rose */
+.v21-moods,
+section.v21-moods,
+#moods,
+.moods-section{
+  position:relative!important;
+  isolation:isolate!important;
+  background:rgba(255,255,255,.72)!important;
+  -webkit-backdrop-filter:blur(2px) saturate(85%)!important;
+  backdrop-filter:blur(2px) saturate(85%)!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+
+/* forza il velo sull'intera fascia anche se il vecchio CSS mette lo sfondo rose sul parent */
+.v21-moods::before,
+section.v21-moods::before,
+#moods::before,
+.moods-section::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:-1!important;
+  background:rgba(255,255,255,.72)!important;
+  pointer-events:none!important;
+}
+
+/* card interne pulite e coerenti */
+.v21-moods .mood,
+.v21-moods button,
+#moods .mood,
+#moods button{
+  background:rgba(255,255,255,.62)!important;
+  border-color:rgba(90,45,55,.14)!important;
+}
+
+/* elimina l'effetto rosso scoperto su mobile */
+@media(max-width:800px){
+  .v21-moods,
+  section.v21-moods,
+  #moods,
+  .moods-section{
+    background:rgba(255,255,255,.76)!important;
+  }
+  .v21-moods::before,
+  section.v21-moods::before,
+  #moods::before,
+  .moods-section::before{
+    background:rgba(255,255,255,.76)!important;
+  }
+}
+
 </style>
 <style id="july-finale-v25">
 .july-heart-ready{cursor:pointer!important;filter:drop-shadow(0 0 24px rgba(255,190,220,.9));animation:julyReady 1.8s ease-in-out infinite!important}
