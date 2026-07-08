@@ -501,32 +501,37 @@ header:first-of-type,
 }
 
 
-/* V28 — rose rampicanti organiche, decorative e non ripetitive */
-.rose-garden-v28{position:fixed;inset:0;z-index:32;pointer-events:none;overflow:hidden}
-.rose-side-v28{position:absolute;top:0;height:100%;width:min(15vw,210px);opacity:.96}
-.rose-side-v28.left{left:0}.rose-side-v28.right{right:0;transform:scaleX(-1)}
-.rose-side-v28 svg{width:100%;height:100%;overflow:visible}
-.v28-main,.v28-twig{fill:none;stroke-linecap:round;stroke-linejoin:round}
-.v28-main{stroke:url(#vineGradV28);stroke-width:4}
-.v28-twig{stroke:#244d48;stroke-width:2.2;opacity:.9}
-.v28-main,.v28-twig{stroke-dasharray:2200;stroke-dashoffset:2200}
-.v28-leaf{fill:url(#leafGradV28);filter:drop-shadow(0 2px 2px rgba(9,35,33,.18));opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.35)}
-.v28-flower{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2) rotate(-12deg);filter:drop-shadow(0 4px 8px rgba(96,12,43,.28))}
-.v28-flower .a{fill:#72142e}.v28-flower .b{fill:#9d1f43}.v28-flower .c{fill:#c73559}.v28-flower .d{fill:#e45a75}.v28-flower .e{fill:#5d0d25}
-.v28-bud{fill:#9d1f43;opacity:0;filter:drop-shadow(0 2px 4px rgba(96,12,43,.25))}
-.v28-leaf.show{animation:v28leaf .7s cubic-bezier(.2,.9,.2,1) forwards}
-.v28-flower.show{animation:v28bloom 1s cubic-bezier(.16,1,.3,1) forwards}
-.v28-bud.show{animation:v28fade .6s ease forwards}
-@keyframes v28leaf{to{opacity:.92;transform:scale(1)}}
-@keyframes v28bloom{to{opacity:1;transform:scale(1) rotate(0)}}
-@keyframes v28fade{to{opacity:1}}
+/* V29 — rose rampicanti decorative: fiori veri a petali, foglie e tralci discreti */
+.v29-rose-frame{position:fixed;inset:0;z-index:34;pointer-events:none;overflow:hidden}
+.v29-vine{position:absolute;top:0;height:100%;width:clamp(72px,9vw,150px)}
+.v29-vine.left{left:0}.v29-vine.right{right:0;transform:scaleX(-1)}
+.v29-vine svg{width:100%;height:100%;overflow:visible}
+.v29-stem,.v29-branch{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.v29-stem{stroke:#1c4a43;stroke-width:3.4;filter:drop-shadow(0 1px 1px rgba(8,30,28,.22))}
+.v29-branch{stroke:#2d6559;stroke-width:2}
+.v29-leaf path{fill:url(#v29Leaf);stroke:#173d38;stroke-width:.7}
+.v29-leaf line{stroke:#9ab9a9;stroke-width:.7;opacity:.65}
+.v29-rose{filter:drop-shadow(0 4px 7px rgba(86,10,35,.28))}
+.v29-rose .outer1{fill:#7d1434}.v29-rose .outer2{fill:#9f1e43}
+.v29-rose .mid1{fill:#bd2b50}.v29-rose .mid2{fill:#d64464}
+.v29-rose .light{fill:#ee7188}.v29-rose .deep{fill:#5e0b27}
+.v29-rose .shine{fill:#f49aac;opacity:.72}
+.v29-small{opacity:.94}
+.v29-stem,.v29-branch{stroke-dasharray:2400;stroke-dashoffset:2400}
+.v29-grow{transition:stroke-dashoffset .16s linear}
+.v29-pop{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.15) rotate(-18deg)}
+.v29-pop.show{animation:v29Bloom .9s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes v29Bloom{to{opacity:1;transform:scale(1) rotate(0deg)}}
 @media(max-width:800px){
- .rose-side-v28{width:48px;opacity:.78}
- .v28-main{stroke-width:3}.v28-twig{stroke-width:1.7}
+ .v29-vine{width:64px}
+ .v29-stem{stroke-width:2.7}.v29-branch{stroke-width:1.6}
+}
+@media(max-width:430px){
+ .v29-vine{width:54px;opacity:.94}
 }
 @media(prefers-reduced-motion:reduce){
- .v28-main,.v28-twig{stroke-dashoffset:0!important}
- .v28-leaf,.v28-flower,.v28-bud{opacity:1!important;transform:none!important}
+ .v29-stem,.v29-branch{stroke-dashoffset:0!important}
+ .v29-pop{opacity:1!important;transform:none!important}
 }
 
 </style>
@@ -544,62 +549,348 @@ header:first-of-type,
 .future-stars i{width:18px;height:18px;border:1px solid rgba(255,220,235,.7);border-radius:50%;box-shadow:0 0 18px rgba(255,190,220,.35);justify-self:center;animation:julyReady 2s ease-in-out infinite}
 .july-future-text{font:italic clamp(1rem,3vw,1.4rem) Georgia,serif;color:#f4dce7}
 </style>
-</head><body><div class="rose-garden-v28" aria-hidden="true">
-<div class="rose-side-v28 left">
-<svg viewBox="0 0 180 1800" preserveAspectRatio="none">
-<defs>
- <linearGradient id="vineGradV28" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102f2d"/><stop offset=".55" stop-color="#285f57"/><stop offset="1" stop-color="#173b38"/></linearGradient>
- <linearGradient id="leafGradV28" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173f3b"/><stop offset=".55" stop-color="#397367"/><stop offset="1" stop-color="#1c4d47"/></linearGradient>
-</defs>
-<path class="v28-main" pathLength="2200" d="M20 1820 C18 1690 105 1645 70 1530 C35 1415 142 1360 103 1245 C68 1142 28 1100 68 980 C112 850 36 805 70 680 C102 560 150 510 105 395 C64 290 20 220 62 -20"/>
-<path class="v28-twig" pathLength="2200" d="M69 1532 C112 1500 137 1462 154 1412 M92 1260 C50 1232 28 1195 15 1148 M66 980 C110 948 142 902 159 850 M72 682 C35 650 17 610 10 560 M108 400 C142 365 158 325 166 278"/>
-<path class="v28-twig" pathLength="2200" d="M49 1665 C86 1635 111 1604 125 1562 M106 1362 C137 1337 155 1305 170 1268 M50 1080 C24 1050 12 1018 7 985 M91 790 C126 765 148 731 166 695 M82 500 C46 475 26 438 16 398 M48 180 C88 154 112 118 128 72"/>
-<g class="v28-leaf" data-at=".08" transform="translate(115 1580) rotate(-35)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/><path d="M4 0 L42 0" fill="none" stroke="#b5d0c5" stroke-width="1"/></g>
-<g class="v28-leaf" data-at=".15" transform="translate(145 1415) rotate(-42)"><path d="M0 0 C16-17 39-13 46 0 C29 14 11 12 0 0Z"/></g>
-<g class="v28-leaf" data-at=".22" transform="translate(16 1150) rotate(32)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".31" transform="translate(148 858) rotate(-38)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".43" transform="translate(12 562) rotate(38)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".55" transform="translate(145 280) rotate(-38)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".64" transform="translate(118 72) rotate(-28)"><path d="M0 0 C16-17 39-13 46 0 C29 14 11 12 0 0Z"/></g>
-<g class="v28-flower" data-at=".12" transform="translate(132 1550)">
- <ellipse class="a" rx="22" ry="13"/><ellipse class="b" cx="-13" cy="-7" rx="15" ry="12" transform="rotate(-35)"/><ellipse class="c" cx="12" cy="-8" rx="15" ry="12" transform="rotate(35)"/><ellipse class="d" cy="10" rx="15" ry="12"/><ellipse class="b" cx="-7" cy="5" rx="11" ry="9"/><ellipse class="c" cx="7" cy="3" rx="10" ry="9"/><circle class="e" r="5"/>
+</head><body>
+<div class="v29-rose-frame" aria-hidden="true">
+ <div class="v29-vine left">
+<svg viewBox="0 0 160 1800" preserveAspectRatio="none">
+ <defs><linearGradient id="v29Leaf" x1="0" y1="0" x2="1" y2="1">
+  <stop stop-color="#153f39"/><stop offset=".52" stop-color="#3d7868"/><stop offset="1" stop-color="#1c5047"/>
+ </linearGradient></defs>
+ <path class="v29-stem v29-grow" pathLength="2400" d="M28 1825 C12 1705 112 1650 73 1515 C38 1392 132 1325 82 1190 C38 1075 128 1005 84 885 C42 765 132 700 80 575 C35 465 126 390 78 275 C39 180 111 112 92 -25"/>
+ <path class="v29-branch v29-grow" pathLength="2400" d="M70 1530 Q112 1492 132 1448 M65 1350 Q30 1318 14 1270 M82 1192 Q120 1150 143 1098 M70 1000 Q31 968 13 914 M84 884 Q124 844 146 792 M72 690 Q34 658 14 605 M80 574 Q119 535 143 485 M70 385 Q34 350 16 300 M78 274 Q116 235 137 182"/>
+ 
+<g class="v29-rose v29-pop" data-at="0.04" transform="translate(52 1650) scale(0.72)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
 </g>
-<g class="v28-flower" data-at=".36" transform="translate(154 842) scale(.82)">
- <ellipse class="a" rx="22" ry="13"/><ellipse class="b" cx="-13" cy="-7" rx="15" ry="12"/><ellipse class="c" cx="12" cy="-8" rx="15" ry="12"/><ellipse class="d" cy="10" rx="15" ry="12"/><ellipse class="b" cx="-7" cy="5" rx="11" ry="9"/><ellipse class="c" cx="7" cy="3" rx="10" ry="9"/><circle class="e" r="5"/>
+<g class="v29-rose v29-pop" data-at="0.14" transform="translate(112 1450) scale(1.0)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
 </g>
-<g class="v28-flower" data-at=".58" transform="translate(158 276) scale(1.08)">
- <ellipse class="a" rx="22" ry="13"/><ellipse class="b" cx="-13" cy="-7" rx="15" ry="12"/><ellipse class="c" cx="12" cy="-8" rx="15" ry="12"/><ellipse class="d" cy="10" rx="15" ry="12"/><ellipse class="b" cx="-7" cy="5" rx="11" ry="9"/><ellipse class="c" cx="7" cy="3" rx="10" ry="9"/><circle class="e" r="5"/>
+<g class="v29-rose v29-pop" data-at="0.27" transform="translate(58 1190) scale(0.78)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
 </g>
-<circle class="v28-bud" data-at=".19" cx="169" cy="1268" r="7"/><circle class="v28-bud" data-at=".49" cx="16" cy="398" r="6"/>
+<g class="v29-rose v29-pop" data-at="0.4" transform="translate(120 940) scale(1.08)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.55" transform="translate(56 690) scale(0.82)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.69" transform="translate(116 455) scale(0.96)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.83" transform="translate(62 225) scale(0.76)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.93" transform="translate(116 70) scale(0.92)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.03" transform="translate(45 1710) rotate(-28) scale(0.65)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.08" transform="translate(86 1585) rotate(25) scale(0.72)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.12" transform="translate(104 1505) rotate(-25) scale(0.64)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.19" transform="translate(45 1370) rotate(35) scale(0.75)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.24" transform="translate(72 1260) rotate(-28) scale(0.62)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.31" transform="translate(105 1110) rotate(28) scale(0.72)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.36" transform="translate(52 1015) rotate(-35) scale(0.68)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.44" transform="translate(105 850) rotate(30) scale(0.75)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.49" transform="translate(60 780) rotate(-30) scale(0.62)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.59" transform="translate(88 610) rotate(28) scale(0.72)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.64" transform="translate(50 535) rotate(-32) scale(0.65)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.73" transform="translate(100 380) rotate(30) scale(0.73)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.78" transform="translate(55 305) rotate(-25) scale(0.62)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.88" transform="translate(95 145) rotate(28) scale(0.7)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
 </svg></div>
-<div class="rose-side-v28 right">
-<svg viewBox="0 0 180 1800" preserveAspectRatio="none">
-<defs>
- <linearGradient id="vineGradV28" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#102f2d"/><stop offset=".55" stop-color="#285f57"/><stop offset="1" stop-color="#173b38"/></linearGradient>
- <linearGradient id="leafGradV28" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173f3b"/><stop offset=".55" stop-color="#397367"/><stop offset="1" stop-color="#1c4d47"/></linearGradient>
-</defs>
-<path class="v28-main" pathLength="2200" d="M20 1820 C18 1690 105 1645 70 1530 C35 1415 142 1360 103 1245 C68 1142 28 1100 68 980 C112 850 36 805 70 680 C102 560 150 510 105 395 C64 290 20 220 62 -20"/>
-<path class="v28-twig" pathLength="2200" d="M69 1532 C112 1500 137 1462 154 1412 M92 1260 C50 1232 28 1195 15 1148 M66 980 C110 948 142 902 159 850 M72 682 C35 650 17 610 10 560 M108 400 C142 365 158 325 166 278"/>
-<path class="v28-twig" pathLength="2200" d="M49 1665 C86 1635 111 1604 125 1562 M106 1362 C137 1337 155 1305 170 1268 M50 1080 C24 1050 12 1018 7 985 M91 790 C126 765 148 731 166 695 M82 500 C46 475 26 438 16 398 M48 180 C88 154 112 118 128 72"/>
-<g class="v28-leaf" data-at=".08" transform="translate(115 1580) rotate(-35)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/><path d="M4 0 L42 0" fill="none" stroke="#b5d0c5" stroke-width="1"/></g>
-<g class="v28-leaf" data-at=".15" transform="translate(145 1415) rotate(-42)"><path d="M0 0 C16-17 39-13 46 0 C29 14 11 12 0 0Z"/></g>
-<g class="v28-leaf" data-at=".22" transform="translate(16 1150) rotate(32)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".31" transform="translate(148 858) rotate(-38)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".43" transform="translate(12 562) rotate(38)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".55" transform="translate(145 280) rotate(-38)"><path d="M0 0 C18-18 42-14 49 0 C31 15 12 13 0 0Z"/></g>
-<g class="v28-leaf" data-at=".64" transform="translate(118 72) rotate(-28)"><path d="M0 0 C16-17 39-13 46 0 C29 14 11 12 0 0Z"/></g>
-<g class="v28-flower" data-at=".12" transform="translate(132 1550)">
- <ellipse class="a" rx="22" ry="13"/><ellipse class="b" cx="-13" cy="-7" rx="15" ry="12" transform="rotate(-35)"/><ellipse class="c" cx="12" cy="-8" rx="15" ry="12" transform="rotate(35)"/><ellipse class="d" cy="10" rx="15" ry="12"/><ellipse class="b" cx="-7" cy="5" rx="11" ry="9"/><ellipse class="c" cx="7" cy="3" rx="10" ry="9"/><circle class="e" r="5"/>
+ <div class="v29-vine right">
+<svg viewBox="0 0 160 1800" preserveAspectRatio="none">
+ <defs><linearGradient id="v29Leaf" x1="0" y1="0" x2="1" y2="1">
+  <stop stop-color="#153f39"/><stop offset=".52" stop-color="#3d7868"/><stop offset="1" stop-color="#1c5047"/>
+ </linearGradient></defs>
+ <path class="v29-stem v29-grow" pathLength="2400" d="M28 1825 C12 1705 112 1650 73 1515 C38 1392 132 1325 82 1190 C38 1075 128 1005 84 885 C42 765 132 700 80 575 C35 465 126 390 78 275 C39 180 111 112 92 -25"/>
+ <path class="v29-branch v29-grow" pathLength="2400" d="M70 1530 Q112 1492 132 1448 M65 1350 Q30 1318 14 1270 M82 1192 Q120 1150 143 1098 M70 1000 Q31 968 13 914 M84 884 Q124 844 146 792 M72 690 Q34 658 14 605 M80 574 Q119 535 143 485 M70 385 Q34 350 16 300 M78 274 Q116 235 137 182"/>
+ 
+<g class="v29-rose v29-pop" data-at="0.04" transform="translate(52 1650) scale(0.72)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
 </g>
-<g class="v28-flower" data-at=".36" transform="translate(154 842) scale(.82)">
- <ellipse class="a" rx="22" ry="13"/><ellipse class="b" cx="-13" cy="-7" rx="15" ry="12"/><ellipse class="c" cx="12" cy="-8" rx="15" ry="12"/><ellipse class="d" cy="10" rx="15" ry="12"/><ellipse class="b" cx="-7" cy="5" rx="11" ry="9"/><ellipse class="c" cx="7" cy="3" rx="10" ry="9"/><circle class="e" r="5"/>
+<g class="v29-rose v29-pop" data-at="0.14" transform="translate(112 1450) scale(1.0)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
 </g>
-<g class="v28-flower" data-at=".58" transform="translate(158 276) scale(1.08)">
- <ellipse class="a" rx="22" ry="13"/><ellipse class="b" cx="-13" cy="-7" rx="15" ry="12"/><ellipse class="c" cx="12" cy="-8" rx="15" ry="12"/><ellipse class="d" cy="10" rx="15" ry="12"/><ellipse class="b" cx="-7" cy="5" rx="11" ry="9"/><ellipse class="c" cx="7" cy="3" rx="10" ry="9"/><circle class="e" r="5"/>
+<g class="v29-rose v29-pop" data-at="0.27" transform="translate(58 1190) scale(0.78)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
 </g>
-<circle class="v28-bud" data-at=".19" cx="169" cy="1268" r="7"/><circle class="v28-bud" data-at=".49" cx="16" cy="398" r="6"/>
+<g class="v29-rose v29-pop" data-at="0.4" transform="translate(120 940) scale(1.08)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.55" transform="translate(56 690) scale(0.82)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.69" transform="translate(116 455) scale(0.96)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.83" transform="translate(62 225) scale(0.76)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-rose v29-pop" data-at="0.93" transform="translate(116 70) scale(0.92)">
+ <ellipse class="outer1" cx="-18" cy="3" rx="20" ry="12" transform="rotate(-34)"/>
+ <ellipse class="outer2" cx="18" cy="3" rx="20" ry="12" transform="rotate(34)"/>
+ <ellipse class="outer2" cx="-9" cy="-15" rx="18" ry="12" transform="rotate(-18)"/>
+ <ellipse class="outer1" cx="10" cy="-15" rx="18" ry="12" transform="rotate(18)"/>
+ <ellipse class="mid1" cx="-13" cy="12" rx="17" ry="12" transform="rotate(24)"/>
+ <ellipse class="mid2" cx="13" cy="12" rx="17" ry="12" transform="rotate(-24)"/>
+ <ellipse class="mid2" cx="-7" cy="-4" rx="13" ry="11" transform="rotate(-30)"/>
+ <ellipse class="light" cx="8" cy="-4" rx="13" ry="11" transform="rotate(30)"/>
+ <ellipse class="mid1" cx="0" cy="9" rx="13" ry="10"/>
+ <path class="deep" d="M-8,-2 C-2,-10 9,-9 11,-1 C12,7 3,12 -4,8 C-10,5 -12,2 -8,-2Z"/>
+ <path class="shine" d="M-2,-4 C2,-7 7,-5 7,-1 C5,1 2,1 -2,-4Z"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.03" transform="translate(45 1710) rotate(-28) scale(0.65)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.08" transform="translate(86 1585) rotate(25) scale(0.72)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.12" transform="translate(104 1505) rotate(-25) scale(0.64)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.19" transform="translate(45 1370) rotate(35) scale(0.75)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.24" transform="translate(72 1260) rotate(-28) scale(0.62)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.31" transform="translate(105 1110) rotate(28) scale(0.72)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.36" transform="translate(52 1015) rotate(-35) scale(0.68)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.44" transform="translate(105 850) rotate(30) scale(0.75)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.49" transform="translate(60 780) rotate(-30) scale(0.62)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.59" transform="translate(88 610) rotate(28) scale(0.72)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.64" transform="translate(50 535) rotate(-32) scale(0.65)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.73" transform="translate(100 380) rotate(30) scale(0.73)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.78" transform="translate(55 305) rotate(-25) scale(0.62)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
+<g class="v29-leaf v29-pop" data-at="0.88" transform="translate(95 145) rotate(28) scale(0.7)">
+ <path d="M0 0 C14-20 38-19 52 0 C37 17 14 18 0 0Z"/>
+ <line x1="4" y1="0" x2="46" y2="0"/>
+</g>
 </svg></div>
 </div>
+
 
 
 <section id="intro"><div style="text-align:center"><div id="it"></div><button id="enter" class="pill">entra a casa nostra ❤️</button></div></section>
@@ -859,12 +1150,31 @@ document.addEventListener('click',e=>{
 const julyObserver=new MutationObserver(()=>setTimeout(updateJulyHeart,30));
 julyObserver.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
 </script>
-<script id="rose-v28-scroll">
-(()=>{const paths=[...document.querySelectorAll('.v28-main,.v28-twig')],items=[...document.querySelectorAll('.v28-leaf,.v28-flower,.v28-bud')];
-let ticking=false;
-function paint(){const max=Math.max(1,document.documentElement.scrollHeight-innerHeight),p=Math.max(0,Math.min(1,scrollY/max));
-paths.forEach((el,i)=>{const lag=el.closest('.right')?.classList.contains('right')?.035:0;el.style.strokeDashoffset=String(2200*(1-Math.max(0,Math.min(1,p*1.12-lag))))});
-items.forEach((el,i)=>{let at=+(el.dataset.at||0);if(el.closest('.right'))at+=.045;el.classList.toggle('show',p>=at)});ticking=false}
-function req(){if(!ticking){requestAnimationFrame(paint);ticking=true}} addEventListener('scroll',req,{passive:true});addEventListener('resize',req);paint()})();
+
+<script id="v29-rose-scroll">
+(()=>{
+ const paths=[...document.querySelectorAll('.v29-stem,.v29-branch')];
+ const pops=[...document.querySelectorAll('.v29-pop')];
+ let busy=false;
+ function draw(){
+   const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+   const p=Math.max(0,Math.min(1,scrollY/max));
+   paths.forEach((el,i)=>{
+     const sideLag=el.closest('.right') ? .025 : 0;
+     const q=Math.max(0,Math.min(1,p*1.08-sideLag));
+     el.style.strokeDashoffset=String(2400*(1-q));
+   });
+   pops.forEach(el=>{
+     let at=Number(el.dataset.at||0)+(el.closest('.right')?.035:0);
+     el.classList.toggle('show',p>=at);
+   });
+   busy=false;
+ }
+ function request(){if(!busy){busy=true;requestAnimationFrame(draw)}}
+ addEventListener('scroll',request,{passive:true});
+ addEventListener('resize',request);
+ draw();
+})();
 </script>
+
 </body></html>
